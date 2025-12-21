@@ -8,7 +8,8 @@ import PackageDescription
 let package = Package(
     name: "Falla",
     platforms: [
-        .iOS(.v26)
+        .iOS(.v26),
+        .macOS(.v15)
     ],
     products: [
         .library(
