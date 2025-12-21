@@ -1,0 +1,264 @@
+FALLA AURA – TERMS OF USE
+
+Effective Date: 2025
+Last Updated: 2025-12-02
+
+By downloading, installing or using the Falla Aura mobile application (the “App”), you acknowledge that you have read, understood and agree to be bound by these Terms of Use (the “Terms”). If you do not agree to these Terms, you must not use the App.
+
+These Terms apply to all services provided by Falla Aura (“we”, “us”, “our”).
+
+1. Definitions
+
+For the purposes of these Terms:
+
+“App” means the Falla Aura mobile application and all related digital services and content.
+
+“Service” means all features provided through the App, including fortune readings, tarot, aura analysis, biorhythm, tests, aura matching, chat, gamification, premium packages and similar functions.
+
+“User” / “you” means any natural person who downloads, registers for, or otherwise uses the App.
+
+“User Content” means any content uploaded, submitted or created in the App by the User (such as photos, text, messages, videos, audio, profile information, etc.).
+
+“Social Features” means aura matching, user profiles, chat, notifications and other modules that enable interaction between users.
+
+2. Nature of the Service – For Entertainment Purposes Only
+
+The App provides:
+
+Fortune-telling and readings (e.g. coffee cup readings, tarot, palm, dream interpretation, etc.),
+
+Aura analysis and energy-based interpretations,
+
+Astrological insights and daily horoscope content,
+
+Biorhythm calculations,
+
+Love, relationship, personality and mood tests,
+
+An aura compatibility and similar criteria–based matching system,
+
+Chat and communication between matched users,
+
+Gamification and virtual point/credit systems.
+
+All such content and interpretations are provided solely for entertainment and personal awareness purposes.
+
+They do not constitute professional advice in the fields of health, psychology, therapy, law, finance, career or any similar area.
+
+The App does not predict the future with certainty; all decisions you make based on the Service are entirely your own responsibility.
+
+No information provided in the App constitutes a medical diagnosis, psychological counselling, legal opinion or financial investment advice.
+
+3. Age Restriction and Access to the App
+
+You must be at least 16 years old to use the App.
+
+If local law sets a higher minimum age, that higher age requirement will apply.
+
+If we determine that you are under 16 years of age, your account may be closed and your data may be deleted in accordance with applicable law.
+
+You may not create an account on behalf of another person or use someone else’s identity.
+
+4. Account Creation and Security
+
+Certain features of the App may require you to create an account. You are responsible for ensuring that the information you provide during registration is accurate, current and complete.
+
+You are responsible for maintaining the confidentiality of your account information (such as e-mail, password, etc.). You are deemed responsible for all activities that occur under your account.
+
+If you believe that your account has been used without your authorization, you must contact us immediately.
+
+5. License and Right of Use
+
+Subject to your compliance with these Terms, we grant you a personal, limited, non-exclusive and non-transferable license to use the App on your mobile devices.
+
+The following actions are strictly prohibited:
+
+Copying, modifying, reverse engineering or decompiling the App or attempting to derive its source code,
+
+Selling, renting, sublicensing or otherwise commercializing any part of the App,
+
+Attempting to circumvent or disable any security or technical protection measures,
+
+Using bots, scripts or other automated tools in a way that overloads, abuses or disrupts the system.
+
+6. User Content and Responsibility
+
+You are solely and fully responsible for the legal consequences of all photos, text, messages and other content that you upload to or share through the App.
+
+The following types of content are strictly prohibited when using the App:
+
+Profanity, insults, threats, humiliation, hate speech, racist or discriminatory expressions,
+
+Pornographic, obscene or sexually explicit content,
+
+Content that encourages harm to others or self-harm,
+
+Fraud, spam, advertising, promotion or mass messages for marketing purposes,
+
+Any content that infringes copyrights, trademarks, privacy rights or personality rights,
+
+Any promotion or advertisement of illegal products or services, or content that violates applicable laws.
+
+If such content is detected, the relevant content may be removed, your account may be temporarily or permanently suspended without prior notice and, where deemed necessary, the matter may be reported to the competent authorities.
+
+You must not share photos, personal data or private messages belonging to others without their consent.
+
+7. Fortune, Aura and Test Results
+
+Fortune, aura, dream, biorhythm and test results are:
+
+Generated automatically or semi-automatically using artificial intelligence, algorithms and symbolic interpretation systems.
+
+These results:
+
+Are provided solely for entertainment and awareness,
+
+Do not guarantee any real-world outcomes,
+
+Do not assume responsibility for any decisions you make.
+
+Any decisions, risks or consequences arising from your use of the App and its results are entirely your responsibility.
+
+8. Aura Matching and Social Features
+
+Aura matching is performed using a matching algorithm based on users’ profile information (such as zodiac sign, age range, gender preference, aura color, mood, etc.).
+
+Compatibility percentages are only indicative estimates of potential compatibility and are not guarantees.
+
+The profile information that may be displayed to other users as a result of matching includes:
+
+Nickname or username,
+
+Age range, zodiac sign, aura color, mood (as defined by the App’s logic),
+
+Profile image (if provided),
+
+General location information (country/city level, if you have chosen to share it).
+
+Within chat and social areas:
+
+You may not engage in harassment, threats, bullying, coercive flirting or sending persistent unwanted messages.
+
+You may not make sexual, obscene requests or offers.
+
+You may not request or share personal information that could endanger someone’s safety (such as address, phone number, precise location, etc.).
+
+Users are personally responsible for their own safety if they decide to meet other users in real life. Falla Aura is not liable for any damage, loss or dispute arising from communication or meetings between users.
+
+Reporting and blocking:
+
+You may report and/or block any user or message that you find inappropriate.
+
+Reported accounts may be reviewed; where necessary, chat logs may be examined for moderation purposes.
+
+9. Virtual Currency, Points and Premium Features
+
+The App may include virtual point or currency systems such as “karma”, “coins”, “energy”, etc.
+
+These virtual items are for use only within the App; unless explicitly stated otherwise, they:
+
+Cannot be sold for real money,
+
+Cannot be refunded for real money,
+
+Cannot be transferred or assigned to other users.
+
+Premium features, subscriptions and packages are sold through the Apple App Store or Google Play Store.
+
+Prices, durations and included content are specified within the App and/or on the store listing pages.
+
+Purchases and subscription transactions are subject to the respective terms and policies of the relevant store (Apple/Google).
+
+Refund requests are handled according to the refund procedures of the relevant platform; Falla Aura does not provide any additional refund commitment beyond those platform policies.
+
+The renewal, modification and cancellation of subscriptions must be managed by the User via the App Store / Google Play subscription management screens.
+
+10. Intellectual Property Rights
+
+All software code, design, logos, trademarks, icons, graphics, text, audio and other content within the App are owned by Falla Aura or used under license.
+
+You may not:
+
+Copy, reproduce or facilitate the reproduction of such content,
+
+Create derivative works based on it, sell or distribute it.
+
+The “Falla Aura” name and logos may not be used without prior written permission.
+
+11. Privacy and Personal Data Protection
+
+Details on how your personal data is processed and protected are set out in our Privacy Policy.
+
+By using the App, you agree to the data processing activities described in the Privacy Policy.
+
+The Privacy Policy forms an integral part of these Terms.
+
+12. Third-Party Services
+
+Falla Aura may use third-party services such as Firebase, Google Cloud, OpenAI and others for storage, analytics, artificial intelligence, notifications, error reporting and similar purposes.
+
+These services are subject to their own terms of use and privacy policies, and the relevant providers may process data on their own servers.
+
+By continuing to use the App, you agree to the use of such third-party services.
+
+13. Disclaimer of Warranties and Limitation of Liability
+
+The App and the Service are provided “as is” and “as available”.
+
+No guarantee is given regarding fitness for a particular purpose, uninterrupted or error-free operation, or any particular result.
+
+Falla Aura is not liable for:
+
+The accuracy or reliability of any fortunes, readings, tests or matching results,
+
+Communications, disputes or meetings between users,
+
+Problems, data loss or damage caused by your device, operating system or internet connection,
+
+Interruptions, failures or errors that may occur in third-party services.
+
+Some jurisdictions do not allow certain limitations of liability; in such cases, the relevant limitation will apply to the maximum extent permitted by applicable law.
+
+14. Termination and Account Closure
+
+You may delete your account and stop using the Service at any time via the settings/account menu within the App.
+
+Falla Aura may temporarily or permanently suspend or terminate your account in the following cases:
+
+Violation of these Terms or the Privacy Policy,
+
+Behavior that endangers the safety of other users,
+
+Fraud, spam, abuse or attacks on the system,
+
+Any other reasonable grounds we deem appropriate.
+
+Upon termination of your account:
+
+Your access to the App may be stopped,
+
+Your User Content may be deleted or anonymised in accordance with the Privacy Policy.
+
+15. Governing Law and Dispute Resolution
+
+Unless otherwise required by mandatory law, these Terms are governed by the laws of the Republic of Türkiye.
+
+In disputes arising from the use of the App, the courts and enforcement offices at the User’s place of residence shall have jurisdiction.
+
+Apple Inc. and Google LLC are not parties to the content of the App or the legal relationship and disputes between the User and Falla Aura. The store providers act only as distribution platforms.
+
+16. Changes to the Terms
+
+Falla Aura may update these Terms from time to time.
+
+Changes will take effect on the date they are published within the App or notified to you.
+
+Your continued use of the App after such date constitutes your acceptance of the updated Terms.
+
+17. Contact
+
+For any questions, comments or requests regarding these Terms or the App, you can contact us at:
+
+E-mail: falla@loegs.com
+
+Web: https://www.loegs.com/falla

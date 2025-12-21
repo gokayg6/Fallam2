@@ -1,0 +1,49 @@
+{
+  "" : {
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/in_app_purchase_storekit-primary.dia",
+    "emit-module-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/in_app_purchase_storekit-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/in_app_purchase_storekit-primary-emit-module.dia",
+    "pch" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/in_app_purchase_storekit-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/in_app_purchase_storekit-primary.swiftdeps"
+  },
+  "/Users/mustafakarakus/.pub-cache/hosted/pub.dev/in_app_purchase_storekit-0.4.4/darwin/in_app_purchase_storekit/Sources/in_app_purchase_storekit/InAppPurchasePlugin.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin.dia",
+    "index-unit-output-path" : "/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin.o",
+    "llvm-bc" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin.bc",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin.swiftdeps",
+    "swiftmodule" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin~partial.swiftmodule"
+  },
+  "/Users/mustafakarakus/.pub-cache/hosted/pub.dev/in_app_purchase_storekit-0.4.4/darwin/in_app_purchase_storekit/Sources/in_app_purchase_storekit/StoreKit2/InAppPurchasePlugin+StoreKit2.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin+StoreKit2.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin+StoreKit2.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin+StoreKit2.dia",
+    "index-unit-output-path" : "/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin+StoreKit2.o",
+    "llvm-bc" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin+StoreKit2.bc",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin+StoreKit2.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin+StoreKit2.swiftdeps",
+    "swiftmodule" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/InAppPurchasePlugin+StoreKit2~partial.swiftmodule"
+  },
+  "/Users/mustafakarakus/.pub-cache/hosted/pub.dev/in_app_purchase_storekit-0.4.4/darwin/in_app_purchase_storekit/Sources/in_app_purchase_storekit/StoreKit2/StoreKit2Translators.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/StoreKit2Translators.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/StoreKit2Translators.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/StoreKit2Translators.dia",
+    "index-unit-output-path" : "/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/StoreKit2Translators.o",
+    "llvm-bc" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/StoreKit2Translators.bc",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/StoreKit2Translators.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/StoreKit2Translators.swiftdeps",
+    "swiftmodule" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/StoreKit2Translators~partial.swiftmodule"
+  },
+  "/Users/mustafakarakus/.pub-cache/hosted/pub.dev/in_app_purchase_storekit-0.4.4/darwin/in_app_purchase_storekit/Sources/in_app_purchase_storekit/StoreKit2/sk2_pigeon.g.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/sk2_pigeon.g.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/sk2_pigeon.g.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/sk2_pigeon.g.dia",
+    "index-unit-output-path" : "/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/sk2_pigeon.g.o",
+    "llvm-bc" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/sk2_pigeon.g.bc",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/sk2_pigeon.g.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/sk2_pigeon.g.swiftdeps",
+    "swiftmodule" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/in_app_purchase_storekit.build/Objects-normal/arm64/sk2_pigeon.g~partial.swiftmodule"
+  }
+}

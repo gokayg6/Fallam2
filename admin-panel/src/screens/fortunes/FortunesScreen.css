@@ -1,0 +1,143 @@
+.fortunes-container {
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.fortunes-header {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fortunes-filters {
+  margin-bottom: 24px;
+}
+
+.filter-select {
+  background-color: #1D163C;
+  border: 1px solid #30206A;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-select:hover {
+  border-color: #D26AFF;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #D26AFF;
+  box-shadow: 0 0 0 2px rgba(210, 106, 255, 0.2);
+}
+
+.refresh-btn {
+  background: rgba(210, 106, 255, 0.1);
+  border: 1px solid #D26AFF;
+  color: #D26AFF;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+  background-color: rgba(210, 106, 255, 0.2);
+  transform: rotate(180deg);
+}
+
+.fortunes-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.fortunes-subtitle {
+  font-size: 16px;
+  color: #999;
+}
+
+.fortunes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fortune-card {
+  background-color: #1D163C;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fortune-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(210, 106, 255, 0.2);
+}
+
+.fortune-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.fortune-info {
+  flex: 1;
+}
+
+.fortune-type {
+  font-size: 12px;
+  color: #D26AFF;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.fortune-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.fortune-meta {
+  font-size: 12px;
+  color: #666;
+}
+
+.fortune-arrow {
+  color: #999;
+  font-size: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.empty-text {
+  font-size: 16px;
+  color: #666;
+}
+
+.loading {
+  text-align: center;
+  color: #D26AFF;
+  font-size: 18px;
+  padding: 40px;
+}
+

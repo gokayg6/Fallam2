@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "916591463999",
+    "project_id": "falla-6b4f1",
+    "storage_bucket": "falla-6b4f1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916591463999:android:938b82de32ffbe12c1328a",
+        "android_client_info": {
+          "package_name": "com.mustafakarakus.falla"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS-1WcDKAeoyNdzbLCTBM8R6Yo3DWADMQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,142 @@
+.chats-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.chats-header {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.refresh-btn {
+  background: rgba(210, 106, 255, 0.1);
+  border: 1px solid #D26AFF;
+  color: #D26AFF;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+  background-color: rgba(210, 106, 255, 0.2);
+  transform: rotate(180deg);
+}
+
+.chats-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #D26AFF;
+  margin-bottom: 8px;
+}
+
+.chats-subtitle {
+  font-size: 16px;
+  color: #999;
+}
+
+.chats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-card {
+  background-color: #1D163C;
+  border-radius: 12px;
+  border: 1px solid #30206A;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.chat-card:hover {
+  border-color: #D26AFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(210, 106, 255, 0.2);
+}
+
+.chat-card-content {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-info {
+  flex: 1;
+}
+
+.chat-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.chat-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: rgba(229, 62, 62, 0.2);
+}
+
+.chat-meta {
+  font-size: 14px;
+  color: #999;
+  margin: 4px 0;
+}
+
+.chat-last-message {
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.chat-arrow {
+  font-size: 24px;
+  color: #D26AFF;
+  margin-left: 16px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.empty-text {
+  font-size: 18px;
+  color: #999;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 18px;
+  color: #D26AFF;
+}
+

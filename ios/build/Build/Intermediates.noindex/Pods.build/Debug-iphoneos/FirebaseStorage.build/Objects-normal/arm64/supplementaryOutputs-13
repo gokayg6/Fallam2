@@ -1,0 +1,23 @@
+{
+  "/Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/Internal/StorageGetDownloadURLTask.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageGetDownloadURLTask.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageGetDownloadURLTask.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageGetDownloadURLTask.dia",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageGetDownloadURLTask.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageGetDownloadURLTask.swiftdeps"
+  },
+  "/Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/StorageDownloadTask.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageDownloadTask.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageDownloadTask.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageDownloadTask.dia",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageDownloadTask.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageDownloadTask.swiftdeps"
+  },
+  "/Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/StorageError.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageError.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageError.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageError.dia",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageError.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseStorage.build/Objects-normal/arm64/StorageError.swiftdeps"
+  }
+}

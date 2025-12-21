@@ -1,0 +1,37 @@
+{
+  "/Users/mustafakarakus/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.22.1/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/FrameInfoProxyAPIDelegate.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.dia",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.swiftdeps"
+  },
+  "/Users/mustafakarakus/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.22.1/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/GetTrustResultResponse.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponse.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponse.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponse.dia",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponse.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponse.swiftdeps"
+  },
+  "/Users/mustafakarakus/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.22.1/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/GetTrustResultResponseProxyAPIDelegate.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponseProxyAPIDelegate.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponseProxyAPIDelegate.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponseProxyAPIDelegate.dia",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponseProxyAPIDelegate.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/GetTrustResultResponseProxyAPIDelegate.swiftdeps"
+  },
+  "/Users/mustafakarakus/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.22.1/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/HTTPCookieProxyAPIDelegate.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.dia",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.swiftdeps"
+  },
+  "/Users/mustafakarakus/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.22.1/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/HTTPCookieStoreProxyAPIDelegate.swift" : {
+    "const-values" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.swiftconstvalues",
+    "dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.d",
+    "diagnostics" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.dia",
+    "object" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.o",
+    "swift-dependencies" : "/Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.swiftdeps"
+  }
+}

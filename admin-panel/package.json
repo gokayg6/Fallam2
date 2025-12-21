@@ -1,0 +1,32 @@
+{
+  "name": "falla-admin-panel",
+  "version": "1.0.0",
+  "description": "Falla Admin Panel - Web",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext js,jsx"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.21.0",
+    "firebase": "^10.7.1",
+    "date-fns": "^3.0.6",
+    "recharts": "^2.10.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "vite": "^5.0.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

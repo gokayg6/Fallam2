@@ -1,0 +1,37 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Fortune images: Kullanıcılar kendi klasörlerine yazabilir ve okuyabilir
+    match /fortune_images/{userId}/{allPaths=**} {
+      // Yükleme (write): Sadece kendi userId'sine sahip kullanıcılar yükleyebilir
+      allow write: if request.auth != null && request.auth.uid == userId;
+      
+      // Okuma (read): Kimliği doğrulanmış kullanıcılar okuyabilir (diğer kullanıcıların fallarını görmek için)
+      allow read: if request.auth != null;
+    }
+    
+    // Dream draws: Kullanıcılar kendi klasörlerine yazabilir ve okuyabilir
+    match /dream_draws/{userId}/{allPaths=**} {
+      // Yükleme (write): Sadece kendi userId'sine sahip kullanıcılar yükleyebilir
+      allow write: if request.auth != null && request.auth.uid == userId;
+      
+      // Okuma (read): Kimliği doğrulanmış kullanıcılar okuyabilir
+      allow read: if request.auth != null;
+    }
+    
+    // Love candidates: Kullanıcılar kendi klasörlerine yazabilir ve okuyabilir
+    match /love_candidates/{userId}/{allPaths=**} {
+      // Yükleme (write): Sadece kendi userId'sine sahip kullanıcılar yükleyebilir
+      allow write: if request.auth != null && request.auth.uid == userId;
+      
+      // Okuma (read): Kimliği doğrulanmış kullanıcılar okuyabilir
+      allow read: if request.auth != null;
+    }
+    
+    // Diğer tüm dosyalar için erişimi reddet
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
+

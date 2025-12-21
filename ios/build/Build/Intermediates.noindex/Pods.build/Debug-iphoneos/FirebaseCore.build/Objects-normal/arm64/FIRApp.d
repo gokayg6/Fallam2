@@ -1,0 +1,24 @@
+dependencies: \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/Darwin.modulemap \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/FirebaseCore.build/module.modulemap \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRApp.m \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/ObjectiveC.modulemap \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRAnalyticsConfiguration.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRBundleUtil.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRComponentContainerInternal.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRConfigurationInternal.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRFirebaseUserAgent.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRLogger.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIROptionsInternal.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/mustafakarakus/Documents/GitHub/falla/ios/build/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/GoogleUtilities.build/module.modulemap

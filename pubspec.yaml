@@ -1,0 +1,91 @@
+name: Falla
+description: Falla - Mistik Fal ve Astroloji Uygulaması
+publish_to: 'none'
+
+version: 1.0.0+12
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  
+  # UI/UX
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.2.2
+  lottie: ^3.3.1
+  flutter_animate: ^4.5.2
+  cached_network_image: ^3.4.1
+  shimmer: ^3.0.0
+  gif: ^2.3.0
+  
+  # Firebase
+  firebase_core: ^4.2.1
+  firebase_auth: ^6.1.2
+  firebase_storage: ^13.0.4
+  firebase_analytics: ^12.0.4
+  
+  # State Management
+  provider: ^6.1.5
+
+  # Network & API
+  http: ^1.6.0
+  dio: ^5.9.0
+  
+  # Ads
+  google_mobile_ads: ^6.0.0
+
+  # In-App Purchase
+  in_app_purchase: ^3.2.3
+  
+  # Utils
+  intl: ^0.20.2
+  shared_preferences: ^2.5.3
+  url_launcher: ^6.3.2
+  image_picker: ^1.2.1
+  package_info_plus: ^9.0.0
+  share_plus: ^12.0.1
+  cloud_firestore: ^6.1.0
+  liquid_glass_renderer: ^0.2.0-dev.4
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  shaders:
+    - shaders/liquid_glass_lens.frag
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/icons/
+    - assets/burclar/
+    - assets/tarot/
+    - assets/tarot/kartlar/
+    - assets/karma/
+    - assets/yüz/
+    - assets/gif/
+    -  assets/gif/populer_testler/
+    - assets/gif/populer_testler/kisilik_testi/
+    - assets/gif/populer_testler/arkadaslik_testi/
+    - assets/gif/populer_testler/ask_testi/
+    - assets/gif/populer_testler/iliski_uyum_testi/
+    - assets/gif/populer_testler/iliskinde_gercekten_ne_istiyorsun/
+    - assets/gif/Aşkta Kırmızı Bayrakları Görebiliyor musun/
+    - assets/gif/Burcuna göre ne kadar eğlencelisi/
+    - assets/gif/buruna göre nekadar kaotiksin/
+    - assets/gif/Gizli süper gücün ne/
+    - assets/gif/Hangi Gezegenin Enerjisi Sende Baskın/
+    - assets/gif/Ruh eşin hangi burçtan/
+    - assets/gif/Ruh sağlığını yansıtan renk hangisi/
+    - assets/gif/Ruhsal Hayvanın ne/
+    - assets/gif/Şu anda enerjin hangi aşamada/

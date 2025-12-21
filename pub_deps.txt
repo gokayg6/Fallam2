@@ -1,0 +1,145 @@
+Dart SDK 3.10.3
+Flutter SDK 3.38.4
+Falla 1.0.0+11
+
+dependencies:
+- cached_network_image 3.4.0 [cached_network_image_platform_interface cached_network_image_web flutter flutter_cache_manager octo_image]
+- cupertino_icons 1.0.8
+- dio 5.9.0 [async collection http_parser meta mime path dio_web_adapter]
+- firebase_analytics 10.8.9 [firebase_analytics_platform_interface firebase_analytics_web firebase_core firebase_core_platform_interface flutter]
+- firebase_auth 4.17.8 [firebase_auth_platform_interface firebase_auth_web firebase_core firebase_core_platform_interface flutter meta]
+- firebase_core 2.27.0 [firebase_core_platform_interface firebase_core_web flutter meta]
+- firebase_storage 11.6.9 [firebase_core firebase_core_platform_interface firebase_storage_platform_interface firebase_storage_web flutter]
+- flutter 0.0.0 [characters collection material_color_utilities meta vector_math sky_engine]
+- flutter_animate 4.5.2 [flutter flutter_shaders]
+- flutter_localizations 0.0.0 [flutter intl path]
+- flutter_svg 2.2.3 [flutter http vector_graphics vector_graphics_codec vector_graphics_compiler]
+- google_fonts 6.3.3 [crypto flutter http path_provider]
+- google_mobile_ads 4.0.0 [meta flutter webview_flutter_android webview_flutter_wkwebview webview_flutter]
+- http 1.2.0 [async http_parser meta web]
+- image_picker 1.1.2 [flutter image_picker_android image_picker_for_web image_picker_ios image_picker_linux image_picker_macos image_picker_platform_interface image_picker_windows]
+- in_app_purchase 3.2.3 [flutter in_app_purchase_android in_app_purchase_platform_interface in_app_purchase_storekit]
+- intl 0.20.2 [clock meta path]
+- lottie 3.3.2 [archive flutter http path vector_math]
+- package_info_plus 5.0.1 [ffi flutter flutter_web_plugins http meta path package_info_plus_platform_interface web win32]
+- provider 6.1.5+1 [collection flutter nested]
+- share_plus 7.2.2 [cross_file meta mime flutter flutter_web_plugins share_plus_platform_interface file url_launcher_web url_launcher_windows url_launcher_linux url_launcher_platform_interface ffi win32]
+- shared_preferences 2.2.3 [flutter shared_preferences_android shared_preferences_foundation shared_preferences_linux shared_preferences_platform_interface shared_preferences_web shared_preferences_windows]
+- shimmer 3.0.0 [flutter]
+- url_launcher 6.3.2 [flutter url_launcher_android url_launcher_ios url_launcher_linux url_launcher_macos url_launcher_platform_interface url_launcher_web url_launcher_windows]
+
+dev dependencies:
+- flutter_test 0.0.0 [flutter test_api matcher path fake_async clock stack_trace vector_math leak_tracker_flutter_testing collection meta stream_channel]
+
+transitive dependencies:
+- _flutterfire_internals 1.3.25 [collection firebase_core firebase_core_platform_interface flutter meta]
+- archive 4.0.7 [crypto path posix]
+- args 2.7.0
+- async 2.13.0 [collection meta]
+- boolean_selector 2.1.2 [source_span string_scanner]
+- cached_network_image_platform_interface 4.1.0 [flutter flutter_cache_manager]
+- cached_network_image_web 1.3.0 [cached_network_image_platform_interface flutter flutter_cache_manager]
+- characters 1.4.0
+- clock 1.1.2
+- collection 1.19.1
+- cross_file 0.3.3+8 [meta web]
+- crypto 3.0.7 [typed_data]
+- dio_web_adapter 1.1.1 [dio http_parser meta]
+- fake_async 1.3.3 [clock collection]
+- ffi 2.1.4
+- file 7.0.1 [meta path]
+- file_selector_linux 0.9.4 [cross_file file_selector_platform_interface flutter]
+- file_selector_macos 0.9.5 [cross_file file_selector_platform_interface flutter]
+- file_selector_platform_interface 2.7.0 [cross_file flutter http plugin_platform_interface]
+- file_selector_windows 0.9.3+5 [cross_file file_selector_platform_interface flutter]
+- firebase_analytics_platform_interface 3.9.9 [_flutterfire_internals firebase_core flutter meta plugin_platform_interface]
+- firebase_analytics_web 0.5.5+21 [_flutterfire_internals firebase_analytics_platform_interface firebase_core firebase_core_web flutter flutter_web_plugins js]
+- firebase_auth_platform_interface 7.1.8 [_flutterfire_internals collection firebase_core flutter meta plugin_platform_interface]
+- firebase_auth_web 5.9.8 [firebase_auth_platform_interface firebase_core firebase_core_web flutter flutter_web_plugins http_parser js meta web]
+- firebase_core_platform_interface 5.4.2 [collection flutter flutter_test meta plugin_platform_interface]
+- firebase_core_web 2.11.5 [firebase_core_platform_interface flutter flutter_web_plugins js meta web]
+- firebase_storage_platform_interface 5.1.12 [_flutterfire_internals collection firebase_core flutter meta plugin_platform_interface]
+- firebase_storage_web 3.7.3 [_flutterfire_internals async firebase_core firebase_core_web firebase_storage_platform_interface flutter flutter_web_plugins http js meta web]
+- fixnum 1.1.1
+- flutter_cache_manager 3.4.0 [clock collection file flutter http path path_provider rxdart sqflite uuid]
+- flutter_plugin_android_lifecycle 2.0.33 [flutter]
+- flutter_shaders 0.1.3 [flutter vector_math]
+- flutter_web_plugins 0.0.0 [flutter]
+- http_parser 4.1.2 [collection source_span string_scanner typed_data]
+- image_picker_android 0.8.13+10 [flutter flutter_plugin_android_lifecycle image_picker_platform_interface]
+- image_picker_for_web 3.0.2 [flutter flutter_web_plugins image_picker_platform_interface mime]
+- image_picker_ios 0.8.13+3 [flutter image_picker_platform_interface]
+- image_picker_linux 0.2.2 [file_selector_linux file_selector_platform_interface flutter image_picker_platform_interface]
+- image_picker_macos 0.2.2+1 [file_selector_macos file_selector_platform_interface flutter image_picker_platform_interface]
+- image_picker_platform_interface 2.11.1 [cross_file flutter http plugin_platform_interface]
+- image_picker_windows 0.2.2 [file_selector_platform_interface file_selector_windows flutter image_picker_platform_interface]
+- in_app_purchase_android 0.4.0+8 [collection flutter in_app_purchase_platform_interface]
+- in_app_purchase_platform_interface 1.4.0 [flutter plugin_platform_interface]
+- in_app_purchase_storekit 0.4.6+2 [collection flutter in_app_purchase_platform_interface json_annotation]
+- js 0.6.7 [meta]
+- json_annotation 4.9.0 [meta]
+- leak_tracker 11.0.2 [clock collection meta path vm_service]
+- leak_tracker_flutter_testing 3.0.10 [flutter leak_tracker leak_tracker_testing matcher meta]
+- leak_tracker_testing 3.0.2 [leak_tracker matcher meta]
+- matcher 0.12.17 [async meta stack_trace term_glyph test_api]
+- material_color_utilities 0.11.1 [collection]
+- meta 1.17.0
+- mime 1.0.6
+- nested 1.0.0 [flutter]
+- octo_image 2.1.0 [flutter]
+- package_info_plus_platform_interface 2.0.1 [flutter meta plugin_platform_interface]
+- path 1.9.1
+- path_parsing 1.1.0 [meta vector_math]
+- path_provider 2.1.5 [flutter path_provider_android path_provider_foundation path_provider_linux path_provider_platform_interface path_provider_windows]
+- path_provider_android 2.2.22 [flutter path_provider_platform_interface]
+- path_provider_foundation 2.5.1 [flutter path_provider_platform_interface]
+- path_provider_linux 2.2.1 [ffi flutter path path_provider_platform_interface xdg_directories]
+- path_provider_platform_interface 2.1.2 [flutter platform plugin_platform_interface]
+- path_provider_windows 2.3.0 [ffi flutter path path_provider_platform_interface]
+- petitparser 7.0.1 [meta collection]
+- platform 3.1.6
+- plugin_platform_interface 2.1.8 [meta]
+- posix 6.0.3 [ffi meta path]
+- rxdart 0.28.0
+- share_plus_platform_interface 3.4.0 [cross_file flutter meta mime plugin_platform_interface path_provider uuid]
+- shared_preferences_android 2.4.18 [flutter shared_preferences_platform_interface]
+- shared_preferences_foundation 2.5.6 [flutter shared_preferences_platform_interface]
+- shared_preferences_linux 2.4.1 [file flutter path path_provider_linux path_provider_platform_interface shared_preferences_platform_interface]
+- shared_preferences_platform_interface 2.4.1 [flutter plugin_platform_interface]
+- shared_preferences_web 2.2.2 [flutter flutter_web_plugins shared_preferences_platform_interface web]
+- shared_preferences_windows 2.4.1 [file flutter path path_provider_platform_interface path_provider_windows shared_preferences_platform_interface]
+- sky_engine 0.0.0
+- source_span 1.10.1 [collection path term_glyph]
+- sqflite 2.4.2 [flutter sqflite_android sqflite_darwin sqflite_platform_interface sqflite_common path]
+- sqflite_android 2.4.2+2 [flutter sqflite_common path sqflite_platform_interface]
+- sqflite_common 2.5.6 [synchronized path meta]
+- sqflite_darwin 2.4.2 [flutter sqflite_platform_interface meta sqflite_common path]
+- sqflite_platform_interface 2.4.0 [flutter platform sqflite_common plugin_platform_interface meta]
+- stack_trace 1.12.1 [path]
+- stream_channel 2.1.4 [async]
+- string_scanner 1.4.1 [source_span]
+- synchronized 3.4.0
+- term_glyph 1.2.2
+- test_api 0.7.7 [async boolean_selector collection meta source_span stack_trace stream_channel string_scanner term_glyph]
+- typed_data 1.4.0 [collection]
+- url_launcher_android 6.3.28 [flutter url_launcher_platform_interface]
+- url_launcher_ios 6.3.6 [flutter url_launcher_platform_interface]
+- url_launcher_linux 3.2.2 [flutter url_launcher_platform_interface]
+- url_launcher_macos 3.2.5 [flutter url_launcher_platform_interface]
+- url_launcher_platform_interface 2.3.2 [flutter plugin_platform_interface]
+- url_launcher_web 2.2.3 [flutter flutter_web_plugins url_launcher_platform_interface web]
+- url_launcher_windows 3.1.5 [flutter url_launcher_platform_interface]
+- uuid 4.5.2 [crypto meta fixnum]
+- vector_graphics 1.1.19 [flutter http vector_graphics_codec]
+- vector_graphics_codec 1.1.13
+- vector_graphics_compiler 1.1.19 [args meta path path_parsing vector_graphics_codec xml]
+- vector_math 2.2.0
+- vm_service 15.0.2
+- web 0.4.2
+- webview_flutter 4.9.0 [flutter webview_flutter_android webview_flutter_platform_interface webview_flutter_wkwebview]
+- webview_flutter_android 3.16.9 [flutter webview_flutter_platform_interface]
+- webview_flutter_platform_interface 2.14.0 [flutter meta plugin_platform_interface]
+- webview_flutter_wkwebview 3.23.5 [flutter meta path webview_flutter_platform_interface]
+- win32 5.15.0 [ffi]
+- xdg_directories 1.1.0 [meta path]
+- xml 6.6.1 [collection meta petitparser]

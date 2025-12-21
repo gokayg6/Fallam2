@@ -1,0 +1,134 @@
+.tests-container {
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tests-header {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tests-filters {
+  margin-bottom: 24px;
+}
+
+.filter-select {
+  background-color: #1D163C;
+  border: 1px solid #30206A;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-select:hover {
+  border-color: #D26AFF;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #D26AFF;
+  box-shadow: 0 0 0 2px rgba(210, 106, 255, 0.2);
+}
+
+.refresh-btn {
+  background: rgba(210, 106, 255, 0.1);
+  border: 1px solid #D26AFF;
+  color: #D26AFF;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+  background-color: rgba(210, 106, 255, 0.2);
+  transform: rotate(180deg);
+}
+
+.tests-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.tests-subtitle {
+  font-size: 16px;
+  color: #999;
+}
+
+.tests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.test-card {
+  background-color: #1D163C;
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.test-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(210, 106, 255, 0.2);
+}
+
+.test-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.test-info {
+  flex: 1;
+}
+
+.test-type {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.test-meta {
+  font-size: 12px;
+  color: #666;
+}
+
+.test-arrow {
+  color: #999;
+  font-size: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.empty-text {
+  font-size: 16px;
+  color: #666;
+}
+
+.loading {
+  text-align: center;
+  color: #D26AFF;
+  font-size: 18px;
+  padding: 40px;
+}
+

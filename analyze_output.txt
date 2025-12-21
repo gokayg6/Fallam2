@@ -1,0 +1,528 @@
+Resolving dependencies...
+Downloading packages...
+  _flutterfire_internals 1.3.64 (1.3.65 available)
+  async 2.12.0 (2.13.0 available)
+  characters 1.4.0 (1.4.1 available)
+  cloud_firestore 6.1.0 (6.1.1 available)
+  cloud_firestore_platform_interface 7.0.4 (7.0.5 available)
+  cloud_firestore_web 5.1.0 (5.1.1 available)
+  cross_file 0.3.5 (0.3.5+1 available)
+  file_selector_linux 0.9.3+2 (0.9.4 available)
+  file_selector_macos 0.9.4+4 (0.9.5 available)
+  file_selector_windows 0.9.3+4 (0.9.3+5 available)
+  firebase_analytics 12.0.4 (12.1.0 available)
+  firebase_analytics_platform_interface 5.0.4 (5.0.5 available)
+  firebase_analytics_web 0.6.1 (0.6.1+1 available)
+  firebase_auth 6.1.2 (6.1.3 available)
+  firebase_auth_platform_interface 8.1.4 (8.1.5 available)
+  firebase_auth_web 6.1.0 (6.1.1 available)
+  firebase_core 4.2.1 (4.3.0 available)
+  firebase_core_web 3.3.0 (3.3.1 available)
+  firebase_storage 13.0.4 (13.0.5 available)
+  firebase_storage_platform_interface 5.2.15 (5.2.16 available)
+  firebase_storage_web 3.11.0 (3.11.1 available)
+  flutter_lints 5.0.0 (6.0.0 available)
+  flutter_plugin_android_lifecycle 2.0.31 (2.0.33 available)
+  flutter_svg 2.2.2 (2.2.3 available)
+  google_fonts 6.3.2 (6.3.3 available)
+  google_mobile_ads 6.0.0 (7.0.0 available)
+  image_picker_android 0.8.13+1 (0.8.13+10 available)
+  image_picker_for_web 3.1.0 (3.1.1 available)
+  image_picker_ios 0.8.13 (0.8.13+3 available)
+  image_picker_macos 0.2.2 (0.2.2+1 available)
+  in_app_purchase_android 0.4.0+5 (0.4.0+8 available)
+  in_app_purchase_storekit 0.4.4 (0.4.7 available)
+  lints 5.1.1 (6.0.0 available)
+  lottie 3.3.1 (3.3.2 available)
+  matcher 0.12.17 (0.12.18 available)
+  material_color_utilities 0.11.1 (0.13.0 available)
+  mime 1.0.6 (2.0.0 available)
+  path_provider_android 2.2.19 (2.2.22 available)
+  path_provider_foundation 2.4.2 (2.5.1 available)
+  petitparser 6.1.0 (7.0.1 available)
+  shared_preferences 2.5.3 (2.5.4 available)
+  shared_preferences_android 2.4.13 (2.4.18 available)
+  shared_preferences_foundation 2.5.4 (2.5.6 available)
+  sqflite_android 2.4.1 (2.4.2+2 available)
+  sqflite_common 2.5.5 (2.5.6 available)
+  synchronized 3.3.1 (3.4.0 available)
+  test_api 0.7.7 (0.7.8 available)
+  url_launcher_android 6.3.20 (6.3.28 available)
+  url_launcher_ios 6.3.4 (6.3.6 available)
+  url_launcher_linux 3.2.1 (3.2.2 available)
+  url_launcher_macos 3.2.3 (3.2.5 available)
+  url_launcher_windows 3.1.4 (3.1.5 available)
+  vm_service 14.3.1 (15.0.2 available)
+  webview_flutter_android 4.10.1 (4.10.11 available)
+  webview_flutter_wkwebview 3.23.0 (3.23.5 available)
+  win32 5.13.0 (5.15.0 available)
+  xml 6.5.0 (6.6.1 available)
+Got dependencies!
+57 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Analyzing falla-main-main...                                    
+
+   info • Don't invoke 'print' in production code • lib/core/providers/fortune_provider.dart:82:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/core/providers/fortune_provider.dart:95:7 • avoid_print
+   info • Unnecessary override • lib/core/providers/fortune_provider.dart:545:8 • unnecessary_overrides
+   info • Unnecessary override • lib/core/providers/test_provider.dart:778:8 • unnecessary_overrides
+   info • Don't invoke 'print' in production code • lib/core/services/ads_service.dart:69:9 • avoid_print
+   info • Use interpolation to compose strings and values • lib/core/services/ai_service.dart:253:11 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values • lib/core/services/ai_service.dart:258:11 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values • lib/core/services/ai_service.dart:281:11 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values • lib/core/services/ai_service.dart:282:11 • prefer_interpolation_to_compose_strings
+   info • Unnecessary braces in a string interpolation • lib/core/services/fortune_service.dart:388:65 • unnecessary_brace_in_string_interps
+   info • Don't invoke 'print' in production code • lib/core/services/ip_service.dart:55:11 • avoid_print
+   info • Don't invoke 'print' in production code • lib/core/services/ip_service.dart:62:7 • avoid_print
+   info • 'alpha' is deprecated and shouldn't be used. Use (*.a * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:324:13 • deprecated_member_use
+   info • 'red' is deprecated and shouldn't be used. Use (*.r * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:325:14 • deprecated_member_use
+   info • 'red' is deprecated and shouldn't be used. Use (*.r * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:325:33 • deprecated_member_use
+   info • 'green' is deprecated and shouldn't be used. Use (*.g * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:326:14 • deprecated_member_use
+   info • 'green' is deprecated and shouldn't be used. Use (*.g * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:326:35 • deprecated_member_use
+   info • 'blue' is deprecated and shouldn't be used. Use (*.b * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:327:14 • deprecated_member_use
+   info • 'blue' is deprecated and shouldn't be used. Use (*.b * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:327:34 • deprecated_member_use
+   info • 'alpha' is deprecated and shouldn't be used. Use (*.a * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:333:13 • deprecated_member_use
+   info • 'red' is deprecated and shouldn't be used. Use (*.r * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:334:14 • deprecated_member_use
+   info • 'green' is deprecated and shouldn't be used. Use (*.g * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:335:14 • deprecated_member_use
+   info • 'blue' is deprecated and shouldn't be used. Use (*.b * 255.0).round().clamp(0, 255) • lib/core/utils/helpers.dart:336:14 • deprecated_member_use
+   info • 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion • lib/core/utils/helpers.dart:349:22 • deprecated_member_use
+   info • The imported package 'path_provider' isn't a dependency of the importing package • lib/core/utils/share_utils.dart:7:8 • depend_on_referenced_packages
+   info • 'Share' is deprecated and shouldn't be used. Use SharePlus instead • lib/core/utils/share_utils.dart:49:13 • deprecated_member_use
+   info • 'shareXFiles' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead • lib/core/utils/share_utils.dart:49:19 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/cached_falla_logo.dart:14:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/confetti_animation.dart:126:34 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/glassmorphism_components.dart:16:9 • use_super_parameters
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/glassmorphism_components.dart:70:9 • use_super_parameters
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/glassmorphism_components.dart:167:9 • use_super_parameters
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/glassmorphism_components.dart:225:9 • use_super_parameters
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/glassmorphism_components.dart:265:9 • use_super_parameters
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/glassmorphism_components.dart:293:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/liquid_glass_navbar.dart:355:38 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/liquid_glass_navbar.dart:356:38 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/liquid_glass_navbar.dart:357:38 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/liquid_glass_navbar.dart:478:53 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/mystical_button.dart:38:9 • use_super_parameters
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/mystical_dialog.dart:29:9 • use_super_parameters
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/mystical_loading.dart:29:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/mystical_loading.dart:657:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/mystical_loading.dart:734:35 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/core/widgets/terms_of_service_dialog.dart:8:9 • use_super_parameters
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:78:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:84:9 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:122:9 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:179:9 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:194:9 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:226:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:235:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:238:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:242:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:319:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/providers/auth_provider.dart:439:5 • avoid_print
+   info • Unnecessary use of 'indexOf' to test for containment • lib/screens/astrology/astrology_screen.dart:475:20 • prefer_contains
+   info • Use interpolation to compose strings and values • lib/screens/astrology/astrology_screen.dart:477:28 • prefer_interpolation_to_compose_strings
+   info • Don't use 'BuildContext's across async gaps • lib/screens/astrology/astrology_screen.dart:520:32 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/astrology/astrology_screen.dart:579:11 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/astrology/astrology_screen.dart:591:30 • use_build_context_synchronously
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:700:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:702:61 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:781:80 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:850:59 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:876:65 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:878:63 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:881:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:937:59 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1076:73 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1112:68 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1170:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1171:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1174:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1179:59 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1184:66 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1231:38 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1246:50 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/astrology/astrology_screen.dart:1248:69 • deprecated_member_use
+   info • Use the null-aware operator '?.' rather than an explicit 'null' comparison • lib/screens/astrology/daily_astrology_screen.dart:183:29 • prefer_null_aware_operators
+   info • Parameter 'key' could be a super parameter • lib/screens/astrology/horoscope_detail_screen.dart:19:9 • use_super_parameters
+   info • Use interpolation to compose strings and values • lib/screens/astrology/horoscope_detail_screen.dart:496:28 • prefer_interpolation_to_compose_strings
+   info • Don't use 'BuildContext's across async gaps • lib/screens/auth/login_screen.dart:99:52 • use_build_context_synchronously
+   info • Don't invoke 'print' in production code • lib/screens/auth/login_screen.dart:127:5 • avoid_print
+   info • Don't invoke 'print' in production code • lib/screens/auth/login_screen.dart:133:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/screens/auth/login_screen.dart:142:7 • avoid_print
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/login_screen.dart:310:73 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/login_screen.dart:335:71 • deprecated_member_use
+   info • Don't use 'BuildContext's across async gaps • lib/screens/auth/register_screen.dart:80:9 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/auth/register_screen.dart:87:52 • use_build_context_synchronously
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/register_screen.dart:332:73 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/register_screen.dart:357:73 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/register_screen.dart:382:71 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/register_screen.dart:411:71 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/register_screen.dart:447:65 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/register_screen.dart:462:66 • deprecated_member_use
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/screens/auth/register_screen.dart:478:7 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/register_screen.dart:484:63 • deprecated_member_use
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/screens/auth/register_screen.dart:521:7 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/auth/register_screen.dart:527:73 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/fortune/coffee_fortune_screen.dart:28:9 • use_super_parameters
+   info • The private field _selectedImages could be 'final' • lib/screens/fortune/coffee_fortune_screen.dart:40:14 • prefer_final_fields
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/coffee_fortune_screen.dart:122:26 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/coffee_fortune_screen.dart:212:9 • use_build_context_synchronously
+   info • Unnecessary override • lib/screens/fortune/coffee_fortune_screen.dart:807:8 • unnecessary_overrides
+   info • Parameter 'key' could be a super parameter • lib/screens/fortune/dream_dictionary_screen.dart:21:9 • use_super_parameters
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_dictionary_screen.dart:46:30 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_dictionary_screen.dart:128:9 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_dictionary_screen.dart:134:32 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_dictionary_screen.dart:135:28 • use_build_context_synchronously
+   info • The import of 'dart:typed_data' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/foundation.dart' • lib/screens/fortune/dream_draw_screen.dart:1:8 • unnecessary_import
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_draw_screen.dart:63:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_draw_screen.dart:83:26 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_draw_screen.dart:112:30 • use_build_context_synchronously
+   info • Unnecessary braces in a string interpolation • lib/screens/fortune/dream_draw_screen.dart:120:38 • unnecessary_brace_in_string_interps
+   info • Unnecessary braces in a string interpolation • lib/screens/fortune/dream_draw_screen.dart:120:48 • unnecessary_brace_in_string_interps
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_draw_screen.dart:126:30 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_draw_screen.dart:177:9 • use_build_context_synchronously
+   info • Parameter 'key' could be a super parameter • lib/screens/fortune/dream_interpretation_screen.dart:19:9 • use_super_parameters
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_interpretation_screen.dart:95:9 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_interpretation_screen.dart:101:32 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/dream_interpretation_screen.dart:102:28 • use_build_context_synchronously
+   info • Parameter 'key' could be a super parameter • lib/screens/fortune/face_fortune_screen.dart:23:9 • use_super_parameters
+   info • The private field _selectedImages could be 'final' • lib/screens/fortune/face_fortune_screen.dart:34:14 • prefer_final_fields
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/face_fortune_screen.dart:118:32 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/face_fortune_screen.dart:130:26 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/face_fortune_screen.dart:191:9 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/face_fortune_screen.dart:197:32 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/face_fortune_screen.dart:198:28 • use_build_context_synchronously
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/fortune/face_fortune_screen.dart:312:63 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/fortune/face_fortune_screen.dart:326:32 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/fortune/face_fortune_screen.dart:327:22 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/fortune/face_fortune_screen.dart:375:51 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/fortune/face_fortune_screen.dart:465:36 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/fortune/face_fortune_screen.dart:468:38 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/fortune/fortune_result_screen.dart:98:9 • use_super_parameters
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/fortune_result_screen.dart:196:56 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/fortune_result_screen.dart:477:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/fortune_result_screen.dart:486:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/fortune_result_screen.dart:511:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/fortune_result_screen.dart:518:28 • use_build_context_synchronously
+   info • Use interpolation to compose strings and values • lib/screens/fortune/fortune_result_screen.dart:553:11 • prefer_interpolation_to_compose_strings
+   info • 'Share' is deprecated and shouldn't be used. Use SharePlus instead • lib/screens/fortune/fortune_result_screen.dart:638:15 • deprecated_member_use
+   info • 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead • lib/screens/fortune/fortune_result_screen.dart:638:21 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/fortune/fortune_result_screen.dart:1174:64 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/fortune/fortune_result_screen.dart:1175:64 • deprecated_member_use
+   info • Unnecessary use of 'toList' in a spread • lib/screens/fortune/fortune_result_screen.dart:1427:18 • unnecessary_to_list_in_spreads
+   info • Unnecessary use of 'toList' in a spread • lib/screens/fortune/fortune_result_screen.dart:1554:20 • unnecessary_to_list_in_spreads
+   info • Don't invoke 'print' in production code • lib/screens/fortune/fortune_result_screen.dart:1734:5 • avoid_print
+   info • Use interpolation to compose strings and values • lib/screens/fortune/fortune_result_screen.dart:2084:78 • prefer_interpolation_to_compose_strings
+   info • Parameter 'key' could be a super parameter • lib/screens/fortune/fortune_selection_screen.dart:28:9 • use_super_parameters
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/fortune_selection_screen.dart:175:28 • use_build_context_synchronously
+   info • Parameter 'key' could be a super parameter • lib/screens/fortune/katina_fortune_screen.dart:20:9 • use_super_parameters
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/katina_fortune_screen.dart:60:32 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/katina_fortune_screen.dart:71:26 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/katina_fortune_screen.dart:128:9 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/katina_fortune_screen.dart:134:32 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/katina_fortune_screen.dart:135:28 • use_build_context_synchronously
+   info • Parameter 'key' could be a super parameter • lib/screens/fortune/palm_fortune_screen.dart:23:9 • use_super_parameters
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/palm_fortune_screen.dart:156:26 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/palm_fortune_screen.dart:222:9 • use_build_context_synchronously
+   info • Statements in an if should be enclosed in a block • lib/screens/fortune/palm_fortune_screen.dart:453:49 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/fortune/palm_fortune_screen.dart:453:72 • curly_braces_in_flow_control_structures
+   info • Parameter 'key' could be a super parameter • lib/screens/fortune/tarot_fortune_screen.dart:25:9 • use_super_parameters
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/tarot_fortune_screen.dart:485:32 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/tarot_fortune_screen.dart:497:26 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/fortune/tarot_fortune_screen.dart:559:9 • use_build_context_synchronously
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/fortune/tarot_fortune_screen.dart:846:55 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/history/fortunes_history_screen.dart:19:9 • use_super_parameters
+   info • Don't use 'BuildContext's across async gaps • lib/screens/kahve_fali/coffee_fortune_reader_screen.dart:58:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/kahve_fali/coffee_fortune_reader_screen.dart:60:17 • use_build_context_synchronously
+   info • The 'child' argument should be last in widget constructor invocations • lib/screens/kahve_fali/coffee_fortune_reader_screen.dart:141:13 • sort_child_properties_last
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/kahve_fali/coffee_user_info_screen.dart:212:82 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/main/main_screen.dart:59:9 • use_super_parameters
+warning • The value of the field '_horoscopes' isn't used • lib/screens/main/main_screen.dart:72:23 • unused_field
+   info • The private field _pendingRequestsCount could be 'final' • lib/screens/main/main_screen.dart:78:7 • prefer_final_fields
+warning • The value of the field '_pendingRequestsCount' isn't used • lib/screens/main/main_screen.dart:78:7 • unused_field
+warning • The value of the field '_lastLanguageCode' isn't used • lib/screens/main/main_screen.dart:80:11 • unused_field
+warning • The value of the field '_currentStreak' isn't used • lib/screens/main/main_screen.dart:83:7 • unused_field
+warning • The value of the field '_todayKarmaReward' isn't used • lib/screens/main/main_screen.dart:84:7 • unused_field
+warning • The value of the field '_completedQuests' isn't used • lib/screens/main/main_screen.dart:86:16 • unused_field
+warning • The declaration '_handleDeepNavigation' isn't referenced • lib/screens/main/main_screen.dart:105:16 • unused_element
+   info • Unnecessary use of 'indexOf' to test for containment • lib/screens/main/main_screen.dart:465:20 • prefer_contains
+   info • Use interpolation to compose strings and values • lib/screens/main/main_screen.dart:467:28 • prefer_interpolation_to_compose_strings
+  error • The named parameter 'child' isn't defined • lib/screens/main/main_screen.dart:572:23 • undefined_named_parameter
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/main/main_screen.dart:615:44 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/main/main_screen.dart:616:44 • deprecated_member_use
+   info • An uninitialized field should have an explicit type annotation • lib/screens/main/main_screen.dart:646:23 • prefer_typing_uninitialized_variables
+  error • Expected to find ';' • lib/screens/main/main_screen.dart:646:23 • expected_token
+  error • Variables must be declared using the keywords 'const', 'final', 'var' or a type name • lib/screens/main/main_screen.dart:646:23 • missing_const_final_var_or_type
+  error • Expected a class member • lib/screens/main/main_screen.dart:646:28 • expected_class_member
+   info • The variable name 'Container' isn't a lowerCamelCase identifier • lib/screens/main/main_screen.dart:646:30 • non_constant_identifier_names
+  error • Named parameters must be enclosed in curly braces ('{' and '}') • lib/screens/main/main_screen.dart:647:35 • named_parameter_outside_group
+  error • Using a colon as the separator before a default value is no longer supported • lib/screens/main/main_screen.dart:647:35 • obsolete_colon_for_default_value
+  error • The default value of an optional parameter must be constant • lib/screens/main/main_screen.dart:647:37 • non_constant_default_value
+  error • A function body must be provided • lib/screens/main/main_screen.dart:659:24 • missing_function_body
+  error • Expected a class member • lib/screens/main/main_screen.dart:659:24 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:660:21 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:660:22 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:661:19 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:661:20 • expected_class_member
+warning • The declaration '_buildBottomNavigationBar' isn't referenced • lib/screens/main/main_screen.dart:662:19 • unused_element
+  error • A function body must be provided • lib/screens/main/main_screen.dart:662:46 • missing_function_body
+  error • Expected a class member • lib/screens/main/main_screen.dart:662:46 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:663:17 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:663:18 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:664:15 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:664:16 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:665:13 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:665:14 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:666:11 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:666:12 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:667:9 • expected_class_member
+  error • Expected a class member • lib/screens/main/main_screen.dart:667:10 • expected_class_member
+  error • Expected a method, getter, setter or operator declaration • lib/screens/main/main_screen.dart:668:8 • expected_executable
+  error • Expected a method, getter, setter or operator declaration • lib/screens/main/main_screen.dart:669:5 • expected_executable
+  error • Unexpected text ';' • lib/screens/main/main_screen.dart:669:6 • unexpected_token
+  error • Expected a method, getter, setter or operator declaration • lib/screens/main/main_screen.dart:670:3 • expected_executable
+  error • Undefined name '_selectedIndex' • lib/screens/main/main_screen.dart:676:11 • undefined_identifier
+  error • Undefined name '_lastQuestLoadTime' • lib/screens/main/main_screen.dart:678:13 • undefined_identifier
+  error • Undefined name '_lastQuestLoadTime' • lib/screens/main/main_screen.dart:679:28 • undefined_identifier
+  error • Undefined name '_lastQuestLoadTime' • lib/screens/main/main_screen.dart:680:11 • undefined_identifier
+  error • The function '_loadQuests' isn't defined • lib/screens/main/main_screen.dart:681:11 • undefined_function
+  error • Undefined name '_showDailyReward' • lib/screens/main/main_screen.dart:694:17 • undefined_identifier
+  error • Undefined name '_handleDeepNavigation' • lib/screens/main/main_screen.dart:702:38 • undefined_identifier
+warning • The declaration '_buildInfoRow' isn't referenced • lib/screens/main/main_screen.dart:860:10 • unused_element
+  error • Undefined name 'context' • lib/screens/main/main_screen.dart:891:11 • undefined_identifier
+warning • The declaration '_claimDailyReward' isn't referenced • lib/screens/main/main_screen.dart:945:16 • unused_element
+  error • Undefined name 'context' • lib/screens/main/main_screen.dart:947:54 • undefined_identifier
+  error • Undefined name 'context' • lib/screens/main/main_screen.dart:950:30 • undefined_identifier
+  error • Undefined name '_firebaseService' • lib/screens/main/main_screen.dart:959:36 • undefined_identifier
+  error • The function 'setState' isn't defined • lib/screens/main/main_screen.dart:961:9 • undefined_function
+  error • Undefined name '_showDailyReward' • lib/screens/main/main_screen.dart:961:24 • undefined_identifier
+  error • Undefined name '_firebaseService' • lib/screens/main/main_screen.dart:966:13 • undefined_identifier
+  error • Undefined name '_firebaseService' • lib/screens/main/main_screen.dart:967:35 • undefined_identifier
+  error • Undefined name '_firebaseService' • lib/screens/main/main_screen.dart:969:13 • undefined_identifier
+  error • Undefined name 'mounted' • lib/screens/main/main_screen.dart:981:13 • undefined_identifier
+  error • The function 'setState' isn't defined • lib/screens/main/main_screen.dart:982:11 • undefined_function
+  error • Undefined name '_showConfetti' • lib/screens/main/main_screen.dart:983:13 • undefined_identifier
+  error • Undefined name '_showDailyReward' • lib/screens/main/main_screen.dart:984:13 • undefined_identifier
+  error • Undefined name 'mounted' • lib/screens/main/main_screen.dart:989:11 • undefined_identifier
+  error • Undefined name 'context' • lib/screens/main/main_screen.dart:990:30 • undefined_identifier
+  error • Undefined name 'context' • lib/screens/main/main_screen.dart:1130:45 • undefined_identifier
+  error • Undefined name 'context' • lib/screens/main/main_screen.dart:1141:45 • undefined_identifier
+  error • Undefined name 'context' • lib/screens/main/main_screen.dart:1152:45 • undefined_identifier
+  error • Undefined name '_loadingLoveCandidates' • lib/screens/main/main_screen.dart:1181:13 • undefined_identifier
+  error • Undefined name '_loveCandidates' • lib/screens/main/main_screen.dart:1216:31 • undefined_identifier
+  error • Undefined name '_loveCandidates' • lib/screens/main/main_screen.dart:1217:48 • undefined_identifier
+  error • Undefined name '_isEnglish' • lib/screens/main/main_screen.dart:1317:33 • undefined_identifier
+  error • The function '_handleDeepNavigation' isn't defined • lib/screens/main/main_screen.dart:1351:35 • undefined_function
+  error • The function '_loadLoveCandidates' isn't defined • lib/screens/main/main_screen.dart:1352:29 • undefined_function
+  error • The function '_handleDeepNavigation' isn't defined • lib/screens/main/main_screen.dart:1420:29 • undefined_function
+  error • Undefined name '_isEnglish' • lib/screens/main/main_screen.dart:1447:39 • undefined_identifier
+  error • Undefined name 'context' • lib/screens/main/main_screen.dart:1477:11 • undefined_identifier
+  error • The function '_loadLoveCandidates' isn't defined • lib/screens/main/main_screen.dart:1483:23 • undefined_function
+  error • The function '_onBottomNavTap' isn't defined • lib/screens/main/main_screen.dart:1762:23 • undefined_function
+  error • Undefined name 'context' • lib/screens/main/main_screen.dart:1854:11 • undefined_identifier
+warning • The declaration '_buildGlassInfoRow' isn't referenced • lib/screens/main/main_screen.dart:2312:10 • unused_element
+warning • The declaration '_zodiacCard' isn't referenced • lib/screens/main/main_screen.dart:2345:10 • unused_element
+warning • A value for optional parameter 'isDark' isn't ever given • lib/screens/main/main_screen.dart:2345:76 • unused_element_parameter
+  error • Can't have modifier 'static' here • lib/screens/main/main_screen.dart:2349:3 • extraneous_modifier
+warning • The declaration '_zodiacList' isn't referenced • lib/screens/main/main_screen.dart:2349:42 • unused_element
+warning • The declaration '_buildFeatureCard' isn't referenced • lib/screens/main/main_screen.dart:2351:10 • unused_element
+warning • The declaration '_buildBottomNavigationBar' isn't referenced • lib/screens/main/main_screen.dart:2361:10 • unused_element
+  error • Undefined name '_selectedIndex' • lib/screens/main/main_screen.dart:2363:21 • undefined_identifier
+  error • Undefined name '_onBottomNavTap' • lib/screens/main/main_screen.dart:2364:14 • undefined_identifier
+  error • Undefined name '_isEnglish' • lib/screens/main/main_screen.dart:2369:18 • undefined_identifier
+  error • Undefined name '_isEnglish' • lib/screens/main/main_screen.dart:2374:18 • undefined_identifier
+  error • Undefined name '_isEnglish' • lib/screens/main/main_screen.dart:2379:18 • undefined_identifier
+  error • Undefined name '_isEnglish' • lib/screens/main/main_screen.dart:2384:18 • undefined_identifier
+  error • Undefined name '_isEnglish' • lib/screens/main/main_screen.dart:2389:18 • undefined_identifier
+warning • The declaration '_loadPendingRequestsCount' isn't referenced • lib/screens/main/main_screen.dart:2526:16 • unused_element
+warning • The declaration '_startPendingRequestsListener' isn't referenced • lib/screens/main/main_screen.dart:2527:8 • unused_element
+warning • The declaration '_showResultsCard' isn't referenced • lib/screens/main/main_screen.dart:2528:10 • unused_element
+warning • A value for optional parameter 'fortuneTypeFilter' isn't ever given • lib/screens/main/main_screen.dart:2528:36 • unused_element_parameter
+  error • Undefined name '_pendingRequestsSubscription' • lib/screens/main/main_screen.dart:2532:5 • undefined_identifier
+  error • Undefined name '_backgroundController' • lib/screens/main/main_screen.dart:2533:5 • undefined_identifier
+  error • Undefined name '_cardController' • lib/screens/main/main_screen.dart:2534:5 • undefined_identifier
+  error • Undefined name '_pageController' • lib/screens/main/main_screen.dart:2535:5 • undefined_identifier
+  error • Undefined name '_adsService' • lib/screens/main/main_screen.dart:2536:5 • undefined_identifier
+  error • Invalid context for 'super' invocation • lib/screens/main/main_screen.dart:2537:5 • super_in_invalid_context
+  error • Undefined name '_pendingHistoryFilter' • lib/screens/main/main_screen.dart:2544:9 • undefined_identifier
+  error • Undefined name '_pendingHistoryFilter' • lib/screens/main/main_screen.dart:2545:29 • undefined_identifier
+  error • Undefined name '_pendingHistoryFilter' • lib/screens/main/main_screen.dart:2547:7 • undefined_identifier
+  error • Expected a method, getter, setter or operator declaration • lib/screens/main/main_screen.dart:2553:1 • expected_executable
+   info • 'scale' is deprecated and shouldn't be used. Use scaleByVector3, scaleByVector4, or scaleByDouble instead • lib/screens/main/main_screen.dart:2722:17 • deprecated_member_use
+warning • A value for optional parameter 'icon' isn't ever given • lib/screens/main/main_screen.dart:2879:10 • unused_element_parameter
+   info • Don't use 'BuildContext's across async gaps • lib/screens/other/aura_update_screen.dart:311:56 • use_build_context_synchronously
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/aura_update_screen.dart:504:67 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/aura_update_screen.dart:573:67 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/aura_update_screen.dart:637:67 • deprecated_member_use
+   info • Use of 'return' in a 'finally' clause • lib/screens/other/biorhythm_screen.dart:105:21 • control_flow_in_finally
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/biorhythm_screen.dart:260:79 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/biorhythm_screen.dart:314:57 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/biorhythm_screen.dart:371:55 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/biorhythm_screen.dart:384:75 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/biorhythm_screen.dart:412:55 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/biorhythm_screen.dart:422:70 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/other/biorhythm_screen.dart:442:56 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/other/tests_screen.dart:22:9 • use_super_parameters
+   info • Parameter 'key' could be a super parameter • lib/screens/premium/karma_purchase_screen.dart:24:9 • use_super_parameters
+   info • Unnecessary use of string interpolation • lib/screens/premium/karma_purchase_screen.dart:121:31 • unnecessary_string_interpolations
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/karma_purchase_screen.dart:189:54 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/karma_purchase_screen.dart:252:54 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/karma_purchase_screen.dart:1773:32 • use_build_context_synchronously
+   info • 'Share' is deprecated and shouldn't be used. Use SharePlus instead • lib/screens/premium/karma_purchase_screen.dart:1863:13 • deprecated_member_use
+   info • 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead • lib/screens/premium/karma_purchase_screen.dart:1863:19 • deprecated_member_use
+   info • 'Share' is deprecated and shouldn't be used. Use SharePlus instead • lib/screens/premium/karma_purchase_screen.dart:1915:13 • deprecated_member_use
+   info • 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead • lib/screens/premium/karma_purchase_screen.dart:1915:19 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/premium/premium_onboarding_screen.dart:18:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:402:85 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:546:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:547:36 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:550:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:555:56 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:571:55 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:577:62 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:643:45 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:644:40 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:650:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:657:73 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:875:31 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/premium_onboarding_screen.dart:876:12 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/premium/premium_screen.dart:18:9 • use_super_parameters
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/spin_wheel_screen.dart:115:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/spin_wheel_screen.dart:170:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/spin_wheel_screen.dart:179:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/spin_wheel_screen.dart:201:52 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/spin_wheel_screen.dart:232:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/spin_wheel_screen.dart:241:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/spin_wheel_screen.dart:254:52 • use_build_context_synchronously
+   info • Don't invoke 'print' in production code • lib/screens/premium/spin_wheel_screen.dart:261:7 • avoid_print
+   info • Don't use 'BuildContext's across async gaps • lib/screens/premium/spin_wheel_screen.dart:273:26 • use_build_context_synchronously
+   info • Don't invoke 'print' in production code • lib/screens/premium/spin_wheel_screen.dart:307:7 • avoid_print
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/premium/spin_wheel_screen.dart:518:43 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/profile/edit_profile_screen.dart:12:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:186:50 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:285:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:296:72 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:379:74 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:449:72 • deprecated_member_use
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/screens/profile/edit_profile_screen.dart:456:17 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:532:72 • deprecated_member_use
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/screens/profile/edit_profile_screen.dart:539:17 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:608:72 • deprecated_member_use
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/screens/profile/edit_profile_screen.dart:615:17 • deprecated_member_use
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/screens/profile/edit_profile_screen.dart:690:66 • use_build_context_synchronously
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:705:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:710:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/profile/edit_profile_screen.dart:750:60 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/profile/fixed_profile_screen.dart:13:9 • use_super_parameters
+   info • 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre • lib/screens/profile/fixed_profile_screen.dart:618:11 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/profile/profile_screen.dart:17:9 • use_super_parameters
+   info • Don't invoke 'print' in production code • lib/screens/profile/profile_screen.dart:52:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/screens/profile/profile_screen.dart:72:7 • avoid_print
+   info • 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre • lib/screens/profile/profile_screen.dart:981:11 • deprecated_member_use
+   info • Use a function declaration rather than a variable assignment to bind a function to a name • lib/screens/profile/profile_screen.dart:999:11 • prefer_function_declarations_over_variables
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/screens/profile/profile_screen.dart:1062:28 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/screens/profile/profile_screen.dart:1065:36 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/screens/profile/profile_screen.dart:1073:30 • use_build_context_synchronously
+   info • Don't invoke 'print' in production code • lib/screens/social/chat_detail_screen.dart:126:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/screens/social/chat_detail_screen.dart:159:9 • avoid_print
+warning • Unused import: '../../providers/theme_provider.dart' • lib/screens/social/love_candidate_form_screen.dart:10:8 • unused_import
+warning • Unused import: '../../core/constants/app_strings.dart' • lib/screens/social/love_candidates_screen.dart:7:8 • unused_import
+warning • Unused import: '../../providers/theme_provider.dart' • lib/screens/social/love_candidates_screen.dart:9:8 • unused_import
+   info • Don't use 'BuildContext's across async gaps • lib/screens/social/love_candidates_screen.dart:122:56 • use_build_context_synchronously
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/social/love_compatibility_screen.dart:58:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/social/love_compatibility_screen.dart:58:74 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/social/love_compatibility_screen.dart:59:62 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/social/love_compatibility_screen.dart:113:65 • deprecated_member_use
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:137:57 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:138:62 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:139:62 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:140:62 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:141:62 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:142:62 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:143:63 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:144:64 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:145:64 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:146:63 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:147:62 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/screens/social/love_compatibility_screen.dart:148:10 • curly_braces_in_flow_control_structures
+   info • Unnecessary braces in a string interpolation • lib/screens/social/love_compatibility_screen.dart:235:35 • unnecessary_brace_in_string_interps
+   info • Unnecessary braces in a string interpolation • lib/screens/social/love_compatibility_screen.dart:235:62 • unnecessary_brace_in_string_interps
+   info • Unnecessary braces in a string interpolation • lib/screens/social/love_compatibility_screen.dart:235:97 • unnecessary_brace_in_string_interps
+   info • Unnecessary braces in a string interpolation • lib/screens/social/love_compatibility_screen.dart:235:131 • unnecessary_brace_in_string_interps
+   info • Use of 'return' in a 'finally' clause • lib/screens/social/love_compatibility_screen.dart:301:21 • control_flow_in_finally
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/social/love_compatibility_screen.dart:522:71 • deprecated_member_use
+   info • The import of 'dart:ui' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' • lib/screens/social/social_screen.dart:14:8 • unnecessary_import
+   info • 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre • lib/screens/social/social_screen.dart:580:27 • deprecated_member_use
+   info • Don't invoke 'print' in production code • lib/screens/social/social_screen.dart:1805:9 • avoid_print
+   info • 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre • lib/screens/social/soulmate_analysis_screen.dart:236:17 • deprecated_member_use
+   info • 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre • lib/screens/social/soulmate_analysis_screen.dart:237:17 • deprecated_member_use
+   info • 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre • lib/screens/social/soulmate_analysis_screen.dart:247:17 • deprecated_member_use
+   info • 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre • lib/screens/social/soulmate_analysis_screen.dart:248:17 • deprecated_member_use
+   info • 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre • lib/screens/social/soulmate_analysis_screen.dart:258:17 • deprecated_member_use
+   info • 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre • lib/screens/social/soulmate_analysis_screen.dart:259:17 • deprecated_member_use
+   info • 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre • lib/screens/social/soulmate_analysis_screen.dart:269:17 • deprecated_member_use
+   info • 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre • lib/screens/social/soulmate_analysis_screen.dart:270:17 • deprecated_member_use
+   info • Don't use 'BuildContext's across async gaps • lib/screens/social/soulmate_analysis_screen.dart:685:11 • use_build_context_synchronously
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/social/soulmate_analysis_screen.dart:1027:50 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/social/soulmate_analysis_screen.dart:1032:52 • deprecated_member_use
+   info • Unnecessary use of string interpolation • lib/screens/social/soulmate_analysis_screen.dart:1556:39 • unnecessary_string_interpolations
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/screens/splash/splash_screen.dart:144:56 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/screens/tests/general_test_screen.dart:23:9 • use_super_parameters
+   info • The private field _formData could be 'final' • lib/screens/tests/general_test_screen.dart:36:24 • prefer_final_fields
+   info • The private field _answers could be 'final' • lib/screens/tests/general_test_screen.dart:37:23 • prefer_final_fields
+   info • Parameter 'key' could be a super parameter • lib/screens/tests/test_result_screen.dart:20:9 • use_super_parameters
+   info • 'Share' is deprecated and shouldn't be used. Use SharePlus instead • lib/screens/tests/test_result_screen.dart:319:13 • deprecated_member_use
+   info • 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead • lib/screens/tests/test_result_screen.dart:319:19 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/widgets/ads/banner_ad_widget.dart:13:9 • use_super_parameters
+   info • Use a 'SizedBox' to add whitespace to a layout • lib/widgets/animations/card_flip_animation.dart:250:14 • sized_box_for_whitespace
+   info • 'scale' is deprecated and shouldn't be used. Use scaleByVector3, scaleByVector4, or scaleByDouble instead • lib/widgets/animations/card_flip_animation.dart:418:19 • deprecated_member_use
+   info • The 'child' argument should be last in widget constructor invocations • lib/widgets/animations/glow_effect.dart:291:7 • sort_child_properties_last
+   info • The 'child' argument should be last in widget constructor invocations • lib/widgets/animations/glow_effect.dart:317:7 • sort_child_properties_last
+   info • The 'child' argument should be last in widget constructor invocations • lib/widgets/animations/glow_effect.dart:343:7 • sort_child_properties_last
+   info • The 'child' argument should be last in widget constructor invocations • lib/widgets/animations/glow_effect.dart:367:7 • sort_child_properties_last
+   info • Parameter 'key' could be a super parameter • lib/widgets/fortune/fortune_user_info_form.dart:14:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:241:35 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:242:37 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:263:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:263:74 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:264:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:264:79 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:265:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:265:79 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:274:20 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:284:58 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:325:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:325:75 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:326:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:326:78 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:332:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:380:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:380:73 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:381:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:381:78 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:395:24 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:405:62 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:427:50 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:526:26 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:536:64 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:548:59 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:559:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:559:74 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:560:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:560:79 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:573:22 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:583:60 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:593:40 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:628:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:628:74 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:629:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:629:79 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:641:20 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:651:58 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/fortune_user_info_form.dart:659:47 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/widgets/fortune/karma_cost_badge.dart:10:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/karma_cost_badge.dart:126:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/karma_cost_badge.dart:131:36 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/fortune/karma_cost_badge.dart:158:35 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/widgets/header_bar.dart:24:58 • deprecated_member_use
+   info • The package name 'Falla' isn't a lower_case_with_underscores identifier • pubspec.yaml:1:7 • package_names
+

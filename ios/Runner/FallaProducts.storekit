@@ -1,0 +1,243 @@
+{
+  "identifier" : "3A4E1ABC-1234-5678-90AB-CDEF12345678",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "karma_10_id",
+      "localizations" : [
+        {
+          "description" : "10 adet karma puanı satın al",
+          "displayName" : "10 Karma",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "karma_10",
+      "referenceName" : "10 Karma",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "59.99",
+      "familyShareable" : false,
+      "internalID" : "karma_25_id",
+      "localizations" : [
+        {
+          "description" : "25 adet karma puanı satın al",
+          "displayName" : "25 Karma",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "karma_25",
+      "referenceName" : "25 Karma",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "99.99",
+      "familyShareable" : false,
+      "internalID" : "karma_50_id",
+      "localizations" : [
+        {
+          "description" : "50 adet karma puanı satın al",
+          "displayName" : "50 Karma",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "karma_50",
+      "referenceName" : "50 Karma",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "149.99",
+      "familyShareable" : false,
+      "internalID" : "package_75_id",
+      "localizations" : [
+        {
+          "description" : "75 adet premium paket",
+          "displayName" : "75 Paket",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "package_75",
+      "referenceName" : "75 Paket",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "199.99",
+      "familyShareable" : false,
+      "internalID" : "package_100_id",
+      "localizations" : [
+        {
+          "description" : "100 adet premium paket",
+          "displayName" : "100 Paket",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "package_100",
+      "referenceName" : "100 Paket",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "399.99",
+      "familyShareable" : false,
+      "internalID" : "package_250_id",
+      "localizations" : [
+        {
+          "description" : "250 adet premium paket",
+          "displayName" : "250 Paket",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "package_250",
+      "referenceName" : "250 Paket",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "premium_group_id",
+      "localizations" : [
+        {
+          "description" : "Premium üyelik planları",
+          "displayName" : "Premium Üyelik",
+          "locale" : "tr"
+        }
+      ],
+      "name" : "Premium Üyelik",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "29.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "premium_weekly_id",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Haftalık premium üyelik",
+              "displayName" : "Haftalık Premium",
+              "locale" : "tr"
+            }
+          ],
+          "productID" : "premium_weekly",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "Haftalık Premium",
+          "subscriptionGroupID" : "premium_group_id",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "79.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "premium_monthly_id",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Aylık premium üyelik",
+              "displayName" : "Aylık Premium",
+              "locale" : "tr"
+            }
+          ],
+          "productID" : "premium_monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Aylık Premium",
+          "subscriptionGroupID" : "premium_group_id",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "599.99",
+          "familyShareable" : false,
+          "groupNumber" : 3,
+          "internalID" : "premium_yearly_id",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Yıllık premium üyelik",
+              "displayName" : "Yıllık Premium",
+              "locale" : "tr"
+            }
+          ],
+          "productID" : "premium_yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Yıllık Premium",
+          "subscriptionGroupID" : "premium_group_id",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
+

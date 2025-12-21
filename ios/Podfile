@@ -1,0 +1,83 @@
+# Define a global platform for your project
+platform :ios, '15.0'
+
+# CocoaPods analytics sends network stats synchronously affecting flutter build latency.
+ENV['COCOAPODS_DISABLE_STATS'] = 'true'
+
+project 'Runner', {
+  'Debug' => :debug,
+  'Profile' => :release,
+  'Release' => :release,
+}
+
+def flutter_root
+  generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
+  unless File.exist?(generated_xcode_build_settings_path)
+    raise "#{generated_xcode_build_settings_path} must exist. If you're running pod install manually, make sure flutter pub get is executed first"
+  end
+
+  File.foreach(generated_xcode_build_settings_path) do |line|
+    matches = line.match(/FLUTTER_ROOT\=(.*)/)
+    return matches[1].strip if matches
+  end
+  raise "FLUTTER_ROOT not found in #{generated_xcode_build_settings_path}. Try deleting Generated.xcconfig, then run flutter pub get"
+end
+
+require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
+
+flutter_ios_podfile_setup
+
+target 'Runner' do
+  use_frameworks! :linkage => :static
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  
+  target 'RunnerTests' do
+    inherit! :search_paths
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      # Minimum deployment target
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+      
+      # Disable code signing for pods
+      config.build_settings['CODE_SIGNING_REQUIRED'] = 'NO'
+      config.build_settings['CODE_SIGN_IDENTITY'] = ''
+      
+      # C++17 for modern Xcode compatibility
+      config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+      config.build_settings['CLANG_CXX_LIBRARY'] = 'libc++'
+    end
+
+    # Flutter's default additions
+    flutter_additional_ios_build_settings(target)
+
+    # Specific fix for BoringSSL-GRPC: remove bad '-G' flags
+    if target.name == 'BoringSSL-GRPC'
+      if target.respond_to?(:source_build_phase) && target.source_build_phase && target.source_build_phase.files
+        target.source_build_phase.files.each do |file|
+          next unless file.settings && file.settings['COMPILER_FLAGS']
+          flags = file.settings['COMPILER_FLAGS']
+          flags = flags.is_a?(String) ? flags.split(' ') : flags.dup
+          flags.reject! { |f| f == '-G' || f.start_with?('-G') || f == '-GCC_WARN_INHIBIT_ALL_WARNINGS' }
+          file.settings['COMPILER_FLAGS'] = flags.join(' ')
+        end
+      end
+    end
+  end
+
+  # Remove stray '-G' flags globally
+  installer.pods_project.targets.each do |t|
+    t.build_configurations.each do |config|
+      ['OTHER_CFLAGS','OTHER_CPLUSPLUSFLAGS','OTHER_LDFLAGS'].each do |k|
+        next unless config.build_settings[k]
+        v = config.build_settings[k].is_a?(Array) ? config.build_settings[k].join(' ') : config.build_settings[k]
+        v = v.split(' ').reject { |f| f == '-G' || f.start_with?('-G') }.join(' ')
+        config.build_settings[k] = v
+      end
+    end
+  end
+end
