@@ -77,7 +77,7 @@ class _AuthGateState extends State<AuthGate> {
         if (!_isInitialized) {
           return Scaffold(
             body: Container(
-              decoration: BoxDecoration(gradient: AppColors.premiumDarkGradient),
+              decoration: BoxDecoration(gradient: themeProvider.backgroundGradient),
               child: Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -109,7 +109,7 @@ class _AuthGateState extends State<AuthGate> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Scaffold(
                 body: Container(
-                  decoration: BoxDecoration(gradient: AppColors.premiumDarkGradient),
+                  decoration: BoxDecoration(gradient: themeProvider.backgroundGradient),
                   child: Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -134,9 +134,24 @@ class _AuthGateState extends State<AuthGate> {
               );
             }
 
-            // Kullanıcı giriş yapmışsa ana sayfaya yönlendir
+            // Kullanıcı giriş yapmışsa
             if (snapshot.hasData && snapshot.data != null) {
-              return const MainScreen();
+              // Premium onboarding kontrolü - her açılışta göster
+              return FutureBuilder<bool>(
+                future: _shouldShowPremiumOnboarding(),
+                builder: (context, premiumSnapshot) {
+                  if (premiumSnapshot.connectionState == ConnectionState.waiting) {
+                    return const MainScreen(); // Hemen ana ekranı göster
+                  }
+                  
+                  // Premium değilse onboarding göster
+                  if (premiumSnapshot.data == true) {
+                    return const PremiumOnboardingScreen();
+                  }
+                  
+                  return const MainScreen();
+                },
+              );
             }
 
             // Kullanıcı giriş yapmamışsa login ekranına yönlendir

@@ -138,6 +138,12 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+    final textPrimary = AppColors.getTextPrimary(isDark);
+    final textSecondary = AppColors.getTextSecondary(isDark);
+    final textDisabled = AppColors.getTextDisabled(isDark);
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -152,7 +158,7 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
                 setState(() => _topic1 = val);
                 _notifyChanges();
               }),
-              Divider(color: Colors.white.withOpacity(0.1), height: 1),
+              Divider(color: AppColors.getDividerColor(isDark), height: 1),
               _buildTopicRow(AppStrings.topic2Label, _topic2, Icons.star_border, _topics, (val) {
                 setState(() => _topic2 = val);
                 _notifyChanges();
@@ -175,11 +181,11 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
           borderRadius: 16,
           child: TextField(
             controller: _nameController,
-            style: PremiumTextStyles.body.copyWith(color: Colors.white),
+            style: PremiumTextStyles.body.copyWith(color: textPrimary),
             cursorColor: AppColors.champagneGold,
             decoration: InputDecoration(
               hintText: AppStrings.nameHint,
-              hintStyle: PremiumTextStyles.body.copyWith(color: Colors.white38),
+              hintStyle: PremiumTextStyles.body.copyWith(color: textDisabled),
               prefixIcon: Icon(Icons.person_outline, color: AppColors.champagneGold),
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -241,7 +247,7 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
         const SizedBox(width: 10),
         Text(
           text,
-          style: PremiumTextStyles.headline.copyWith(fontSize: 18),
+          style: PremiumTextStyles.headline.copyWith(fontSize: 18, color: AppColors.getTextPrimary(Provider.of<ThemeProvider>(context).isDarkMode)),
         ),
       ],
     );
@@ -272,12 +278,12 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
             Text(
               value ?? AppStrings.selectHint,
               style: PremiumTextStyles.body.copyWith(
-                color: value != null ? AppColors.champagneGold : Colors.white38,
+                color: value != null ? AppColors.champagneGold : AppColors.getTextDisabled(Provider.of<ThemeProvider>(context).isDarkMode),
                 fontWeight: value != null ? FontWeight.w600 : FontWeight.normal
               ),
             ),
             const SizedBox(width: 8),
-            Icon(Icons.arrow_forward_ios, color: Colors.white38, size: 14),
+            Icon(Icons.arrow_forward_ios, color: AppColors.getTextDisabled(Provider.of<ThemeProvider>(context).isDarkMode), size: 14),
           ],
         ),
       ),
@@ -330,10 +336,10 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.person, color: _isForSelf ? AppColors.champagneGold : Colors.white54, size: 18),
+                              Icon(Icons.person, color: _isForSelf ? AppColors.champagneGold : AppColors.getTextDisabled(Provider.of<ThemeProvider>(context).isDarkMode), size: 18),
                               const SizedBox(width: 8),
                               Text(AppStrings.forMyself, style: PremiumTextStyles.body.copyWith(
-                                color: _isForSelf ? AppColors.champagneGold : Colors.white54,
+                                color: _isForSelf ? AppColors.champagneGold : AppColors.getTextDisabled(Provider.of<ThemeProvider>(context).isDarkMode),
                                 fontWeight: _isForSelf ? FontWeight.bold : FontWeight.normal
                               )),
                             ],
@@ -342,7 +348,7 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
                       ),
                     ),
                   ),
-                  Container(width: 1, color: Colors.white.withOpacity(0.1)),
+                  Container(width: 1, color: AppColors.getDividerColor(Provider.of<ThemeProvider>(context).isDarkMode)),
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
@@ -364,7 +370,7 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.people, color: !_isForSelf ? AppColors.champagneGold : Colors.white54, size: 18),
+                              Icon(Icons.people, color: !_isForSelf ? AppColors.champagneGold : AppColors.getTextDisabled(Provider.of<ThemeProvider>(context).isDarkMode), size: 18),
                               const SizedBox(width: 8),
                               Text(AppStrings.forSomeoneElse, style: PremiumTextStyles.body.copyWith(
                                 color: !_isForSelf ? AppColors.champagneGold : Colors.white54,
@@ -400,7 +406,7 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
                     ? 'Gün / Ay / Yıl'
                     : DateFormat('dd/MM/yyyy').format(_birthDate!),
                 style: PremiumTextStyles.body.copyWith(
-                  color: _birthDate == null ? Colors.white38 : Colors.white,
+                  color: _birthDate == null ? AppColors.getTextDisabled(Provider.of<ThemeProvider>(context).isDarkMode) : AppColors.getTextPrimary(Provider.of<ThemeProvider>(context).isDarkMode),
                 ),
               ),
             ),
@@ -440,7 +446,7 @@ class _FortuneUserInfoFormState extends State<FortuneUserInfoForm>
               child: Text(
                 value ?? hint,
                 style: PremiumTextStyles.body.copyWith(
-                   color: value != null ? Colors.white : Colors.white38,
+                   color: value != null ? AppColors.getTextPrimary(Provider.of<ThemeProvider>(context).isDarkMode) : AppColors.getTextDisabled(Provider.of<ThemeProvider>(context).isDarkMode),
                 ),
               ),
             ),

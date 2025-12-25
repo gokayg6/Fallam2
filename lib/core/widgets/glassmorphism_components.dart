@@ -2,6 +2,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
+import 'package:provider/provider.dart';
+import '../../providers/theme_provider.dart';
+
 /// iOS 26 Premium Glassmorphism Component Library
 /// Reusable widgets for the Falla Premium Design System
 
@@ -38,9 +41,14 @@ class GlassCard extends StatelessWidget {
                 sigmaX: isHero ? 45 : (isSelected ? 40 : 35),
                 sigmaY: isHero ? 45 : (isSelected ? 40 : 35),
               ),
-              child: Container(
-                padding: padding,
-                decoration: _getDecoration(),
+              child: Consumer<ThemeProvider>(
+                builder: (context, themeProvider, child) {
+                  return Container(
+                    padding: padding,
+                    decoration: _getDecoration(themeProvider.isDarkMode),
+                    child: child,
+                  );
+                },
                 child: child,
               ),
             ),
@@ -50,13 +58,19 @@ class GlassCard extends StatelessWidget {
     );
   }
 
-  BoxDecoration _getDecoration() {
+  BoxDecoration _getDecoration(bool isDark) {
     if (isHero) {
-      return AppColors.premiumHeroCardDecoration;
+      return AppColors.premiumHeroCardDecoration; // Consider making this theme aware too if needed
     } else if (isSelected) {
       return AppColors.premiumSelectedCardDecoration;
     } else {
-      return AppColors.premiumGlassCardDecoration;
+      return isDark 
+          ? AppColors.premiumGlassCardDecoration 
+          : BoxDecoration(
+              color: AppColors.premiumLightSurface,
+              borderRadius: BorderRadius.circular(borderRadius),
+              border: Border.all(color: AppColors.premiumLightTextSecondary.withValues(alpha: 0.2)),
+            );
     }
   }
 }
@@ -277,12 +291,13 @@ class PremiumScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: AppColors.premiumDarkBg,
+      backgroundColor: Colors.transparent,
       appBar: appBar,
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: AppColors.premiumDarkGradient,
+        decoration: BoxDecoration(
+          gradient: themeProvider.backgroundGradient,
         ),
         child: body,
       ),
@@ -355,7 +370,7 @@ class GlassAppBar extends StatelessWidget implements PreferredSizeWidget {
                       fontFamily: 'SF Pro Display',
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.warmIvory,
+                      color: AppColors.getTextPrimary(Provider.of<ThemeProvider>(context).isDarkMode),
                     ),
                   ),
                 ),

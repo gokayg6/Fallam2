@@ -144,12 +144,12 @@ class ThemeProvider extends ChangeNotifier {
     final isDark = _themeMode == ThemeMode.dark;
     final baseTheme = isDark ? ThemeData.dark() : ThemeData.light();
     
-    // Light theme colors - Cream tones
-    final lightBackground = AppColors.lightBackground;
-    final lightSurface = AppColors.lightSurface;
-    final lightTextPrimary = Colors.grey[900]!;
-    final lightTextSecondary = Colors.grey[700]!;
-    final lightBorder = Colors.grey[300]!;
+    // Light theme colors - Premium iOS 26 System
+    final lightBackground = AppColors.premiumLightBackground;
+    final lightSurface = AppColors.premiumLightSurface;
+    final lightTextPrimary = AppColors.premiumLightTextPrimary; 
+    final lightTextSecondary = AppColors.premiumLightTextSecondary;
+    final lightBorder = Color(0xFFD6CDB8); // Warm subtle border
     
     // Dark theme colors
     final darkBackground = AppColors.background;
@@ -162,7 +162,7 @@ class ThemeProvider extends ChangeNotifier {
         ? (isDark ? darkBackground : lightBackground)
         : (isDark ? darkBackground : lightBackground);
     final surfaceColor = isDark ? darkSurface : lightSurface;
-    final textPrimaryColor = isDark ? darkTextPrimary : lightTextPrimary;
+    final textPrimaryColor = isDark ? darkTextPrimary : lightTextPrimary; 
     final textSecondaryColor = isDark ? darkTextSecondary : lightTextSecondary;
     final borderColor = isDark ? Colors.white.withValues(alpha: 0.08) : lightBorder;
     
@@ -179,39 +179,44 @@ class ThemeProvider extends ChangeNotifier {
         elevation: 0,
         centerTitle: false,
         titleTextStyle: TextStyle(
-          color: textPrimaryColor,
+          color: textPrimaryColor, // Açık temada koyu yazı
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
-        iconTheme: IconThemeData(color: textPrimaryColor),
+        iconTheme: IconThemeData(color: textPrimaryColor), // Açık temada koyu icon
       ),
       cardTheme: CardThemeData(
         color: surfaceColor,
-        elevation: _isGlowMode ? 8 : 4,
+        elevation: _isGlowMode ? (isDark ? 8 : 0) : 0, // Light mode uses custom shadows in decoration, not elevation
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(24), // iOS 26 Radius
           side: _isGlowMode 
-            ? BorderSide(color: AppColors.secondary.withValues(alpha: 0.3), width: 1)
+            ? BorderSide(
+                color: isDark 
+                  ? AppColors.secondary.withValues(alpha: 0.3)
+                  : Color(0xFFD6CDB8), // Warm border for light mode
+                width: isDark ? 1 : 1.0,
+              )
             : BorderSide.none,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: isDark ? surfaceColor.withValues(alpha: 0.8) : AppColors.lightCardBackground,
+        fillColor: isDark ? surfaceColor.withValues(alpha: 0.8) : Colors.white, // Input is WHITE on Light Mode
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: borderColor),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: borderColor),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: _isPremiumTheme ? AppColors.premium : AppColors.primary),
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: _isPremiumTheme ? AppColors.premium : AppColors.premiumLightAccent),
         ),
-        labelStyle: TextStyle(color: textSecondaryColor),
-        hintStyle: TextStyle(color: isDark ? Colors.white38 : Colors.grey[500]),
+        labelStyle: TextStyle(color: textSecondaryColor, fontWeight: FontWeight.w500), 
+        hintStyle: TextStyle(color: isDark ? Colors.white38 : AppColors.premiumLightTextTertiary),
         prefixIconColor: textSecondaryColor,
         suffixIconColor: textSecondaryColor,
       ),
@@ -231,7 +236,7 @@ class ThemeProvider extends ChangeNotifier {
         ),
       ),
       iconTheme: IconThemeData(
-        color: textPrimaryColor,
+        color: textPrimaryColor, // Açık temada koyu icon
         size: 24,
       ),
       textTheme: baseTheme.textTheme.copyWith(

@@ -12,7 +12,8 @@ import '../../core/providers/language_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../core/widgets/mystical_button.dart';
 import '../../core/widgets/mystical_loading.dart';
-import '../../core/widgets/liquid_glass_navbar.dart'; // Add this line
+import '../../core/widgets/liquid_glass_navbar.dart';
+import '../../core/widgets/liquid_glass_widgets.dart'; // Add this line
 import '../../core/services/ads_service.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
 import '../../core/services/ai_service.dart';
@@ -115,6 +116,9 @@ class _MainScreenState extends State<MainScreen>
   }
 
   DateTime? _lastQuestLoadTime;
+  bool _isFortuneExpanded = true;
+  bool _hasCheckedPremium = false;
+
 
   @override
   void initState() {
@@ -131,7 +135,23 @@ class _MainScreenState extends State<MainScreen>
       _lastLanguageCode = languageProvider.languageCode;
       // Check daily reward on page load
       await _checkDailyRewardAvailability();
+      _checkPremiumStatus();
     });
+  }
+
+  Future<void> _checkPremiumStatus() async {
+    if (_hasCheckedPremium) return;
+    _hasCheckedPremium = true;
+
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    if (!userProvider.isPremium) {
+      if (mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PremiumScreen()),
+        );
+      }
+    }
   }
 
   @override
@@ -557,8 +577,8 @@ class _MainScreenState extends State<MainScreen>
           body: Stack(
             children: [
               Container(
-                decoration: const BoxDecoration(
-                  gradient: AppColors.premiumDarkGradient,
+                decoration: BoxDecoration(
+                  gradient: themeProvider.backgroundGradient,
                 ),
                 child: PageView(
                   controller: _pageController,
@@ -683,73 +703,49 @@ class _MainScreenState extends State<MainScreen>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Colors.white.withValues(alpha: 0.12),
-                          Colors.white.withValues(alpha: 0.06),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.15),
-                        width: 1,
-                      ),
-                    ),
-                    child: Row(
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/icons/fallalogo.png',
+                    width: 36,
+                    height: 36,
+                    errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                  ),
+                  const SizedBox(width: 14),
+                  Expanded(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Image.asset(
-                          'assets/icons/fallalogo.png',
-                          width: 32,
-                          height: 32,
-                          errorBuilder: (_, __, ___) => const SizedBox.shrink(),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                userProvider.user?.name ?? AppStrings.welcome,
-                                style: TextStyle(
-                                  fontFamily: 'SF Pro Display',
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.warmIvory,
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                userProvider.user?.name != null 
-                                    ? AppStrings.welcomeBack 
-                                    : AppStrings.guest,
-                                style: TextStyle(
-                                  fontFamily: 'SF Pro Text',
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white.withValues(alpha: 0.6),
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
+                        Text(
+                          userProvider.user?.name ?? AppStrings.welcome,
+                          style: TextStyle(
+                            fontFamily: 'SF Pro Display',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.getTextPrimary(themeProvider.isDarkMode),
                           ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          userProvider.user?.name != null 
+                              ? AppStrings.welcomeBack 
+                              : AppStrings.guest,
+                          style: TextStyle(
+                            fontFamily: 'SF Pro Text',
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.getTextSecondary(themeProvider.isDarkMode),
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
                   ),
-                ),
+                ],
               ),
             ),
 
@@ -887,7 +883,92 @@ class _MainScreenState extends State<MainScreen>
   }
 
   Widget _buildDailyRewardCard() {
-    return const SizedBox();
+    if (!_showDailyReward) return const SizedBox();
+
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              gradient: isDark 
+                  ? LinearGradient(
+                      colors: [
+                        const Color(0xFFFFD700).withValues(alpha: 0.15),
+                        const Color(0xFFFFA500).withValues(alpha: 0.05),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    )
+                  : LinearGradient(
+                      colors: [
+                        AppColors.champagneGold.withOpacity(0.2),
+                        AppColors.champagneGold.withOpacity(0.1),
+                      ],
+                    ),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: isDark ? const Color(0xFFFFD700).withValues(alpha: 0.3) : AppColors.champagneGold.withOpacity(0.5),
+                width: 1,
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: AppColors.champagneGold.withValues(alpha: 0.2),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Text('🎁', style: TextStyle(fontSize: 24)),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppStrings.dailyGift,
+                        style: TextStyle(
+                          fontSize: 16, 
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.getTextPrimary(isDark),
+                        ),
+                      ),
+                      Text(
+                        AppStrings.dailyGiftDesc,
+                        style: TextStyle(
+                          fontSize: 13, 
+                          color: AppColors.getTextSecondary(isDark),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: _claimDailyReward,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.champagneGold,
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: Text(AppStrings.claim),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
 
@@ -947,10 +1028,86 @@ class _MainScreenState extends State<MainScreen>
   }
 
   Widget _buildQuestsCard() {
-    return const SizedBox();
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            AppStrings.dailyQuests,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: AppColors.getTextPrimary(isDark),
+            ),
+          ),
+          const SizedBox(height: 12),
+          ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: 2, // Örnek görevler
+            separatorBuilder: (context, index) => const SizedBox(height: 10),
+            itemBuilder: (context, index) {
+              return Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.withOpacity(0.2),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      index == 0 ? Icons.coffee_rounded : Icons.star_rounded,
+                      color: AppColors.champagneGold, 
+                      size: 24,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            index == 0 ? 'Bugün bir Kahve Falı baktır' : '5 yıldız ver',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.getTextPrimary(isDark),
+                            ),
+                          ),
+                          Text(
+                            '+50 Karma',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: AppColors.champagneGold,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      Icons.chevron_right_rounded,
+                      color: isDark ? Colors.white30 : Colors.black26,
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildWelcomeCard() {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+    
     return TweenAnimationBuilder<double>(
       duration: const Duration(milliseconds: 600),
       tween: Tween(begin: 0.0, end: 1.0),
@@ -962,82 +1119,112 @@ class _MainScreenState extends State<MainScreen>
             opacity: value.clamp(0.0, 1.0),
             child: RepaintBoundary(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(28),
+                borderRadius: BorderRadius.circular(24),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
-                  child: Container(
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
                     width: double.infinity,
-                    padding: const EdgeInsets.all(28),
-                    decoration: AppColors.premiumHeroCardDecoration,
+                    padding: const EdgeInsets.all(20),
+                    decoration: themeProvider.isDarkMode 
+                        ? AppColors.premiumHeroCardDecoration
+                        : AppColors.ios26LightSelectedCardDecoration,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 72,
-                          height: 72,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                AppColors.champagneGold.withValues(alpha: 0.3),
-                                AppColors.subtleBronze.withValues(alpha: 0.15),
-                              ],
-                            ),
-                            border: Border.all(
-                              color: AppColors.champagneGold.withValues(alpha: 0.5),
-                              width: 1.5,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.champagneGold.withValues(alpha: 0.3),
-                                blurRadius: 25,
-                                spreadRadius: 2,
+                        Row(
+                          children: [
+                            Container(
+                              width: 48,
+                              height: 48,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    AppColors.champagneGold.withValues(alpha: 0.3),
+                                    AppColors.subtleBronze.withValues(alpha: 0.15),
+                                  ],
+                                ),
+                                border: Border.all(
+                                  color: AppColors.champagneGold.withValues(alpha: 0.5),
+                                  width: 1.5,
+                                ),
                               ),
-                            ],
-                          ),
-                          child: Center(
-                            child: Icon(
-                              Icons.auto_awesome,
-                              size: 36,
-                              color: AppColors.champagneGold,
+                              child: Center(
+                                child: Icon(
+                                  Icons.auto_awesome,
+                                  size: 24,
+                                  color: AppColors.champagneGold,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    AppStrings.dailyFortune,
+                                    style: TextStyle(
+                                      fontFamily: 'SF Pro Display',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColors.getTextPrimary(isDark),
+                                    ),
+                                  ),
+                                  if (!_isFortuneExpanded)
+                                  Text(
+                                    AppStrings.tapToSeeDetails,
+                                    style: TextStyle(
+                                      fontFamily: 'SF Pro Text',
+                                      fontSize: 13,
+                                      color: AppColors.getTextSecondary(isDark),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _isFortuneExpanded = !_isFortuneExpanded;
+                                });
+                              },
+                              icon: Icon(
+                                _isFortuneExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
+                                color: AppColors.getTextSecondary(isDark),
+                              ),
+                            ),
+                          ],
+                        ),
+                        
+                        if (_isFortuneExpanded) ...[
+                          const SizedBox(height: 16),
+                          Text(
+                            AppStrings.dailyFortuneDesc,
+                            style: TextStyle(
+                              fontFamily: 'SF Pro Text',
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.getTextSecondary(isDark),
+                              height: 1.4,
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          AppStrings.dailyFortune,
-                          style: TextStyle(
-                            fontFamily: 'SF Pro Display',
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.warmIvory,
+                          const SizedBox(height: 20),
+                          _GlassCTAButton(
+                            text: AppStrings.startFortune,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const FortuneSelectionScreen(),
+                                ),
+                              );
+                            },
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          AppStrings.dailyFortuneDesc,
-                          style: TextStyle(
-                            fontFamily: 'SF Pro Text',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white.withValues(alpha: 0.65),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 24),
-                        _GlassCTAButton(
-                          text: AppStrings.startFortune,
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const FortuneSelectionScreen(),
-                              ),
-                            );
-                          },
-                        ),
+                        ],
                       ],
                     ),
                   ),
@@ -1056,6 +1243,7 @@ class _MainScreenState extends State<MainScreen>
   // Removed legacy fortune type card
 
   Widget _buildDreamSection() {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -1065,7 +1253,7 @@ class _MainScreenState extends State<MainScreen>
             fontFamily: 'SF Pro Display',
             fontSize: 20,
             fontWeight: FontWeight.w600,
-            color: AppColors.warmIvory,
+            color: AppColors.getTextPrimary(themeProvider.isDarkMode),
           ),
         ),
         const SizedBox(height: 16),
@@ -1097,7 +1285,7 @@ class _MainScreenState extends State<MainScreen>
               child: _buildGlassDreamCard(
                 title: AppStrings.interpretDream,
                 icon: Icons.auto_awesome_outlined,
-                iconColor: AppColors.warmIvory,
+                iconColor: themeProvider.isDarkMode ? AppColors.warmIvory : AppColors.getTextPrimary(false),
                 onTap: () => Navigator.push(context, MaterialPageRoute(
                   builder: (context) => const DreamInterpretationScreen(),
                 )),
@@ -1139,8 +1327,8 @@ class _MainScreenState extends State<MainScreen>
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.white.withValues(alpha: 0.12),
-                      Colors.white.withValues(alpha: 0.05),
+                      themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.12) : AppColors.premiumLightSurface.withValues(alpha: 0.9),
+                      themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.05) : AppColors.premiumLightSurface.withValues(alpha: 0.5),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(28),
@@ -1176,9 +1364,9 @@ class _MainScreenState extends State<MainScreen>
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.white.withValues(alpha: 0.14),
-                      Colors.white.withValues(alpha: 0.06),
-                      const Color(0xFFFF6B9D).withValues(alpha: 0.08),
+                      themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.14) : AppColors.premiumLightSurface,
+                      themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.06) : AppColors.premiumLightSurface.withValues(alpha: 0.9),
+                      themeProvider.isDarkMode ? const Color(0xFFFF6B9D).withValues(alpha: 0.08) : AppColors.premiumLightSurface.withValues(alpha: 0.8),
                     ],
                     stops: const [0.0, 0.5, 1.0],
                   ),
@@ -1255,7 +1443,7 @@ class _MainScreenState extends State<MainScreen>
                                     fontFamily: 'SF Pro Display',
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
-                                    color: AppColors.warmIvory,
+                                    color: AppColors.getTextPrimary(themeProvider.isDarkMode),
                                     letterSpacing: -0.3,
                                   ),
                                 ),
@@ -1265,7 +1453,7 @@ class _MainScreenState extends State<MainScreen>
                                   style: TextStyle(
                                     fontFamily: 'SF Pro Text',
                                     fontSize: 13,
-                                    color: Colors.white.withValues(alpha: 0.6),
+                                    color: AppColors.getTextSecondary(themeProvider.isDarkMode),
                                   ),
                                 ),
                               ],
@@ -1369,7 +1557,7 @@ class _MainScreenState extends State<MainScreen>
                                   color: Colors.white.withValues(alpha: 0.05),
                                   borderRadius: BorderRadius.circular(16),
                                   border: Border.all(
-                                    color: Colors.white.withValues(alpha: 0.1),
+                                    color: themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.1) : AppColors.premiumLightTextSecondary.withValues(alpha: 0.3),
                                     width: 1,
                                   ),
                                 ),
@@ -1382,13 +1570,13 @@ class _MainScreenState extends State<MainScreen>
                                         fontFamily: 'SF Pro Text',
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
-                                        color: Colors.white.withValues(alpha: 0.8),
+                                        color: themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.8) : AppColors.getTextSecondary(false),
                                       ),
                                     ),
                                     const SizedBox(width: 6),
                                     Icon(
                                       Icons.arrow_forward_rounded,
-                                      color: Colors.white.withValues(alpha: 0.8),
+                                      color: themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.8) : AppColors.getTextSecondary(false),
                                       size: 16,
                                     ),
                                   ],
@@ -1410,6 +1598,7 @@ class _MainScreenState extends State<MainScreen>
   }
   
   Widget _buildLiquidGlassCandidateCard(LoveCandidateModel candidate) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -1432,8 +1621,8 @@ class _MainScreenState extends State<MainScreen>
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Colors.white.withValues(alpha: 0.12),
-                  const Color(0xFFFF6B9D).withValues(alpha: 0.08),
+                  themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.12) : AppColors.premiumLightSurface,
+                  themeProvider.isDarkMode ? const Color(0xFFFF6B9D).withValues(alpha: 0.08) : AppColors.premiumLightSurface.withValues(alpha: 0.9),
                 ],
               ),
               borderRadius: BorderRadius.circular(20),
@@ -1512,7 +1701,7 @@ class _MainScreenState extends State<MainScreen>
                           fontFamily: 'SF Pro Display',
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.warmIvory,
+                          color: AppColors.getTextPrimary(themeProvider.isDarkMode),
                           letterSpacing: -0.3,
                         ),
                       ),
@@ -1691,126 +1880,107 @@ class _MainScreenState extends State<MainScreen>
           };
         }
         
-        return Container(
-          width: double.infinity,
+        return LiquidGlassCard(
           margin: const EdgeInsets.symmetric(horizontal: 16),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                const Color(0xFF2E2E3E).withOpacity(0.6),
-                const Color(0xFF1A1A2E).withOpacity(0.8),
-              ],
-            ),
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(color: Colors.white.withOpacity(0.1)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                blurRadius: 20,
-                offset: const Offset(0, 10),
-              ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  children: [
-                    // Header
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: AppColors.mysticPurpleAccent.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(16),
-                                border: Border.all(color: AppColors.mysticPurpleAccent.withOpacity(0.3)),
-                              ),
-                              child: const Icon(Icons.auto_graph, color: AppColors.mysticPurpleAccent),
-                            ),
-                            const SizedBox(width: 16),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  AppStrings.biorhythm,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  AppStrings.isEnglish ? 'Energy Cycles' : 'Enerji Döngüleri',
-                                  style: const TextStyle(color: Colors.white60, fontSize: 13),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        MysticalButton(
-                          text: AppStrings.details,
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => const BiorhythmScreen()),
-                          ),
-                          size: MysticalButtonSize.small,
-                        ),
-                      ],
-                    ),
-                    
-                    const SizedBox(height: 24),
-                    
-                    if (birthDate == null) 
+          borderRadius: 24,
+          glowColor: const Color(0xFF9C27B0), // Purple glow
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              // Header
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
                       Container(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: AppColors.mysticPurpleAccent.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: AppColors.mysticPurpleAccent.withOpacity(0.3)),
+                          color: Colors.white.withOpacity(0.1),
+                          shape: BoxShape.circle,
                         ),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.info_outline, color: AppColors.mysticPurpleAccent),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Text(
-                                AppStrings.selectBirthDateFirst,
-                                style: const TextStyle(color: Colors.white, fontSize: 14),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    else 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        child: const Icon(Icons.auto_graph, color: Color(0xFFD4C4F0), size: 24),
+                      ),
+                      const SizedBox(width: 12),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildCircularIndicator('Physical', scores['physical'] ?? 0, Colors.blueAccent),
-                          _buildCircularIndicator('Emotional', scores['emotional'] ?? 0, Colors.pinkAccent),
-                          _buildCircularIndicator('Mental', scores['mental'] ?? 0, Colors.greenAccent),
+                          Text(
+                            AppStrings.biorhythm,
+                            style: TextStyle(
+                              color: AppColors.getTextPrimary(themeProvider.isDarkMode),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'SF Pro Display',
+                            ),
+                          ),
+                          Text(
+                            AppStrings.isEnglish ? 'Energy Cycles' : 'Enerji Döngüleri',
+                            style: TextStyle(
+                              color: AppColors.getTextSecondary(themeProvider.isDarkMode),
+                              fontSize: 13,
+                              fontFamily: 'SF Pro Text',
+                            ),
+                          ),
                         ],
                       ),
+                    ],
+                  ),
+                  MysticalButton(
+                    text: AppStrings.details,
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const BiorhythmScreen()),
+                    ),
+                    size: MysticalButtonSize.small,
+                    customColor: const Color(0xFF9C27B0).withOpacity(0.3),
+                  ),
+                ],
+              ),
+              
+              const SizedBox(height: 24),
+              
+              if (birthDate == null) 
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: themeProvider.isDarkMode ? Colors.white.withOpacity(0.05) : AppColors.premiumLightSurface,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: themeProvider.isDarkMode ? Colors.white.withOpacity(0.1) : AppColors.premiumLightSurface),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.info_outline, color: Color(0xFFD4C4F0)),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          AppStrings.selectBirthDateFirst,
+                          style: TextStyle(
+                            color: AppColors.getTextPrimary(themeProvider.isDarkMode),
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              else 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildCircularIndicator('Physical', scores['physical'] ?? 0, const Color(0xFF4FC3F7), themeProvider.isDarkMode), // Light Blue
+                    _buildCircularIndicator('Emotional', scores['emotional'] ?? 0, const Color(0xFFF48FB1), themeProvider.isDarkMode), // Pink
+                    _buildCircularIndicator('Mental', scores['mental'] ?? 0, const Color(0xFFA5D6A7), themeProvider.isDarkMode), // Green
                   ],
                 ),
-              ),
-            ),
+            ],
           ),
         );
       },
     );
   }
 
-  Widget _buildCircularIndicator(String label, double score, Color color) {
+  Widget _buildCircularIndicator(String label, double score, Color color, bool isDark) {
     return Column(
       children: [
         Stack(
@@ -1829,8 +1999,8 @@ class _MainScreenState extends State<MainScreen>
             ),
             Text(
               '${score.toInt()}%',
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: AppColors.getTextPrimary(isDark),
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -1840,8 +2010,8 @@ class _MainScreenState extends State<MainScreen>
         const SizedBox(height: 12),
         Text(
           label,
-          style: const TextStyle(
-            color: Colors.white70,
+          style: TextStyle(
+            color: AppColors.getTextSecondary(isDark),
             fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
@@ -2233,6 +2403,7 @@ class _GlassFalCardState extends State<_GlassFalCard> with SingleTickerProviderS
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
       onTapDown: (_) {
         setState(() => _isPressed = true);
@@ -2246,6 +2417,7 @@ class _GlassFalCardState extends State<_GlassFalCard> with SingleTickerProviderS
       child: AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
+          final themeProvider = Provider.of<ThemeProvider>(context);
           // "Suck & Squeeze" Effect Logic
           // Value 0.0 = Normal State
           // Value 1.0 = Sucked In (Pressed) State
@@ -2283,13 +2455,13 @@ class _GlassFalCardState extends State<_GlassFalCard> with SingleTickerProviderS
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Colors.white.withValues(alpha: 0.1),
-                    Colors.white.withValues(alpha: 0.05),
+                    themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.1) : AppColors.premiumLightSurface.withValues(alpha: 0.8),
+                    themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.05) : AppColors.premiumLightSurface.withValues(alpha: 0.5),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.2),
+                  color: themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.2) : AppColors.premiumLightSurface.withValues(alpha: 1.0),
                   width: 1.5,
                 ),
                 boxShadow: [
@@ -2356,7 +2528,7 @@ class _GlassFalCardState extends State<_GlassFalCard> with SingleTickerProviderS
                               shape: BoxShape.circle,
                               gradient: RadialGradient(
                                 colors: [
-                                  Colors.white.withValues(alpha: 0.15),
+                                  themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.15) : AppColors.premiumLightAccent.withValues(alpha: 0.15),
                                   Colors.transparent,
                                 ],
                               ),
@@ -2383,13 +2555,13 @@ class _GlassFalCardState extends State<_GlassFalCard> with SingleTickerProviderS
                                 fontFamily: 'SF Pro Display',
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
-                                color: AppColors.warmIvory,
-                                shadows: [
+                                color: AppColors.getTextPrimary(themeProvider.isDarkMode),
+                                shadows: themeProvider.isDarkMode ? [
                                   Shadow(
                                     color: Colors.black.withValues(alpha: 0.6),
                                     blurRadius: 5,
                                   ),
-                                ],
+                                ] : null,
                               ),
                               textAlign: TextAlign.center,
                               maxLines: 2,
@@ -2524,6 +2696,7 @@ class _GlassFeatureCardState extends State<_GlassFeatureCard> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),
       onTapUp: (_) {
@@ -2546,13 +2719,13 @@ class _GlassFeatureCardState extends State<_GlassFeatureCard> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Colors.white.withValues(alpha: 0.12),
-                    Colors.white.withValues(alpha: 0.06),
+                    themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.12) : AppColors.premiumLightSurface.withValues(alpha: 0.9),
+                    themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.06) : AppColors.premiumLightSurface.withValues(alpha: 0.7),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.15),
+                  color: themeProvider.isDarkMode ? Colors.white.withValues(alpha: 0.15) : AppColors.premiumLightSurface,
                   width: 1,
                 ),
                 boxShadow: [
@@ -2596,7 +2769,7 @@ class _GlassFeatureCardState extends State<_GlassFeatureCard> {
                       fontFamily: 'SF Pro Text',
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white.withValues(alpha: 0.9),
+                      color: AppColors.getTextPrimary(themeProvider.isDarkMode).withValues(alpha: 0.9),
                     ),
                     textAlign: TextAlign.center,
                     maxLines: 2,

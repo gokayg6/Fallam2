@@ -26,8 +26,8 @@ class AuthProvider with ChangeNotifier {
   }
 
   void _init() {
-    // Firebase Auth persistence'ı ayarla
-    _auth.setPersistence(Persistence.LOCAL);
+    // Firebase Auth persistence is LOCAL by default on mobile platforms
+    // setPersistence() is only available on web and not needed here
     
     // Auth state changes'i dinle
     _auth.authStateChanges().listen((User? user) async {

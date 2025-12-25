@@ -11,6 +11,8 @@ import '../../core/providers/user_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../core/widgets/mystical_button.dart';
 import '../../core/services/purchase_service.dart';
+import '../../core/widgets/liquid_glass_navbar.dart';
+import '../../core/widgets/liquid_glass_widgets.dart';
 import '../main/main_screen.dart';
 
 class PremiumScreen extends StatefulWidget {
@@ -189,66 +191,99 @@ class _PremiumScreenState extends State<PremiumScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(gradient: AppColors.premiumDarkGradient),
-        child: SafeArea(
-          child: Column(
-            children: [
-              _buildAppBar(),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(20),
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    children: [
-                      _buildHeader(),
-                      const SizedBox(height: 32),
-                      _buildFeatures(),
-                      const SizedBox(height: 32),
-                      _buildPlans(),
-                      const SizedBox(height: 32),
-                      MysticalButton(
-                        text: _isLoading ? AppStrings.processing : AppStrings.startSubscription,
-                        onPressed: _isLoading ? null : _purchasePremium,
-                        width: double.infinity,
-                        showGlow: true,
-                        customGradient: const LinearGradient(colors: [Color(0xFFFFD700), Color(0xFFFFA500)]),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, _) {
+        final isDark = themeProvider.isDarkMode;
+        final bgColor = isDark ? AppColors.background : const Color(0xFFFEFDFB);
+        final bgGradient = isDark 
+            ? themeProvider.backgroundGradient 
+            : const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFFFEFDFB), Color(0xFFFAF8F5)],
+              );
+        
+        return Scaffold(
+          backgroundColor: bgColor,
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(gradient: bgGradient),
+            child: SafeArea(
+              child: Column(
+                children: [
+                  _buildAppBar(isDark),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(20),
+                      physics: const BouncingScrollPhysics(),
+                      child: Column(
+                        children: [
+                          _buildHeader(isDark),
+                          const SizedBox(height: 32),
+                          _buildFeatures(isDark),
+                          const SizedBox(height: 32),
+                          _buildPlans(isDark),
+                          const SizedBox(height: 32),
+                          MysticalButton(
+                            text: _isLoading ? AppStrings.processing : AppStrings.startSubscription,
+                            onPressed: _isLoading ? null : _purchasePremium,
+                            width: double.infinity,
+                            showGlow: true,
+                            customGradient: const LinearGradient(colors: [Color(0xFFD4AF37), Color(0xFFC9A227)]),
+                          ),
+                          const SizedBox(height: 24),
+                          _buildPolicies(isDark),
+                          const SizedBox(height: 40),
+                        ],
                       ),
-                      const SizedBox(height: 24),
-                      _buildPolicies(),
-                      const SizedBox(height: 40),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildAppBar() {
-    return Padding(
-      padding: const EdgeInsets.all(16),
+  Widget _buildAppBar(bool isDark) {
+    final btnBg = isDark ? Colors.white.withOpacity(0.1) : const Color(0xFFF5F2ED);
+    final iconColor = isDark ? Colors.white : const Color(0xFF2D2D2D);
+    
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         children: [
-          IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.close_rounded, color: Colors.white, size: 28),
+          GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: btnBg,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: isDark ? null : [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.04),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Icon(Icons.close_rounded, color: iconColor, size: 22),
+            ),
           ),
           const Spacer(),
-          if (kDebugMode)
-            const Text('DEBUG MODE', style: TextStyle(color: Colors.white24, fontSize: 10)),
         ],
       ),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(bool isDark) {
+    final titleColor = isDark ? Colors.white : const Color(0xFF2D2D2D);
+    final subtitleColor = isDark ? Colors.white70 : const Color(0xFF6B6B6B);
+    
     return ScaleTransition(
       scale: _cardAnimation,
       child: Column(
@@ -257,70 +292,89 @@ class _PremiumScreenState extends State<PremiumScreen>
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              gradient: const LinearGradient(colors: [Color(0xFFFFD700), Color(0xFFFFA500)]),
+              gradient: const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFFD4AF37), Color(0xFFC9A227)],
+              ),
               boxShadow: [
-                BoxShadow(color: const Color(0xFFFFA500).withOpacity(0.5), blurRadius: 30, spreadRadius: 5),
+                BoxShadow(color: const Color(0xFFD4AF37).withOpacity(0.35), blurRadius: 25, spreadRadius: 3),
               ],
             ),
-            child: const Icon(Icons.diamond_rounded, size: 56, color: Colors.white),
+            child: const Icon(Icons.auto_awesome, size: 36, color: Colors.white),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 28),
           Text(
             AppStrings.premiumTitle,
-            style: AppTextStyles.headingLarge.copyWith(
-              color: Colors.white,
-              fontSize: 32,
+            style: TextStyle(
+              color: titleColor,
+              fontSize: 28,
               fontWeight: FontWeight.bold,
-              shadows: [Shadow(color: const Color(0xFFFFA500).withOpacity(0.5), blurRadius: 15)],
+              fontFamily: 'SF Pro Display',
             ),
           ),
           const SizedBox(height: 12),
-          Text(
-            AppStrings.premiumSubtitle,
-            textAlign: TextAlign.center,
-            style: AppTextStyles.bodyLarge.copyWith(color: Colors.white70),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Text(
+              AppStrings.premiumSubtitle,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: subtitleColor,
+                fontSize: 15,
+                fontFamily: 'SF Pro Text',
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildFeatures() {
+  Widget _buildFeatures(bool isDark) {
+    final cardBg = isDark ? Colors.white.withOpacity(0.08) : Colors.white;
+    final titleColor = isDark ? Colors.white : const Color(0xFF2D2D2D);
+    final descColor = isDark ? Colors.white60 : const Color(0xFF6B6B6B);
+    
     return Column(
       children: _getPremiumFeatures().asMap().entries.map((e) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 16),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.05),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.white.withOpacity(0.1)),
+          padding: const EdgeInsets.only(bottom: 14),
+          child: Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              color: cardBg,
+              borderRadius: BorderRadius.circular(18),
+              boxShadow: isDark ? null : [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.04),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
                 ),
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(color: Colors.white10, borderRadius: BorderRadius.circular(12)),
-                      child: Icon(e.value['icon'], color: const Color(0xFFFFA500), size: 24),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(e.value['title'], style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                          Text(e.value['description'], style: const TextStyle(color: Colors.white60, fontSize: 12)),
-                        ],
-                      ),
-                    ),
-                  ],
+              ],
+            ),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(11),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFD4AF37).withOpacity(isDark ? 0.2 : 0.12),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(e.value['icon'], color: const Color(0xFFD4AF37), size: 22),
                 ),
-              ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(e.value['title'], style: TextStyle(color: titleColor, fontWeight: FontWeight.w600, fontSize: 15, fontFamily: 'SF Pro Display')),
+                      const SizedBox(height: 3),
+                      Text(e.value['description'], style: TextStyle(color: descColor, fontSize: 12, fontFamily: 'SF Pro Text')),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         );
@@ -328,25 +382,27 @@ class _PremiumScreenState extends State<PremiumScreen>
     );
   }
 
-  Widget _buildPlans() {
+  Widget _buildPlans(bool isDark) {
     return Column(
       children: _getPricingPlans().map((plan) {
         return _PremiumPlanCard(
           plan: plan,
           isSelected: _selectedPlan == plan['id'],
           onTap: () => setState(() => _selectedPlan = plan['id']),
+          isDark: isDark,
         );
       }).toList(),
     );
   }
 
-  Widget _buildPolicies() {
+  Widget _buildPolicies(bool isDark) {
+    final policyColor = isDark ? Colors.white38 : const Color(0xFF6B6B6B).withOpacity(0.6);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(AppStrings.privacyPolicy, style: const TextStyle(color: Colors.white38, fontSize: 11, decoration: TextDecoration.underline)),
+        Text(AppStrings.privacyPolicy, style: TextStyle(color: policyColor, fontSize: 11, decoration: TextDecoration.underline, fontFamily: 'SF Pro Text')),
         const SizedBox(width: 20),
-        Text(AppStrings.termsOfUse, style: const TextStyle(color: Colors.white38, fontSize: 11, decoration: TextDecoration.underline)),
+        Text(AppStrings.termsOfUse, style: TextStyle(color: policyColor, fontSize: 11, decoration: TextDecoration.underline, fontFamily: 'SF Pro Text')),
       ],
     );
   }
@@ -356,11 +412,13 @@ class _PremiumPlanCard extends StatefulWidget {
   final Map<String, dynamic> plan;
   final bool isSelected;
   final VoidCallback onTap;
+  final bool isDark;
 
   const _PremiumPlanCard({
     required this.plan,
     required this.isSelected,
     required this.onTap,
+    required this.isDark,
   });
 
   @override
@@ -388,8 +446,12 @@ class _PremiumPlanCardState extends State<_PremiumPlanCard>
 
   @override
   Widget build(BuildContext context) {
+    final cardBg = widget.isDark ? Colors.white.withOpacity(0.08) : Colors.white;
+    final titleColor = widget.isDark ? Colors.white : const Color(0xFF2D2D2D);
+    final borderColor = widget.isDark ? Colors.white.withOpacity(0.15) : const Color(0xFFD4AF37).withOpacity(0.25);
+    
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 14),
       child: GestureDetector(
         onTapDown: (_) => _controller.animateTo(1.0, curve: Curves.easeOutQuad),
         onTapUp: (_) {
@@ -401,135 +463,111 @@ class _PremiumPlanCardState extends State<_PremiumPlanCard>
           animation: _controller,
           builder: (context, child) {
             final double t = _controller.value;
-            double scale = 1.0 - (0.04 * t);
-            double tilt = 0.1 * t;
+            double scale = 1.0 - (0.03 * t);
 
-            return Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.001)
-                ..scale(scale)
-                ..rotateX(tilt),
+            return Transform.scale(
+              scale: scale,
               child: child,
             );
           },
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(24),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  gradient: widget.isSelected 
-                    ? const LinearGradient(
-                        colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      )
-                    : LinearGradient(
-                        colors: [
-                          Colors.white.withValues(alpha: 0.12),
-                          Colors.white.withValues(alpha: 0.06),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                  borderRadius: BorderRadius.circular(24),
-                  border: Border.all(
-                    color: widget.isSelected ? Colors.white70 : Colors.white24,
-                    width: 1.5,
-                  ),
-                  boxShadow: [
-                    if (widget.isSelected)
-                      BoxShadow(
-                        color: const Color(0xFFFFA500).withValues(alpha: 0.3),
-                        blurRadius: 20,
-                        spreadRadius: 2,
-                      ),
-                  ],
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: widget.isSelected ? null : cardBg,
+              gradient: widget.isSelected 
+                ? const LinearGradient(
+                    colors: [Color(0xFFD4AF37), Color(0xFFC9A227)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  )
+                : null,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: widget.isSelected ? Colors.transparent : borderColor,
+                width: 1.5,
+              ),
+              boxShadow: widget.isDark ? null : [
+                BoxShadow(
+                  color: widget.isSelected 
+                      ? const Color(0xFFD4AF37).withOpacity(0.25) 
+                      : Colors.black.withOpacity(0.04),
+                  blurRadius: widget.isSelected ? 15 : 12,
+                  offset: const Offset(0, 4),
                 ),
-                child: Stack(
-                  children: [
-                    // Chromatic Aberration for unselected
-                    if (!widget.isSelected) ...[
-                       Positioned(
-                        top: 1, left: 1,
-                        child: Opacity(
-                          opacity: 0.2,
-                          child: Container(
-                            width: 200, height: 100, // Approximate
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.red.withValues(alpha: 0.3), width: 1.5),
-                              borderRadius: BorderRadius.circular(24),
+              ],
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            widget.plan['title'],
+                            style: TextStyle(
+                              color: widget.isSelected ? Colors.white : titleColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              fontFamily: 'SF Pro Display',
                             ),
                           ),
+                          if (widget.plan['popular']) ...[
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                              decoration: BoxDecoration(
+                                color: widget.isSelected 
+                                    ? Colors.white.withOpacity(0.3) 
+                                    : const Color(0xFFD4AF37).withOpacity(widget.isDark ? 0.25 : 0.15),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                'POPULAR',
+                                style: TextStyle(
+                                  color: widget.isSelected ? Colors.white : const Color(0xFFD4AF37), 
+                                  fontSize: 9, 
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'SF Pro Text',
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        '₺${widget.plan['price']} / ${widget.plan['period']}',
+                        style: TextStyle(
+                          color: widget.isSelected ? Colors.white : titleColor,
+                          fontSize: 21,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'SF Pro Display',
                         ),
                       ),
                     ],
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    widget.plan['title'],
-                                    style: TextStyle(
-                                      color: widget.isSelected ? Colors.white : Colors.white70,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  if (widget.plan['popular']) ...[
-                                    const SizedBox(width: 8),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white24,
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: const Text(
-                                        'POPULAR',
-                                        style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ],
-                                ],
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                '₺${widget.plan['price']} / ${widget.plan['period']}',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                  shadows: widget.isSelected 
-                                    ? [const Shadow(color: Colors.black26, blurRadius: 4, offset: Offset(0, 2))]
-                                    : null,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.white70),
-                          ),
-                          child: Icon(
-                            widget.isSelected ? Icons.check_circle : null,
-                            color: Colors.white,
-                            size: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: widget.isSelected 
+                          ? Colors.white 
+                          : const Color(0xFFD4AF37).withOpacity(0.4),
+                      width: 1.5,
+                    ),
+                    color: widget.isSelected ? Colors.white : null,
+                  ),
+                  child: Icon(
+                    Icons.check,
+                    color: widget.isSelected ? const Color(0xFFD4AF37) : Colors.transparent,
+                    size: 16,
+                  ),
+                ),
+              ],
             ),
           ),
         ),

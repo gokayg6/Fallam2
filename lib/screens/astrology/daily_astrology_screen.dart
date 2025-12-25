@@ -187,7 +187,7 @@ class _DailyAstrologyScreenState extends State<DailyAstrologyScreen> {
         return Scaffold(
           backgroundColor: Colors.transparent,
           body: Container(
-            decoration: BoxDecoration(gradient: AppColors.premiumDarkGradient),
+            decoration: BoxDecoration(gradient: themeProvider.backgroundGradient),
             child: SafeArea(
               child: LayoutBuilder(
                 builder: (context, constraints) {

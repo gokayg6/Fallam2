@@ -203,8 +203,8 @@ class _LoveCandidateFormScreenState extends State<LoveCandidateFormScreen>
         centerTitle: true,
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: AppColors.premiumDarkGradient,
+        decoration: BoxDecoration(
+          gradient: Provider.of<ThemeProvider>(context).backgroundGradient,
         ),
         child: SafeArea(
           child: FadeTransition(

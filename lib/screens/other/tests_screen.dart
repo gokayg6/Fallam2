@@ -65,12 +65,12 @@ class _TestsScreenState extends State<TestsScreen>
     }
   }
 
-  Color _getTestTypeColor(TestType type) {
+  Color _getTestTypeColor(TestType type, bool isDark) {
     switch (type) {
       case TestType.love:
         return const Color(0xFFE88BC4);
       case TestType.personality:
-        return LiquidGlassColors.liquidGlassActive;
+        return LiquidGlassColors.liquidGlassActive(isDark);
       case TestType.compatibility:
         return const Color(0xFF9B8ED0);
       case TestType.career:
@@ -84,66 +84,72 @@ class _TestsScreenState extends State<TestsScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: AppColors.premiumDarkGradient,
-      ),
-      child: SafeArea(
-        child: LiquidGlassScreenWrapper(
-          duration: const Duration(milliseconds: 700),
-          child: Column(
-            children: [
-              _buildHeader(),
-              _buildCategorySelector(),
-              Expanded(
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Consumer<TestProvider>(
-                        builder: (context, testProvider, child) {
-                          if (testProvider.isLoading) {
-                            return Center(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: BackdropFilter(
-                                  filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                                  child: Container(
-                                    padding: const EdgeInsets.all(30),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.1),
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(
-                                        color: Colors.white.withOpacity(0.15),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        final isDark = themeProvider.isDarkMode;
+        
+        return Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: themeProvider.backgroundGradient,
+          ),
+          child: SafeArea(
+            child: LiquidGlassScreenWrapper(
+              duration: const Duration(milliseconds: 700),
+              child: Column(
+                children: [
+                  _buildHeader(),
+                  _buildCategorySelector(isDark),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Consumer<TestProvider>(
+                            builder: (context, testProvider, child) {
+                              if (testProvider.isLoading) {
+                                return Center(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: BackdropFilter(
+                                      filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                                      child: Container(
+                                        padding: const EdgeInsets.all(30),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(0.1),
+                                          borderRadius: BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Colors.white.withOpacity(0.15),
+                                          ),
+                                        ),
+                                        child: const MysticalLoading(
+                                          type: MysticalLoadingType.stars,
+                                          message: 'Testler yükleniyor...',
+                                        ),
                                       ),
                                     ),
-                                    child: const MysticalLoading(
-                                      type: MysticalLoadingType.stars,
-                                      message: 'Testler yükleniyor...',
-                                    ),
                                   ),
-                                ),
-                              ),
-                            );
-                          }
+                                );
+                              }
 
-                          return _selectedCategory == 'available'
-                              ? _buildAvailableTests(testProvider, true)
-                              : _buildCompletedTests(testProvider, true);
-                        },
-                      ),
+                              return _selectedCategory == 'available'
+                                  ? _buildAvailableTests(testProvider, isDark)
+                                  : _buildCompletedTests(testProvider, isDark);
+                            },
+                          ),
+                        ),
+                        const BannerAdWidget(
+                          margin: EdgeInsets.symmetric(vertical: 8),
+                        ),
+                      ],
                     ),
-                    const BannerAdWidget(
-                      margin: EdgeInsets.symmetric(vertical: 8),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -153,7 +159,7 @@ class _TestsScreenState extends State<TestsScreen>
     );
   }
 
-  Widget _buildCategorySelector() {
+  Widget _buildCategorySelector(bool isDark) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
@@ -162,6 +168,7 @@ class _TestsScreenState extends State<TestsScreen>
             child: _buildLiquidGlassCategoryButton(
               'available',
               AppStrings.all,
+              isDark,
             ),
           ),
           const SizedBox(width: 12),
@@ -169,6 +176,7 @@ class _TestsScreenState extends State<TestsScreen>
             child: _buildLiquidGlassCategoryButton(
               'completed',
               AppStrings.completedTests,
+              isDark,
             ),
           ),
         ],
@@ -176,7 +184,7 @@ class _TestsScreenState extends State<TestsScreen>
     );
   }
 
-  Widget _buildLiquidGlassCategoryButton(String value, String label) {
+  Widget _buildLiquidGlassCategoryButton(String value, String label, bool isDark) {
     final isSelected = _selectedCategory == value;
     
     return GestureDetector(
@@ -198,29 +206,29 @@ class _TestsScreenState extends State<TestsScreen>
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        LiquidGlassColors.liquidGlassActive.withOpacity(0.5),
-                        LiquidGlassColors.liquidGlassSecondary.withOpacity(0.4),
+                        LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.5),
+                        LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.4),
                       ],
                     )
                   : LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Colors.white.withOpacity(0.12),
-                        Colors.white.withOpacity(0.05),
+                        isDark ? Colors.white.withOpacity(0.12) : AppColors.premiumLightSurface,
+                        isDark ? Colors.white.withOpacity(0.05) : AppColors.premiumLightSurface.withOpacity(0.8),
                       ],
                     ),
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
                 color: isSelected
-                    ? LiquidGlassColors.liquidGlassActive.withOpacity(0.5)
-                    : Colors.white.withOpacity(0.15),
+                    ? LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.5)
+                    : (isDark ? Colors.white.withOpacity(0.15) : AppColors.premiumLightTextSecondary.withOpacity(0.2)),
                 width: isSelected ? 1.5 : 1,
               ),
               boxShadow: isSelected
                   ? [
                       BoxShadow(
-                        color: LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
+                        color: LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
                         blurRadius: 15,
                         spreadRadius: 1,
                       ),
@@ -231,7 +239,7 @@ class _TestsScreenState extends State<TestsScreen>
               label,
               textAlign: TextAlign.center,
               style: AppTextStyles.bodyMedium.copyWith(
-                color: Colors.white,
+                color: isSelected ? Colors.white : (isDark ? Colors.white : AppColors.getTextPrimary(false).withOpacity(0.7)),
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
               ),
             ),
@@ -260,13 +268,13 @@ class _TestsScreenState extends State<TestsScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (popularTests.isNotEmpty) ...[
-            _buildSectionHeader(AppStrings.popularTests, 0),
+            _buildSectionHeader(AppStrings.popularTests, 0, isDark),
             const SizedBox(height: 16),
             _buildPopularTestsList(popularTests, isDark),
             const SizedBox(height: 32),
           ],
           if (otherTests.isNotEmpty) ...[
-            _buildSectionHeader(AppStrings.otherTests, 200),
+            _buildSectionHeader(AppStrings.otherTests, 200, isDark),
             const SizedBox(height: 16),
             _buildOtherTestsList(otherTests, isDark),
           ],
@@ -275,7 +283,7 @@ class _TestsScreenState extends State<TestsScreen>
     );
   }
 
-  Widget _buildSectionHeader(String title, int delayMs) {
+  Widget _buildSectionHeader(String title, int delayMs, bool isDark) {
     return TweenAnimationBuilder<double>(
       duration: const Duration(milliseconds: 500),
       tween: Tween(begin: 0.0, end: 1.0),
@@ -288,14 +296,14 @@ class _TestsScreenState extends State<TestsScreen>
             child: ShaderMask(
               shaderCallback: (bounds) => LinearGradient(
                 colors: [
-                  Colors.white,
-                  LiquidGlassColors.shimmerColor,
+                  AppColors.getTextPrimary(isDark),
+                  LiquidGlassColors.shimmerColor(isDark),
                 ],
               ).createShader(bounds),
               child: Text(
                 title,
                 style: AppTextStyles.headingLarge.copyWith(
-                  color: Colors.white,
+                  color: AppColors.getTextPrimary(isDark),
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -386,10 +394,10 @@ class _TestsScreenState extends State<TestsScreen>
     }
   }
 
-  Color _getTestColor(String testId) {
+  Color _getTestColor(String testId, bool isDark) {
     switch (testId) {
       case 'personality':
-        return LiquidGlassColors.liquidGlassActive;
+        return LiquidGlassColors.liquidGlassActive(isDark);
       case 'friendship':
         return const Color(0xFF7CC4A4);
       case 'love':
@@ -399,13 +407,13 @@ class _TestsScreenState extends State<TestsScreen>
       case 'love_what_you_want':
         return const Color(0xFFE6D3A3);
       default:
-        return LiquidGlassColors.liquidGlassActive;
+        return LiquidGlassColors.liquidGlassActive(isDark);
     }
   }
 
   Widget _buildPopularTestCard(QuizTestDefinition test, bool isDark, int index) {
     final gifPath = _getTestGifPath(test);
-    final testColor = _getTestColor(test.id);
+    final testColor = _getTestColor(test.id, isDark);
     
     return LiquidGlassCard(
       margin: const EdgeInsets.only(bottom: 16),
@@ -428,7 +436,7 @@ class _TestsScreenState extends State<TestsScreen>
                 Text(
                   _getLocalizedQuizTitle(test),
                   style: AppTextStyles.headingSmall.copyWith(
-                    color: Colors.white,
+                    color: AppColors.getTextPrimary(isDark),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -436,7 +444,7 @@ class _TestsScreenState extends State<TestsScreen>
                 Text(
                   _getLocalizedQuizSubtitle(test),
                   style: AppTextStyles.bodySmall.copyWith(
-                    color: Colors.white.withOpacity(0.7),
+                    color: AppColors.getTextSecondary(isDark),
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -516,13 +524,13 @@ class _TestsScreenState extends State<TestsScreen>
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                      LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                      LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                      LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.15),
+                    color: isDark ? Colors.white.withOpacity(0.15) : AppColors.premiumLightTextSecondary.withOpacity(0.2),
                   ),
                 ),
                 child: Center(
@@ -542,7 +550,7 @@ class _TestsScreenState extends State<TestsScreen>
                 Text(
                   test.title,
                   style: AppTextStyles.headingSmall.copyWith(
-                    color: Colors.white,
+                    color: AppColors.getTextPrimary(isDark),
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
                   ),
@@ -551,7 +559,7 @@ class _TestsScreenState extends State<TestsScreen>
                 Text(
                   test.description,
                   style: AppTextStyles.bodySmall.copyWith(
-                    color: Colors.white.withOpacity(0.6),
+                    color: AppColors.getTextSecondary(isDark),
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -561,7 +569,7 @@ class _TestsScreenState extends State<TestsScreen>
           ),
           Icon(
             Icons.chevron_right,
-            color: Colors.white.withOpacity(0.5),
+            color: AppColors.getTextSecondary(isDark),
             size: 20,
           ),
         ],
@@ -576,7 +584,7 @@ class _TestsScreenState extends State<TestsScreen>
     final quizTestResults = testProvider.quizTestResults;
 
     if (completedTests.isEmpty && quizTestResults.isEmpty) {
-      return _buildEmptyCompletedState();
+      return _buildEmptyCompletedState(isDark);
     }
 
     return SingleChildScrollView(
@@ -586,14 +594,14 @@ class _TestsScreenState extends State<TestsScreen>
         children: [
           const SizedBox(height: 16),
           if (quizTestResults.isNotEmpty) ...[
-            _buildSectionHeader(AppStrings.testResults, 0),
+            _buildSectionHeader(AppStrings.testResults, 0, isDark),
             const SizedBox(height: 16),
             _buildQuizTestResultsList(quizTestResults, isDark),
             if (completedTests.isNotEmpty) const SizedBox(height: 24),
           ],
           if (completedTests.isNotEmpty) ...[
             if (quizTestResults.isNotEmpty)
-              _buildSectionHeader(AppStrings.otherTests, 100),
+              _buildSectionHeader(AppStrings.otherTests, 100, isDark),
             if (quizTestResults.isEmpty) const SizedBox(height: 16),
             _buildTestsList(completedTests, isDark),
           ],
@@ -652,8 +660,8 @@ class _TestsScreenState extends State<TestsScreen>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                          LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                          LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                          LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(12),
@@ -785,7 +793,7 @@ class _TestsScreenState extends State<TestsScreen>
   }
 
   Widget _buildTestCard(TestModel test, bool isDark, int index) {
-    final testColor = _getTestTypeColor(test.type);
+    final testColor = _getTestTypeColor(test.type, isDark);
     
     return LiquidGlassCard(
       margin: const EdgeInsets.only(bottom: 16),
@@ -1008,7 +1016,7 @@ class _TestsScreenState extends State<TestsScreen>
     }
   }
 
-  Widget _buildEmptyCompletedState() {
+  Widget _buildEmptyCompletedState(bool isDark) {
     return Center(
       child: LiquidGlassCard(
         padding: const EdgeInsets.all(40),
@@ -1021,8 +1029,8 @@ class _TestsScreenState extends State<TestsScreen>
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                    LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                    LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                    LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                   ],
                 ),
                 shape: BoxShape.circle,

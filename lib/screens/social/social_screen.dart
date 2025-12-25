@@ -13,6 +13,7 @@ import 'soulmate_analysis_screen.dart';
 import 'chat_detail_screen.dart';
 import '../../core/widgets/mystical_button.dart';
 import 'dart:ui';
+import '../../core/widgets/liquid_glass_widgets.dart';
 
 class SocialScreen extends StatefulWidget {
   const SocialScreen({super.key});
@@ -343,34 +344,40 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(gradient: AppColors.premiumDarkGradient),
-        child: SafeArea(
-          child: Column(
-            children: [
-              _buildHeader(true),
-              _buildTabBar(true),
-              Expanded(
-                child: TabBarView(
-                  controller: _tabController,
-                  children: [
-                    // Bekleyen İstekler sekmesi
-                    _buildRequestsTab(true),
-                    // Sohbet sekmesi
-                    _buildChatTab(true),
-                    // Gizlilik sekmesi
-                    _buildPrivacyTab(true),
-                  ],
-                ),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        final isDark = themeProvider.isDarkMode;
+        
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(gradient: themeProvider.backgroundGradient),
+            child: SafeArea(
+              child: Column(
+                children: [
+                  _buildHeader(isDark),
+                  _buildTabBar(isDark),
+                  Expanded(
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        // Bekleyen İstekler sekmesi
+                        _buildRequestsTab(isDark),
+                        // Sohbet sekmesi
+                        _buildChatTab(isDark),
+                        // Gizlilik sekmesi
+                        _buildPrivacyTab(isDark),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -384,9 +391,9 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                Colors.white.withValues(alpha: 0.1),
-                Colors.white.withValues(alpha: 0.05),
+                colors: [
+                isDark ? Colors.white.withValues(alpha: 0.1) : AppColors.premiumLightSurface,
+                isDark ? Colors.white.withValues(alpha: 0.05) : AppColors.premiumLightSurface.withValues(alpha: 0.8),
               ],
             ),
             border: Border(
@@ -424,7 +431,7 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
                 child: Text(
                   AppStrings.social,
                   style: AppTextStyles.headingLarge.copyWith(
-                    color: Colors.white,
+                    color: AppColors.getTextPrimary(isDark),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -446,13 +453,13 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.white.withOpacity(0.08),
-                Colors.white.withOpacity(0.04),
+                isDark ? Colors.white.withOpacity(0.08) : Colors.black.withOpacity(0.05),
+                isDark ? Colors.white.withOpacity(0.04) : Colors.black.withOpacity(0.02),
               ],
             ),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: AppColors.mysticPurpleAccent.withOpacity(0.2),
+              color: isDark ? AppColors.mysticPurpleAccent.withOpacity(0.2) : AppColors.premiumLightTextSecondary.withOpacity(0.2),
             ),
           ),
           child: TabBar(
@@ -473,7 +480,7 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
             indicatorSize: TabBarIndicatorSize.tab,
             dividerColor: Colors.transparent,
             labelColor: Colors.white,
-            unselectedLabelColor: Colors.white.withOpacity(0.6),
+            unselectedLabelColor: isDark ? Colors.white.withOpacity(0.6) : AppColors.getTextSecondary(false),
             labelStyle: AppTextStyles.bodyMedium.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -590,7 +597,7 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
           padding: const EdgeInsets.all(24),
           child: Text(
             _error!,
-            style: AppTextStyles.bodyMedium.copyWith(color: Colors.redAccent),
+            style: AppTextStyles.bodyMedium.copyWith(color: AppColors.error),
             textAlign: TextAlign.center,
           ),
         ),
@@ -632,18 +639,26 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
               final statusText = isVisible
                   ? AppStrings.socialVisibilityStatusVisible
                   : AppStrings.socialVisibilityStatusHidden;
-              return Container(
+              return LiquidGlassCard(
                 padding: const EdgeInsets.all(20),
-                decoration: AppColors.getModernCardDecoration(isDark),
+                blurAmount: 20,
+                glowColor: isVisible ? AppColors.primary : null,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Icon(
-                          Icons.visibility,
-                          color: AppColors.primary,
-                          size: 24,
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: AppColors.primary.withOpacity(0.2),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            Icons.visibility,
+                            color: AppColors.primary,
+                            size: 24,
+                          ),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
@@ -657,7 +672,10 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
                         ),
                         Switch(
                           value: isVisible,
-                          activeColor: AppColors.primary,
+                          activeColor: Colors.white,
+                          activeTrackColor: AppColors.primary,
+                          inactiveThumbColor: Colors.white,
+                          inactiveTrackColor: Colors.white.withOpacity(0.2),
                           onChanged: (value) {
                             userProvider.updateSocialVisibility(value);
                           },
@@ -671,14 +689,14 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
                         color: AppColors.getTextSecondary(isDark),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 16),
                     Container(
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withValues(alpha: 0.1),
+                        color: (isVisible ? AppColors.primary : Colors.grey).withOpacity(0.15),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: AppColors.primary.withValues(alpha: 0.3),
+                          color: (isVisible ? AppColors.primary : Colors.grey).withOpacity(0.3),
                           width: 1,
                         ),
                       ),
@@ -686,15 +704,15 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
                         children: [
                           Icon(
                             isVisible ? Icons.check_circle : Icons.info_outline,
-                            color: AppColors.primary,
+                            color: isVisible ? AppColors.primary : Colors.grey,
                             size: 20,
                           ),
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 10),
                           Expanded(
                             child: Text(
                               statusText,
                               style: AppTextStyles.bodySmall.copyWith(
-                                color: AppColors.primary,
+                                color: isVisible ? AppColors.primary : Colors.grey,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -712,18 +730,25 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
           _buildBlockedUsersSection(isDark),
           const SizedBox(height: 24),
           // Gizlilik politikası bilgisi
-          Container(
+          LiquidGlassCard(
             padding: const EdgeInsets.all(20),
-            decoration: AppColors.getModernCardDecoration(isDark),
+            blurAmount: 20,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Icon(
-                      Icons.privacy_tip,
-                      color: AppColors.primary,
-                      size: 24,
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: AppColors.secondary.withOpacity(0.2),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.privacy_tip,
+                        color: AppColors.secondary,
+                        size: 24,
+                      ),
                     ),
                     const SizedBox(width: 12),
                     Text(
@@ -742,11 +767,22 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
                     color: AppColors.getTextSecondary(isDark),
                   ),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  AppStrings.privacyPolicyPoints,
-                  style: AppTextStyles.bodySmall.copyWith(
-                    color: AppColors.getTextSecondary(isDark),
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.05),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.1),
+                    ),
+                  ),
+                  child: Text(
+                    AppStrings.privacyPolicyPoints,
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: AppColors.getTextSecondary(isDark),
+                      height: 1.5,
+                    ),
                   ),
                 ),
               ],
@@ -760,56 +796,78 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
   Widget _buildAuraMatchSection(bool isDark) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Container(
+      child: LiquidGlassCard(
         padding: const EdgeInsets.all(24),
-        decoration: AppColors.getModernCardDecoration(isDark),
+        blurAmount: 30,
+        glowColor: const Color(0xFF9C27B0), // Purple glow
         child: Column(
           children: [
+            // Magical Purple Orb
             Container(
-              width: 80,
-              height: 80,
+              width: 100,
+              height: 100,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    AppColors.primary,
-                    AppColors.secondary,
-                  ],
-                ),
                 shape: BoxShape.circle,
+                gradient: const RadialGradient(
+                  colors: [
+                    Color(0xFFE1BEE7), // Light Purple center
+                    Color(0xFF9C27B0), // Purple
+                    Color(0xFF4A148C), // Deep Purple
+                  ],
+                  stops: [0.2, 0.6, 1.0],
+                ),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primary.withValues(alpha: 0.5),
-                    blurRadius: 20,
-                    spreadRadius: 4,
+                    color: const Color(0xFF9C27B0).withOpacity(0.4),
+                    blurRadius: 30,
+                    spreadRadius: 2,
                   ),
                 ],
+                border: Border.all(
+                  color: isDark ? Colors.white.withOpacity(0.5) : AppColors.mysticPurpleAccent.withOpacity(0.3),
+                  width: 1.5,
+                ),
               ),
-              child: const Icon(
-                Icons.auto_awesome,
-                color: Colors.white,
-                size: 40,
+              child: const Center(
+                child: Icon(
+                  Icons.auto_awesome,
+                  color: Colors.white,
+                  size: 48,
+                ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 24),
+            // Simple, Elegant Purple Text
             Text(
               AppStrings.auraMatch,
               style: AppTextStyles.headingMedium.copyWith(
-                color: AppColors.getTextPrimary(isDark),
-                fontWeight: FontWeight.bold,
+                color: isDark ? const Color(0xFFE1BEE7) : const Color(0xFF4A148C),
+                fontWeight: FontWeight.w600,
+                letterSpacing: 1.2,
+                shadows: [
+                  BoxShadow(
+                    color: (isDark ? const Color(0xFF9C27B0) : const Color(0xFFAB47BC)).withOpacity(0.5),
+                    blurRadius: 10,
+                    offset: const Offset(0, 0),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 8),
-            Text(
-              AppStrings.discoverCompatibleSouls,
-              style: AppTextStyles.bodyMedium.copyWith(
-                color: AppColors.getTextSecondary(isDark),
+            const SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                AppStrings.discoverCompatibleSouls,
+                style: AppTextStyles.bodyMedium.copyWith(
+                  color: AppColors.getTextSecondary(isDark),
+                  height: 1.5,
+                  fontWeight: FontWeight.w300,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20),
-            MysticalButton.primary(
+            const SizedBox(height: 24),
+            MysticalButton(
               text: AppStrings.match,
               onPressed: () {
                 Navigator.push(
@@ -819,9 +877,25 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
                   ),
                 );
               },
+              type: MysticalButtonType.premium,
               icon: Icons.favorite,
               width: double.infinity,
               showGlow: true,
+              showPulse: true,
+              // Custom Purple Gradient for Button
+              customGradient: const LinearGradient(
+                colors: [
+                  Color(0xFFAB47BC), // Purple 400
+                  Color(0xFF7B1FA2), // Purple 700
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              customTextStyle: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
             ),
           ],
         ),
@@ -878,33 +952,12 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
     final auraColor = _parseColorFromName(request.auraColor);
     final surfaceColor = AppColors.getSurface(isDark);
 
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          if (auraColor != null)
-            BoxShadow(
-              color: auraColor.withValues(alpha: isDark ? 0.3 : 0.15),
-              blurRadius: 20,
-              spreadRadius: 2,
-              offset: const Offset(0, 4),
-            ),
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.08),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Container(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: LiquidGlassCard(
         padding: const EdgeInsets.all(20),
-        decoration: AppColors.getModernCardDecoration(isDark).copyWith(
-          border: Border.all(
-            color: AppColors.primary.withValues(alpha: 0.2),
-            width: 1,
-          ),
-        ),
+        blurAmount: 20,
+        glowColor: auraColor ?? AppColors.primary,
         child: Column(
           children: [
             Row(
@@ -1176,51 +1229,51 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
       final spacing = isSmallScreen ? 12.0 : (isTablet ? 20.0 : 16.0);
       final smallSpacing = isSmallScreen ? 6.0 : 8.0;
       
-      return Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: horizontalPadding,
-          vertical: isSmallScreen ? 16.0 : 24.0,
-        ),
-        child: Container(
-          width: double.infinity,
-          constraints: BoxConstraints(
-            maxWidth: isTablet ? 600 : double.infinity,
+      return Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+            vertical: isSmallScreen ? 16.0 : 24.0,
           ),
-          padding: EdgeInsets.all(verticalPadding),
-          decoration: AppColors.getModernCardDecoration(isDark),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                '✨',
-                style: TextStyle(fontSize: emojiSize),
-              ),
-              SizedBox(height: spacing),
-              Text(
-                AppStrings.noAuraMatchesYet,
-                style: AppTextStyles.headingSmall.copyWith(
-                  color: AppColors.getTextPrimary(isDark),
-                  fontSize: isSmallScreen ? 16 : (isTablet ? 20 : null),
-                ),
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              SizedBox(height: smallSpacing),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 8.0 : 0),
-                child: Text(
-                AppStrings.pressMatchToMeetNewPeople,
-                  style: AppTextStyles.bodyMedium.copyWith(
-                    color: AppColors.getTextSecondary(isDark),
-                    fontSize: isSmallScreen ? 13 : (isTablet ? 16 : null),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 400),
+            child: LiquidGlassCard(
+              padding: EdgeInsets.all(verticalPadding),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    '✨',
+                    style: TextStyle(fontSize: emojiSize),
                   ),
-                textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                  SizedBox(height: spacing),
+                  Text(
+                    AppStrings.noAuraMatchesYet,
+                    style: AppTextStyles.headingSmall.copyWith(
+                      color: Colors.white,
+                      fontSize: isSmallScreen ? 16 : (isTablet ? 20 : null),
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: smallSpacing),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 8.0 : 0),
+                    child: Text(
+                    AppStrings.pressMatchToMeetNewPeople,
+                      style: AppTextStyles.bodyMedium.copyWith(
+                        color: Colors.white.withOpacity(0.7),
+                        fontSize: isSmallScreen ? 13 : (isTablet ? 16 : null),
+                      ),
+                    textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       );
@@ -1255,27 +1308,12 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
     final auraColor = _parseColorFromName(match.auraColor);
     final surfaceColor = AppColors.getSurface(isDark);
 
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          if (auraColor != null)
-            BoxShadow(
-              color: auraColor.withValues(alpha: isDark ? 0.3 : 0.15),
-              blurRadius: 20,
-              spreadRadius: 2,
-              offset: const Offset(0, 4),
-            ),
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.08),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: LiquidGlassCard(
+        padding: EdgeInsets.zero,
+        blurAmount: 15,
+        glowColor: auraColor,
         child: InkWell(
           onTap: () {
             Navigator.push(
@@ -1292,16 +1330,8 @@ class _SocialScreenState extends State<SocialScreen> with SingleTickerProviderSt
             );
           },
           borderRadius: BorderRadius.circular(20),
-          child: Container(
+          child: Padding(
             padding: const EdgeInsets.all(20),
-            decoration: AppColors.getModernCardDecoration(isDark).copyWith(
-              border: auraColor != null
-                  ? Border.all(
-                      color: auraColor.withValues(alpha: 0.3),
-                      width: 1,
-                    )
-                  : null,
-            ),
             child: Row(
               children: [
                 // Enhanced avatar with aura glow

@@ -675,17 +675,19 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.white.withOpacity(0.12),
-                Colors.white.withOpacity(0.05),
-              ],
-            ),
-            border: Border(
+            gradient: isDark 
+                ? LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.white.withOpacity(0.12),
+                      Colors.white.withOpacity(0.05),
+                    ],
+                  )
+                : AppColors.champagneGoldGradient.scale(0.8),
+             border: Border(
               bottom: BorderSide(
-                color: AppColors.champagneGold.withOpacity(0.2),
+                color: isDark ? AppColors.champagneGold.withOpacity(0.2) : AppColors.champagneGold.withOpacity(0.5),
                 width: 1,
               ),
             ),
@@ -696,21 +698,21 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
                 onTap: () => Navigator.pop(context),
                 child: Container(
                   padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
+                    decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Colors.white.withOpacity(0.15),
-                        Colors.white.withOpacity(0.05),
+                        isDark ? Colors.white.withOpacity(0.15) : Colors.black.withOpacity(0.05),
+                        isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.02),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.1),
+                      color: isDark ? Colors.white.withOpacity(0.1) : AppColors.premiumLightTextSecondary.withOpacity(0.2),
                     ),
                   ),
                   child: Icon(
                     Icons.arrow_back_ios_new,
-                    color: AppColors.warmIvory,
+                    color: AppColors.getIconColor(isDark),
                     size: 20,
                   ),
                 ),
@@ -743,7 +745,7 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
                               fontFamily: 'SF Pro Display',
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
-                              color: AppColors.warmIvory,
+                              color: AppColors.getTextPrimary(isDark),
                               letterSpacing: 0.5,
                             ),
                           ),
@@ -752,7 +754,7 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
                             style: TextStyle(
                               fontFamily: 'SF Pro Text',
                               fontSize: 12,
-                              color: Colors.white.withOpacity(0.5),
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -826,12 +828,20 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              AppColors.secondary.withValues(alpha: isDark ? 0.2 : 0.15),
-              cardBg.withValues(alpha: isDark ? 0.8 : 0.95),
-            ],
+            colors: isDark 
+              ? [
+                  AppColors.secondary.withValues(alpha: 0.2),
+                  cardBg.withValues(alpha: 0.8),
+                ]
+              : [
+                  AppColors.premiumLightSurface,
+                  AppColors.premiumLightSurface.withOpacity(0.8),
+                ],
           ),
           borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: isDark ? Colors.transparent : AppColors.premiumLightTextSecondary.withOpacity(0.1),
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -861,7 +871,7 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 decoration: BoxDecoration(
-                  color: (isDark ? AppColors.surfaceColor : Colors.grey[200]!).withOpacity(0.35),
+                  color: (isDark ? AppColors.surfaceColor : AppColors.premiumLightTextSecondary.withOpacity(0.05)),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -930,7 +940,7 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
           width: double.infinity,
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
-            color: (isDark ? Colors.white : Colors.black).withOpacity(0.1),
+            color: (isDark ? Colors.white : AppColors.premiumLightTextSecondary).withOpacity(0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: SingleChildScrollView(
@@ -956,7 +966,7 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
                 width: 120,
                 height: 120,
                 decoration: BoxDecoration(
-                  color: (isDark ? Colors.white : Colors.black).withOpacity(0.1),
+                  color: (isDark ? Colors.white : AppColors.premiumLightTextSecondary).withOpacity(0.1),
                   shape: BoxShape.circle,
                   border: Border.all(color: AppColors.primary.withOpacity(0.5), width: 2),
                   boxShadow: [
@@ -1017,7 +1027,7 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
           margin: const EdgeInsets.symmetric(vertical: 12),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: (isDark ? Colors.white : Colors.black).withOpacity(0.05),
+            color: (isDark ? Colors.white : AppColors.premiumLightTextSecondary).withOpacity(0.05),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
@@ -1192,9 +1202,9 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
         margin: const EdgeInsets.symmetric(horizontal: 4),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
-          color: selected ? (isDark ? Colors.white : Colors.black).withOpacity(0.2) : Colors.transparent,
+          color: selected ? (isDark ? Colors.white : AppColors.premiumLightTextSecondary).withOpacity(0.2) : Colors.transparent,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: selected ? (isDark ? Colors.white54 : Colors.black38) : Colors.transparent),
+          border: Border.all(color: selected ? (isDark ? Colors.white54 : AppColors.premiumLightTextSecondary.withOpacity(0.5)) : Colors.transparent),
         ),
         child: Text(
           label,
@@ -1259,12 +1269,12 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
           ),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: (isDark ? Colors.white : Colors.black).withOpacity(0.15),
+            color: (isDark ? Colors.white : AppColors.premiumLightTextSecondary).withOpacity(0.15),
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: (isDark ? Colors.black : Colors.grey[400]!).withOpacity(0.3),
+              color: (isDark ? Colors.black : AppColors.premiumLightTextSecondary).withOpacity(0.15),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),

@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'fortune_result_screen.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_strings.dart';
+import '../../providers/theme_provider.dart';
 import '../../core/constants/pricing_constants.dart';
 import '../../core/models/fortune_model.dart' as fm;
 import '../../core/models/fortune_type.dart';
@@ -165,11 +166,14 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+
     return PremiumScaffold(
       body: SafeArea(
         child: Column(
           children: [
-            _buildHeader(),
+            _buildHeader(isDark),
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
@@ -177,21 +181,21 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
                   children: [
                     _buildIntroCard(),
                     const SizedBox(height: 16),
-                    _buildImageUploadSection(),
+                    _buildImageUploadSection(isDark),
                     const SizedBox(height: 16),
-                    _buildQuestionInput(),
+                    _buildQuestionInput(isDark),
                   ],
                 ),
               ),
             ),
-            _buildGenerateBar(),
+            _buildGenerateBar(isDark),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(bool isDark) {
     return RepaintBoundary(
       child: ClipRRect(
         child: BackdropFilter(
@@ -199,17 +203,19 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.white.withOpacity(0.12),
-                Colors.white.withOpacity(0.05),
-              ],
-            ),
+            gradient: isDark 
+                ? LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.white.withOpacity(0.12),
+                      Colors.white.withOpacity(0.05),
+                    ],
+                  )
+                : AppColors.champagneGoldGradient.scale(0.8),
             border: Border(
               bottom: BorderSide(
-                color: AppColors.champagneGold.withOpacity(0.2),
+                color: isDark ? AppColors.champagneGold.withOpacity(0.2) : AppColors.champagneGold.withOpacity(0.5),
                 width: 1,
               ),
             ),
@@ -223,18 +229,18 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Colors.white.withOpacity(0.15),
-                        Colors.white.withOpacity(0.05),
+                        isDark ? Colors.white.withOpacity(0.15) : Colors.black.withOpacity(0.05),
+                        isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.02),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.1),
+                      color: isDark ? Colors.white.withOpacity(0.1) : AppColors.premiumLightTextSecondary.withOpacity(0.2),
                     ),
                   ),
                   child: Icon(
                     Icons.arrow_back_ios_new,
-                    color: AppColors.warmIvory,
+                    color: AppColors.getIconColor(isDark),
                     size: 20,
                   ),
                 ),
@@ -271,7 +277,7 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
                               fontFamily: 'SF Pro Display',
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
-                              color: AppColors.warmIvory,
+                              color: AppColors.getTextPrimary(isDark),
                               letterSpacing: 0.5,
                             ),
                           ),
@@ -280,7 +286,7 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
                             style: TextStyle(
                               fontFamily: 'SF Pro Text',
                               fontSize: 12,
-                              color: Colors.white.withOpacity(0.5),
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -323,7 +329,7 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
     );
   }
 
-  Widget _buildImageUploadSection() {
+  Widget _buildImageUploadSection(bool isDark) {
     return GlassCard(
       child: Column(
         children: [
@@ -339,7 +345,7 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
           const SizedBox(height: 8),
           Text(AppStrings.facePhotosClearDesc, style: PremiumTextStyles.caption, textAlign: TextAlign.center),
           const SizedBox(height: 16),
-          _buildSelectedImagesArea(),
+          _buildSelectedImagesArea(isDark),
         ],
       ),
     );
@@ -388,7 +394,7 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
     );
   }
 
-  Widget _buildSelectedImagesArea() {
+  Widget _buildSelectedImagesArea(bool isDark) {
     if (_selectedImages.isEmpty) {
       return GlassContainer(
         padding: const EdgeInsets.all(16),
@@ -398,7 +404,7 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.face_outlined, color: Colors.white.withOpacity(0.4), size: 36),
+                Icon(Icons.face_outlined, color: AppColors.getIconColor(isDark).withOpacity(0.4), size: 36),
                 const SizedBox(height: 10),
                 Text(AppStrings.noPhotoSelected, style: PremiumTextStyles.body),
               ],
@@ -454,7 +460,7 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
     );
   }
 
-  Widget _buildQuestionInput() {
+  Widget _buildQuestionInput(bool isDark) {
     return GlassCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -467,36 +473,37 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
               child: TextField(
                 onChanged: (v) => setState(() => _question = v.trim().isEmpty ? null : v.trim()),
-                style: TextStyle(color: AppColors.warmIvory, fontFamily: 'SF Pro Text'),
+                style: TextStyle(color: AppColors.getTextPrimary(isDark), fontFamily: 'SF Pro Text'),
                 decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(16),
                   hintText: AppStrings.exampleFuture,
-                  hintStyle: TextStyle(color: Colors.white.withOpacity(0.4)),
+                  hintStyle: TextStyle(color: AppColors.getTextSecondary(isDark).withOpacity(0.7)),
                   filled: true,
-                  fillColor: Colors.white.withOpacity(0.08),
+                  fillColor: isDark ? Colors.white.withOpacity(0.08) : Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.white.withOpacity(0.15)),
+                    borderSide: BorderSide(color: isDark ? Colors.white.withOpacity(0.15) : AppColors.premiumLightTextSecondary.withOpacity(0.2)),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.white.withOpacity(0.15)),
+                    borderSide: BorderSide(color: isDark ? Colors.white.withOpacity(0.15) : AppColors.premiumLightTextSecondary.withOpacity(0.2)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(color: AppColors.champagneGold, width: 1.5),
                   ),
-                  contentPadding: const EdgeInsets.all(16),
                 ),
                 maxLines: 2,
               ),
+              ),
             ),
-          ),
+
         ],
       ),
     );
   }
 
-  Widget _buildGenerateBar() {
+  Widget _buildGenerateBar(bool isDark) {
     return Consumer<UserProvider>(
       builder: (context, userProvider, child) {
         final hasImages = _selectedImages.isNotEmpty;
@@ -516,12 +523,12 @@ class _FaceFortuneScreenState extends State<FaceFortuneScreen> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.white.withOpacity(0.08),
-                    Colors.white.withOpacity(0.04),
+                    isDark ? Colors.white.withOpacity(0.08) : Colors.white.withOpacity(0.8),
+                    isDark ? Colors.white.withOpacity(0.04) : Colors.white.withOpacity(0.9),
                   ],
                 ),
                 border: Border(
-                  top: BorderSide(color: Colors.white.withOpacity(0.15), width: 0.5),
+                  top: BorderSide(color: isDark ? Colors.white.withOpacity(0.15) : AppColors.champagneGold.withOpacity(0.3), width: 0.5),
                 ),
               ),
               child: GlassButton(

@@ -14,6 +14,7 @@ import '../../core/widgets/glassmorphism_components.dart';
 import '../../core/services/ads_service.dart';
 import '../../widgets/fortune/karma_cost_badge.dart';
 import '../../core/providers/user_provider.dart';
+import '../../providers/theme_provider.dart';
 import 'dart:async';
 
 class KatinaFortuneScreen extends StatefulWidget {
@@ -120,6 +121,7 @@ class _KatinaFortuneScreenState extends State<KatinaFortuneScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return PremiumScaffold(
       body: SafeArea(
         child: Column(
@@ -187,7 +189,7 @@ class _KatinaFortuneScreenState extends State<KatinaFortuneScreen> {
                   ),
                   child: Icon(
                     Icons.arrow_back_ios_new,
-                    color: AppColors.warmIvory,
+                    color: AppColors.getTextPrimary(Provider.of<ThemeProvider>(context).isDarkMode),
                     size: 20,
                   ),
                 ),
@@ -228,7 +230,7 @@ class _KatinaFortuneScreenState extends State<KatinaFortuneScreen> {
                               fontFamily: 'SF Pro Display',
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
-                              color: AppColors.warmIvory,
+                              color: AppColors.getTextPrimary(Provider.of<ThemeProvider>(context).isDarkMode),
                               letterSpacing: 0.5,
                             ),
                           ),
@@ -237,7 +239,7 @@ class _KatinaFortuneScreenState extends State<KatinaFortuneScreen> {
                             style: TextStyle(
                               fontFamily: 'SF Pro Text',
                               fontSize: 12,
-                              color: Colors.white.withOpacity(0.5),
+                              color: AppColors.getTextSecondary(Provider.of<ThemeProvider>(context).isDarkMode),
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -280,19 +282,19 @@ class _KatinaFortuneScreenState extends State<KatinaFortuneScreen> {
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
               child: TextField(
                 onChanged: (v) => setState(() => _question = v.trim().isEmpty ? null : v.trim()),
-                style: TextStyle(color: AppColors.warmIvory, fontFamily: 'SF Pro Text'),
+                style: TextStyle(color: AppColors.getTextPrimary(Provider.of<ThemeProvider>(context).isDarkMode), fontFamily: 'SF Pro Text'),
                 decoration: InputDecoration(
                   hintText: AppStrings.exampleLoveLifeShort,
-                  hintStyle: TextStyle(color: Colors.white.withOpacity(0.4)),
+                  hintStyle: TextStyle(color: AppColors.getTextDisabled(Provider.of<ThemeProvider>(context).isDarkMode)),
                   filled: true,
-                  fillColor: Colors.white.withOpacity(0.08),
+                  fillColor: AppColors.getInputBackground(Provider.of<ThemeProvider>(context).isDarkMode),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.white.withOpacity(0.15)),
+                    borderSide: BorderSide(color: AppColors.getInputBorderColor(Provider.of<ThemeProvider>(context).isDarkMode)),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.white.withOpacity(0.15)),
+                    borderSide: BorderSide(color: AppColors.getInputBorderColor(Provider.of<ThemeProvider>(context).isDarkMode)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),

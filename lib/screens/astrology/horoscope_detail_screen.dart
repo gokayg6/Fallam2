@@ -242,7 +242,7 @@ class _HoroscopeDetailScreenState extends State<HoroscopeDetailScreen> {
           ),
           body: SizedBox.expand(
             child: Container(
-              decoration: BoxDecoration(gradient: AppColors.premiumDarkGradient),
+              decoration: BoxDecoration(gradient: themeProvider.backgroundGradient),
               child: SafeArea(
                 top: true,
                 bottom: false,

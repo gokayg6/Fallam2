@@ -1,8 +1,10 @@
 import 'dart:ui';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_styles.dart';
+import '../../providers/theme_provider.dart';
 
 /// iOS 26 Premium Liquid Glass Widget Library
 /// Premium transparent, blurry, and glassy components
@@ -10,51 +12,70 @@ import '../constants/app_text_styles.dart';
 // ==================== LIQUID GLASS COLORS ====================
 
 class LiquidGlassColors {
-  // Glass base colors
-  static Color get glassWhite => Colors.white.withOpacity(0.10);
-  static Color get glassBorder => Colors.white.withOpacity(0.15);
-  static Color get glassHighlight => Colors.white.withOpacity(0.25);
-  static Color get glassInnerGlow => Colors.white.withOpacity(0.08);
+  // Glass base colors - Tema-aware
+  static Color glassWhite(bool isDark) => isDark 
+      ? Colors.white.withOpacity(0.10)
+      : Colors.white.withOpacity(0.85);
+  static Color glassBorder(bool isDark) => isDark 
+      ? Colors.white.withOpacity(0.15)
+      : Colors.grey[800]!.withOpacity(0.20);
+  static Color glassHighlight(bool isDark) => isDark 
+      ? Colors.white.withOpacity(0.25)
+      : Colors.grey[700]!.withOpacity(0.30);
+  static Color glassInnerGlow(bool isDark) => isDark 
+      ? Colors.white.withOpacity(0.08)
+      : Colors.grey[600]!.withOpacity(0.15);
   
-  // Premium glow colors - Soft purple/lavender palette
-  static const Color glassGlow = Color(0xFFB8A4E0);
-  static const Color shimmerColor = Color(0xFFD4C4F0);
-  static const Color activeGlow = Color(0xFFA78BFA);
+  // Premium glow colors - Tema-aware
+  static Color glassGlow(bool isDark) => isDark 
+      ? const Color(0xFFB8A4E0)
+      : AppColors.primary; // Açık temada primary renk kullan
+  static Color shimmerColor(bool isDark) => isDark 
+      ? const Color(0xFFD4C4F0)
+      : AppColors.primary.withOpacity(0.6);
+  static Color activeGlow(bool isDark) => isDark 
+      ? const Color(0xFFA78BFA)
+      : AppColors.primary;
   
-  // Active/selected state colors
-  static const Color liquidGlassActive = Color(0xFFB8A4E0);
-  static const Color liquidGlassSecondary = Color(0xFF9B8ED0);
-  static const Color liquidGlassTertiary = Color(0xFF8B7BC0);
+  // Active/selected state colors - Tema-aware
+  static Color liquidGlassActive(bool isDark) => isDark 
+      ? const Color(0xFFB8A4E0)
+      : AppColors.primary;
+  static Color liquidGlassSecondary(bool isDark) => isDark 
+      ? const Color(0xFF9B8ED0)
+      : AppColors.primary.withOpacity(0.8);
+  static Color liquidGlassTertiary(bool isDark) => isDark 
+      ? const Color(0xFF8B7BC0)
+      : AppColors.primary.withOpacity(0.6);
   
-  // Gradient for active state
-  static LinearGradient get activeGradient => LinearGradient(
+  // Gradient for active state - Tema-aware
+  static LinearGradient activeGradient(bool isDark) => LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [
-      liquidGlassActive.withOpacity(0.6),
-      liquidGlassSecondary.withOpacity(0.4),
-      liquidGlassTertiary.withOpacity(0.3),
+    colors: isDark ? [
+      liquidGlassActive(true).withOpacity(0.6),
+      liquidGlassSecondary(true).withOpacity(0.4),
+      liquidGlassTertiary(true).withOpacity(0.3),
+    ] : [
+      liquidGlassActive(false).withOpacity(0.4),
+      liquidGlassSecondary(false).withOpacity(0.3),
     ],
   );
   
-  // Glass gradient
-  static LinearGradient get glassGradient => LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [
-      Colors.white.withOpacity(0.15),
-      Colors.white.withOpacity(0.05),
-      Colors.white.withOpacity(0.02),
-    ],
-  );
+  // Glass gradient - Tema-aware (AppColors.getGlassGradient kullanılıyor, bu sadece fallback)
+  static LinearGradient glassGradient(bool isDark) => AppColors.getGlassGradient(isDark);
   
-  // Premium shimmer gradient
-  static LinearGradient shimmerGradient(double shimmerPosition) => LinearGradient(
+  // Premium shimmer gradient - Tema-aware
+  static LinearGradient shimmerGradient(double shimmerPosition, bool isDark) => LinearGradient(
     begin: Alignment(-1.0 + shimmerPosition * 2, 0),
     end: Alignment(1.0 + shimmerPosition * 2, 0),
-    colors: [
+    colors: isDark ? [
       Colors.transparent,
       Colors.white.withOpacity(0.15),
+      Colors.transparent,
+    ] : [
+      Colors.transparent,
+      AppColors.primary.withOpacity(0.20),
       Colors.transparent,
     ],
   );
@@ -298,9 +319,12 @@ class _LiquidGlassCardState extends State<LiquidGlassCard>
     _pressController.reverse();
   }
 
+
   @override
   Widget build(BuildContext context) {
-    final glowColor = widget.glowColor ?? LiquidGlassColors.glassGlow;
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+    final glowColor = widget.glowColor ?? LiquidGlassColors.glassGlow(isDark);
     
     return AnimatedBuilder(
       animation: Listenable.merge([_entranceController, _pressController, _glowController]),
@@ -328,33 +352,38 @@ class _LiquidGlassCardState extends State<LiquidGlassCard>
                       return Container(
                         padding: widget.padding,
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: widget.isSelected
-                                ? [
-                                    glowColor.withOpacity(0.25 * glowOpacity),
-                                    glowColor.withOpacity(0.15 * glowOpacity),
-                                    glowColor.withOpacity(0.08 * glowOpacity),
-                                  ]
-                                : [
-                                    Colors.white.withOpacity(0.12),
-                                    Colors.white.withOpacity(0.06),
-                                    Colors.white.withOpacity(0.03),
-                                  ],
-                          ),
+                          gradient: widget.isSelected
+                              ? (isDark 
+                                  ? LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        glowColor.withOpacity(0.25 * glowOpacity),
+                                        glowColor.withOpacity(0.15 * glowOpacity),
+                                        glowColor.withOpacity(0.08 * glowOpacity),
+                                      ],
+                                    )
+                                  : LinearGradient( // Light mode selected
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        glowColor.withOpacity(0.4 * glowOpacity),
+                                        glowColor.withOpacity(0.2 * glowOpacity),
+                                      ],
+                                    ))
+                              : AppColors.getGlassGradient(isDark),
                           borderRadius: BorderRadius.circular(widget.borderRadius),
                           border: Border.all(
                             color: widget.isSelected
-                                ? glowColor.withOpacity(0.5 * glowOpacity)
-                                : Colors.white.withOpacity(0.15),
-                            width: widget.isSelected ? 1.5 : 1,
+                                ? glowColor.withOpacity(isDark ? 0.5 * glowOpacity : 0.8 * glowOpacity)
+                                : AppColors.getGlassBorderColor(isDark),
+                            width: widget.isSelected ? (isDark ? 1.5 : 2.0) : 1,
                           ),
                           boxShadow: [
                             BoxShadow(
                               color: widget.isSelected
                                   ? glowColor.withOpacity(0.3 * glowOpacity)
-                                  : Colors.black.withOpacity(0.2 * glowOpacity),
+                                  : AppColors.getGlassShadowColor(isDark),
                               blurRadius: widget.isSelected ? 25 : 20,
                               spreadRadius: widget.isSelected ? 2 : 0,
                               offset: const Offset(0, 8),
@@ -378,6 +407,7 @@ class _LiquidGlassCardState extends State<LiquidGlassCard>
                                     decoration: BoxDecoration(
                                       gradient: LiquidGlassColors.shimmerGradient(
                                         _shimmerAnimation.value,
+                                        isDark,
                                       ),
                                       borderRadius: BorderRadius.circular(
                                         widget.borderRadius - 1,
@@ -449,7 +479,9 @@ class _LiquidGlassChipState extends State<LiquidGlassChip>
 
   @override
   Widget build(BuildContext context) {
-    final selectedColor = widget.selectedColor ?? LiquidGlassColors.liquidGlassActive;
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+    final selectedColor = widget.selectedColor ?? LiquidGlassColors.liquidGlassActive(isDark);
     
     return GestureDetector(
       onTapDown: (_) => _controller.forward(),
@@ -482,19 +514,13 @@ class _LiquidGlassChipState extends State<LiquidGlassChip>
                                 selectedColor.withOpacity(0.3),
                               ],
                             )
-                          : LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                Colors.white.withOpacity(0.12),
-                                Colors.white.withOpacity(0.05),
-                              ],
-                            ),
+
+                          : AppColors.getGlassGradient(isDark),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: widget.isSelected
                             ? selectedColor.withOpacity(0.6)
-                            : Colors.white.withOpacity(0.15),
+                            : AppColors.getGlassBorderColor(isDark),
                         width: widget.isSelected ? 1.5 : 1,
                       ),
                       boxShadow: widget.isSelected
@@ -525,7 +551,7 @@ class _LiquidGlassChipState extends State<LiquidGlassChip>
                           style: AppTextStyles.bodySmall.copyWith(
                             color: widget.isSelected
                                 ? Colors.white
-                                : Colors.white.withOpacity(0.8),
+                                : AppColors.getGlassTextColor(isDark).withOpacity(0.8),
                             fontWeight: widget.isSelected
                                 ? FontWeight.w600
                                 : FontWeight.normal,
@@ -599,7 +625,9 @@ class _LiquidGlassButtonState extends State<LiquidGlassButton>
 
   @override
   Widget build(BuildContext context) {
-    final buttonColor = widget.color ?? LiquidGlassColors.liquidGlassActive;
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+    final buttonColor = widget.color ?? LiquidGlassColors.liquidGlassActive(isDark);
     
     return GestureDetector(
       onTapDown: (_) {
@@ -638,26 +666,35 @@ class _LiquidGlassButtonState extends State<LiquidGlassButton>
                               buttonColor.withOpacity(0.4),
                             ],
                           )
-                        : LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              Colors.white.withOpacity(0.15),
-                              Colors.white.withOpacity(0.08),
-                            ],
-                          ),
+                        : (isDark 
+                                ? LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      Colors.white.withOpacity(0.15),
+                                      Colors.white.withOpacity(0.08),
+                                    ],
+                                  )
+                                : LinearGradient( // Light mode secondary button
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      AppColors.champagneGold.withOpacity(0.25),
+                                      AppColors.champagneGold.withOpacity(0.15),
+                                    ],
+                                  )),
                     borderRadius: BorderRadius.circular(widget.height / 2),
                     border: Border.all(
                       color: widget.isPrimary
                           ? buttonColor.withOpacity(0.6)
-                          : Colors.white.withOpacity(0.2),
+                          : (isDark ? Colors.white.withOpacity(0.2) : Colors.grey.withOpacity(0.3)),
                       width: 1.5,
                     ),
                     boxShadow: [
                       BoxShadow(
                         color: widget.isPrimary
                             ? buttonColor.withOpacity(0.4)
-                            : Colors.black.withOpacity(0.2),
+                            : (isDark ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.1)),
                         blurRadius: 20,
                         offset: const Offset(0, 6),
                       ),
@@ -688,7 +725,7 @@ class _LiquidGlassButtonState extends State<LiquidGlassButton>
                               if (widget.icon != null) ...[
                                 Icon(
                                   widget.icon,
-                                  color: Colors.white,
+                                  color: widget.isPrimary ? Colors.white : AppColors.getIconColor(isDark),
                                   size: 20,
                                 ),
                                 const SizedBox(width: 8),
@@ -699,7 +736,7 @@ class _LiquidGlassButtonState extends State<LiquidGlassButton>
                                   fontFamily: 'SF Pro Display',
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.white,
+                                  color: widget.isPrimary ? Colors.white : AppColors.getTextPrimary(isDark),
                                 ),
                               ),
                             ],
@@ -734,6 +771,9 @@ class LiquidGlassStatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+    
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: BackdropFilter(
@@ -741,17 +781,10 @@ class LiquidGlassStatItem extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.white.withOpacity(0.10),
-                Colors.white.withOpacity(0.05),
-              ],
-            ),
+            gradient: AppColors.getGlassGradient(isDark),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: Colors.white.withOpacity(0.12),
+              color: AppColors.getGlassBorderColor(isDark),
               width: 1,
             ),
           ),
@@ -760,14 +793,14 @@ class LiquidGlassStatItem extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: iconColor ?? LiquidGlassColors.liquidGlassActive,
+                color: iconColor ?? LiquidGlassColors.liquidGlassActive(isDark),
                 size: 24,
               ),
               const SizedBox(height: 8),
               Text(
                 value,
                 style: AppTextStyles.headingSmall.copyWith(
-                  color: Colors.white,
+                  color: AppColors.getTextPrimary(isDark),
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -775,7 +808,7 @@ class LiquidGlassStatItem extends StatelessWidget {
               Text(
                 title,
                 style: AppTextStyles.bodySmall.copyWith(
-                  color: Colors.white.withOpacity(0.7),
+                  color: AppColors.getTextSecondary(isDark),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -840,6 +873,8 @@ class _LiquidGlassHeaderState extends State<LiquidGlassHeader>
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
@@ -854,14 +889,14 @@ class _LiquidGlassHeaderState extends State<LiquidGlassHeader>
                   ShaderMask(
                     shaderCallback: (bounds) => LinearGradient(
                       colors: [
-                        Colors.white,
-                        LiquidGlassColors.shimmerColor,
+                        isDark ? Colors.white : AppColors.premiumLightTextPrimary,
+                        LiquidGlassColors.shimmerColor(isDark),
                       ],
                     ).createShader(bounds),
                     child: Text(
                       widget.title,
                       style: AppTextStyles.headingLarge.copyWith(
-                        color: Colors.white,
+                        color: AppColors.getTextPrimary(isDark),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -908,6 +943,8 @@ class _LiquidGlassSettingItemState extends State<LiquidGlassSettingItem> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),
       onTapUp: (_) {
@@ -929,13 +966,13 @@ class _LiquidGlassSettingItemState extends State<LiquidGlassSettingItem> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Colors.white.withOpacity(_isPressed ? 0.15 : 0.10),
-                    Colors.white.withOpacity(_isPressed ? 0.08 : 0.05),
+                    isDark ? Colors.white.withOpacity(_isPressed ? 0.15 : 0.10) : AppColors.premiumLightTextSecondary.withOpacity(_isPressed ? 0.1 : 0.05),
+                    isDark ? Colors.white.withOpacity(_isPressed ? 0.08 : 0.05) : AppColors.premiumLightTextSecondary.withOpacity(_isPressed ? 0.05 : 0.02),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: Colors.white.withOpacity(0.12),
+                  color: isDark ? Colors.white.withOpacity(0.12) : AppColors.premiumLightTextSecondary.withOpacity(0.1),
                   width: 1,
                 ),
               ),
@@ -946,15 +983,15 @@ class _LiquidGlassSettingItemState extends State<LiquidGlassSettingItem> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                          LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                          LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                          LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(
                       widget.icon,
-                      color: Colors.white,
+                      color: isDark ? Colors.white : LiquidGlassColors.liquidGlassActive(isDark),
                       size: 20,
                     ),
                   ),
@@ -966,7 +1003,7 @@ class _LiquidGlassSettingItemState extends State<LiquidGlassSettingItem> {
                         Text(
                           widget.title,
                           style: AppTextStyles.bodyMedium.copyWith(
-                            color: Colors.white,
+                            color: AppColors.getTextPrimary(isDark),
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -975,7 +1012,7 @@ class _LiquidGlassSettingItemState extends State<LiquidGlassSettingItem> {
                           Text(
                             widget.subtitle!,
                             style: AppTextStyles.bodySmall.copyWith(
-                              color: Colors.white.withOpacity(0.6),
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                           ),
                         ],
@@ -985,7 +1022,7 @@ class _LiquidGlassSettingItemState extends State<LiquidGlassSettingItem> {
                   widget.trailing ??
                       Icon(
                         Icons.chevron_right,
-                        color: Colors.white.withOpacity(0.5),
+                        color: AppColors.getIconColor(isDark).withOpacity(0.5),
                         size: 20,
                       ),
                 ],
@@ -1019,6 +1056,8 @@ class LiquidGlassSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
     return Container(
       margin: margin,
       child: ClipRRect(
@@ -1028,10 +1067,10 @@ class LiquidGlassSection extends StatelessWidget {
           child: Container(
             padding: padding,
             decoration: BoxDecoration(
-              gradient: LiquidGlassColors.glassGradient,
+              gradient: LiquidGlassColors.glassGradient(isDark),
               borderRadius: BorderRadius.circular(24),
               border: Border.all(
-                color: Colors.white.withOpacity(0.15),
+                color: AppColors.getGlassBorderColor(isDark),
                 width: 1,
               ),
               boxShadow: [
@@ -1049,7 +1088,7 @@ class LiquidGlassSection extends StatelessWidget {
                   Text(
                     title!,
                     style: AppTextStyles.headingSmall.copyWith(
-                      color: Colors.white,
+                      color: AppColors.getTextPrimary(isDark),
                       fontWeight: FontWeight.w600,
                     ),
                   ),

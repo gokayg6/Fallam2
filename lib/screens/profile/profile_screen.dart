@@ -343,12 +343,15 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: AppColors.premiumDarkGradient,
-      ),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        final isDark = themeProvider.isDarkMode;
+        return Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: themeProvider.backgroundGradient,
+          ),
       child: SafeArea(
         child: LiquidGlassScreenWrapper(
           duration: const Duration(milliseconds: 700),
@@ -363,10 +366,10 @@ class _ProfileScreenState extends State<ProfileScreen>
                       child: Container(
                         padding: const EdgeInsets.all(30),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.1),
+                          color: isDark ? Colors.white.withOpacity(0.1) : AppColors.premiumLightSurface,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.15),
+                            color: isDark ? Colors.white.withOpacity(0.15) : AppColors.premiumLightTextSecondary.withOpacity(0.2),
                           ),
                         ),
                         child: MysticalLoading(
@@ -404,6 +407,8 @@ class _ProfileScreenState extends State<ProfileScreen>
         ),
       ),
     );
+  },
+);
   }
 
   Widget _buildHeader() {
@@ -413,12 +418,16 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   Widget _buildProfileCard(UserProvider userProvider) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final isDark = themeProvider.isDarkMode;
     return LiquidGlassCard(
       padding: const EdgeInsets.all(28),
       blurAmount: 30,
-      glowColor: LiquidGlassColors.liquidGlassActive,
-      child: Column(
-        children: [
+      glowColor: LiquidGlassColors.liquidGlassActive(isDark),
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          children: [
           // Avatar with glass effect
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
@@ -432,19 +441,19 @@ class _ProfileScreenState extends State<ProfileScreen>
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      LiquidGlassColors.liquidGlassActive.withOpacity(0.5),
-                      LiquidGlassColors.liquidGlassSecondary.withOpacity(0.4),
-                      LiquidGlassColors.liquidGlassTertiary.withOpacity(0.3),
+                      LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.5),
+                      LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.4),
+                      LiquidGlassColors.liquidGlassTertiary(isDark).withOpacity(0.3),
                     ],
                   ),
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: LiquidGlassColors.liquidGlassActive.withOpacity(0.5),
+                    color: LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.5),
                     width: 2,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: LiquidGlassColors.liquidGlassActive.withOpacity(0.4),
+                      color: LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.4),
                       blurRadius: 20,
                       spreadRadius: 2,
                     ),
@@ -469,13 +478,13 @@ class _ProfileScreenState extends State<ProfileScreen>
             shaderCallback: (bounds) => LinearGradient(
               colors: [
                 Colors.white,
-                LiquidGlassColors.shimmerColor,
+                LiquidGlassColors.shimmerColor(isDark),
               ],
             ).createShader(bounds),
             child: Text(
               userProvider.user?.name ?? AppStrings.guest,
               style: AppTextStyles.headingMedium.copyWith(
-                color: Colors.white,
+                color: AppColors.getTextPrimary(isDark),
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -485,7 +494,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             Text(
               userProvider.user?.email ?? '',
               style: AppTextStyles.bodyMedium.copyWith(
-                color: Colors.white.withOpacity(0.7),
+                color: AppColors.getTextSecondary(isDark),
               ),
             ),
           ],
@@ -538,11 +547,14 @@ class _ProfileScreenState extends State<ProfileScreen>
             ),
           ),
         ],
+        ),
       ),
     );
   }
 
   Widget _buildStatsCard(UserProvider userProvider) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final isDark = themeProvider.isDarkMode;
     return LiquidGlassSection(
       title: AppStrings.statistics,
       child: Column(
@@ -554,7 +566,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   title: AppStrings.totalFortunes,
                   value: '$_totalFortunesCount',
                   icon: Icons.auto_awesome,
-                  iconColor: LiquidGlassColors.liquidGlassActive,
+                  iconColor: LiquidGlassColors.liquidGlassActive(isDark),
                 ),
               ),
               const SizedBox(width: 12),
@@ -651,6 +663,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   Widget _buildThemeSettingsSection() {
     return Consumer<ThemeProvider>(
       builder: (context, themeProvider, child) {
+        final isDark = themeProvider.isDarkMode;
         return LiquidGlassSection(
           title: AppStrings.themeSettings,
           child: Row(
@@ -663,15 +676,15 @@ class _ProfileScreenState extends State<ProfileScreen>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                          LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                          LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                          LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Icon(
                       themeProvider.isDarkMode ? Icons.dark_mode : Icons.light_mode,
-                      color: Colors.white,
+                      color: AppColors.getIconColor(isDark),
                       size: 20,
                     ),
                   ),
@@ -679,7 +692,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   Text(
                     themeProvider.isDarkThemeSelected ? AppStrings.darkTheme : AppStrings.lightTheme,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.getTextSecondary(isDark),
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                     ),
@@ -691,8 +704,8 @@ class _ProfileScreenState extends State<ProfileScreen>
                 onChanged: (value) {
                   themeProvider.toggleTheme();
                 },
-                activeColor: LiquidGlassColors.liquidGlassActive,
-                activeTrackColor: LiquidGlassColors.liquidGlassActive.withOpacity(0.4),
+                activeColor: LiquidGlassColors.liquidGlassActive(isDark),
+                activeTrackColor: LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.4),
               ),
             ],
           ),
@@ -702,13 +715,15 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   Widget _buildActionButtons(UserProvider userProvider) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final isDark = themeProvider.isDarkMode;
     return Column(
       children: [
         if (userProvider.user != null) ...[
           _buildLiquidGlassActionButton(
             text: AppStrings.editProfile,
             icon: Icons.edit_outlined,
-            color: LiquidGlassColors.liquidGlassActive,
+            color: LiquidGlassColors.liquidGlassActive(isDark),
             onPressed: () {
               Navigator.push(
                 context,
@@ -728,7 +743,7 @@ class _ProfileScreenState extends State<ProfileScreen>
         _buildLiquidGlassActionButton(
           text: userProvider.user != null ? AppStrings.signOut : AppStrings.signIn,
           icon: userProvider.user != null ? Icons.logout : Icons.login,
-          color: userProvider.user != null ? AppColors.error : LiquidGlassColors.liquidGlassActive,
+          color: userProvider.user != null ? AppColors.error : LiquidGlassColors.liquidGlassActive(isDark),
           isLoading: _isLoading,
           onPressed: _isLoading ? null : () {
             if (userProvider.user != null) {
@@ -897,12 +912,15 @@ class _ProfileScreenState extends State<ProfileScreen>
                 itemBuilder: (context, index) {
                   final lang = AppLanguage.values[index];
                   final isSelected = languageProvider.currentLanguage == lang;
+                  final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+                  final isDark = themeProvider.isDarkMode;
                   return _buildLanguageOptionNew(
                     lang.name,
                     lang.code,
                     isSelected,
                     lang.isRTL,
                     () => Navigator.pop(context, lang.code),
+                    isDark,
                   );
                 },
               ),
@@ -942,6 +960,7 @@ class _ProfileScreenState extends State<ProfileScreen>
     bool isSelected,
     bool isRTL,
     VoidCallback onTap,
+    bool isDark,
   ) {
     return GestureDetector(
       onTap: onTap,
@@ -1011,6 +1030,8 @@ class _ProfileScreenState extends State<ProfileScreen>
     VoidCallback onTap,
   ) {
     final isEnglish = _isEnglish;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final isDarkMode = themeProvider.isDarkMode;
     
     return GestureDetector(
       onTap: onTap,
@@ -1024,8 +1045,8 @@ class _ProfileScreenState extends State<ProfileScreen>
               gradient: isSelected
                   ? LinearGradient(
                       colors: [
-                        LiquidGlassColors.liquidGlassActive.withOpacity(0.4),
-                        LiquidGlassColors.liquidGlassSecondary.withOpacity(0.3),
+                        LiquidGlassColors.liquidGlassActive(isDarkMode).withOpacity(0.4),
+                        LiquidGlassColors.liquidGlassSecondary(isDarkMode).withOpacity(0.3),
                       ],
                     )
                   : LinearGradient(
@@ -1037,14 +1058,14 @@ class _ProfileScreenState extends State<ProfileScreen>
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
                 color: isSelected
-                    ? LiquidGlassColors.liquidGlassActive.withOpacity(0.5)
+                    ? LiquidGlassColors.liquidGlassActive(isDarkMode).withOpacity(0.5)
                     : Colors.white.withOpacity(0.15),
                 width: isSelected ? 2 : 1,
               ),
               boxShadow: isSelected
                   ? [
                       BoxShadow(
-                        color: LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
+                        color: LiquidGlassColors.liquidGlassActive(isDarkMode).withOpacity(0.3),
                         blurRadius: 15,
                         spreadRadius: 1,
                       ),
@@ -1056,7 +1077,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                 Icon(
                   isSelected ? Icons.check_circle : Icons.circle_outlined,
                   color: isSelected
-                      ? LiquidGlassColors.liquidGlassActive
+                      ? LiquidGlassColors.liquidGlassActive(isDarkMode)
                       : Colors.white.withOpacity(0.6),
                   size: 24,
                 ),
@@ -1082,6 +1103,8 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   void _showPrivacyDialog(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final isDark = themeProvider.isDarkMode;
     showDialog(
       context: context,
       builder: (context) => ClipRRect(
@@ -1101,13 +1124,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                        LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                        LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                        LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Icon(Icons.privacy_tip, color: LiquidGlassColors.liquidGlassActive),
+                  child: Icon(Icons.privacy_tip, color: LiquidGlassColors.liquidGlassActive(isDark)),
                 ),
                 const SizedBox(width: 10),
                 Text(AppStrings.privacy, style: AppTextStyles.headingSmall.copyWith(color: Colors.white)),
@@ -1128,14 +1151,14 @@ class _ProfileScreenState extends State<ProfileScreen>
                     style: AppTextStyles.bodySmall.copyWith(color: Colors.white.withOpacity(0.7)),
                   ),
                   const SizedBox(height: 16),
-                  _buildPolicyLinksInDialog(),
+                  _buildPolicyLinksInDialog(isDark),
                 ],
               ),
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text(AppStrings.close, style: AppTextStyles.bodyMedium.copyWith(color: LiquidGlassColors.liquidGlassActive)),
+                child: Text(AppStrings.close, style: AppTextStyles.bodyMedium.copyWith(color: LiquidGlassColors.liquidGlassActive(isDark))),
               ),
             ],
           ),
@@ -1144,7 +1167,7 @@ class _ProfileScreenState extends State<ProfileScreen>
     );
   }
 
-  Widget _buildPolicyLinksInDialog() {
+  Widget _buildPolicyLinksInDialog(bool isDark) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -1162,16 +1185,19 @@ class _ProfileScreenState extends State<ProfileScreen>
             _buildPolicyLink(
               AppStrings.privacyPolicyLink,
               'https://www.loegs.com/falla/PrivacyPolicy.html',
+              isDark,
             ),
             Text(', ', style: AppTextStyles.bodySmall.copyWith(color: Colors.white.withOpacity(0.6))),
             _buildPolicyLink(
               AppStrings.userAgreementLink,
               'https://www.loegs.com/falla/UserAgreement.html',
+              isDark,
             ),
             Text(', ', style: AppTextStyles.bodySmall.copyWith(color: Colors.white.withOpacity(0.6))),
             _buildPolicyLink(
               AppStrings.termsOfServiceLink,
               'https://www.loegs.com/falla/TermsOfService.html',
+              isDark,
             ),
           ],
         ),
@@ -1179,7 +1205,7 @@ class _ProfileScreenState extends State<ProfileScreen>
     );
   }
 
-  Widget _buildPolicyLink(String text, String url) {
+  Widget _buildPolicyLink(String text, String url, bool isDark) {
     return InkWell(
       onTap: () async {
         final uri = Uri.parse(url);
@@ -1190,7 +1216,7 @@ class _ProfileScreenState extends State<ProfileScreen>
       child: Text(
         text,
         style: AppTextStyles.bodySmall.copyWith(
-          color: LiquidGlassColors.liquidGlassActive,
+          color: LiquidGlassColors.liquidGlassActive(isDark),
           decoration: TextDecoration.underline,
         ),
       ),
@@ -1198,6 +1224,8 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   void _showHelpDialog(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final isDark = themeProvider.isDarkMode;
     showDialog(
       context: context,
       builder: (context) => ClipRRect(
@@ -1217,13 +1245,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                        LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                        LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                        LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Icon(Icons.help, color: LiquidGlassColors.liquidGlassActive),
+                  child: Icon(Icons.help, color: LiquidGlassColors.liquidGlassActive(isDark)),
                 ),
                 const SizedBox(width: 10),
                 Text(AppStrings.help, style: AppTextStyles.headingSmall.copyWith(color: Colors.white)),
@@ -1251,7 +1279,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   const SizedBox(height: 8),
                   Text(
                     'falla@loegs.com',
-                    style: AppTextStyles.bodySmall.copyWith(color: LiquidGlassColors.liquidGlassActive),
+                    style: AppTextStyles.bodySmall.copyWith(color: LiquidGlassColors.liquidGlassActive(isDark)),
                   ),
                 ],
               ),
@@ -1259,7 +1287,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text(AppStrings.close, style: AppTextStyles.bodyMedium.copyWith(color: LiquidGlassColors.liquidGlassActive)),
+                child: Text(AppStrings.close, style: AppTextStyles.bodyMedium.copyWith(color: LiquidGlassColors.liquidGlassActive(isDark))),
               ),
             ],
           ),
@@ -1269,6 +1297,8 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   void _showAboutDialog(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final isDark = themeProvider.isDarkMode;
     showDialog(
       context: context,
       builder: (context) => ClipRRect(
@@ -1288,13 +1318,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                        LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                        LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                        LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Icon(Icons.info, color: LiquidGlassColors.liquidGlassActive),
+                  child: Icon(Icons.info, color: LiquidGlassColors.liquidGlassActive(isDark)),
                 ),
                 const SizedBox(width: 10),
                 Text(AppStrings.about, style: AppTextStyles.headingSmall.copyWith(color: Colors.white)),
@@ -1316,13 +1346,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                                LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                                LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                                LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                               ],
                             ),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: LiquidGlassColors.liquidGlassActive.withOpacity(0.4),
+                              color: LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.4),
                             ),
                           ),
                           child: Image.asset(
@@ -1341,7 +1371,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   Center(
                     child: ShaderMask(
                       shaderCallback: (bounds) => LinearGradient(
-                        colors: [Colors.white, LiquidGlassColors.shimmerColor],
+                        colors: [Colors.white, LiquidGlassColors.shimmerColor(isDark)],
                       ).createShader(bounds),
                       child: Text(
                         'Falla v1.0.0',
@@ -1365,7 +1395,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text(AppStrings.close, style: AppTextStyles.bodyMedium.copyWith(color: LiquidGlassColors.liquidGlassActive)),
+                child: Text(AppStrings.close, style: AppTextStyles.bodyMedium.copyWith(color: LiquidGlassColors.liquidGlassActive(isDark))),
               ),
             ],
           ),

@@ -116,7 +116,7 @@ class _LiveChatScreenState extends State<LiveChatScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-        decoration: BoxDecoration(gradient: AppColors.premiumDarkGradient),
+        decoration: BoxDecoration(gradient: themeProvider.backgroundGradient),
         child: SafeArea(
           child: Column(
             children: [

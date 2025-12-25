@@ -479,6 +479,12 @@ class AppStrings {
   static String get cardOutput => _isEnglish ? 'Card Output' : 'Kart Çıkışı';
   static String get questionHint => _isEnglish ? 'Write your question...' : 'Sorunuzu yazın...';
   
+  static String get dailyGift => _isEnglish ? 'Daily Gift' : 'Günlük Hediye';
+  static String get dailyGiftDesc => _isEnglish ? 'Collect your daily reward' : 'Günlük ödülünü topla';
+  static String get claim => _isEnglish ? 'Claim' : 'Al';
+  static String get dailyQuests => _isEnglish ? 'Daily Quests' : 'Günlük Görevler';
+  static String get tapToSeeDetails => _isEnglish ? 'Tap to see details' : 'Detayları görmek için dokun';
+  
   // Eksik string'ler
   static String get maxCards => _isEnglish ? 'Maximum Cards' : 'Maksimum Kart';
   static String get generatingReading => _isEnglish ? 'Generating reading...' : 'Yorum oluşturuluyor...';

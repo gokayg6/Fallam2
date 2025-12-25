@@ -108,19 +108,25 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
+    // ThemeProvider'ı try-catch içinde al, çünkü splash'te bazen context hazır olmayabilir
+    LinearGradient bgGradient = AppColors.premiumDarkGradient;
+    try {
+      bgGradient = Provider.of<ThemeProvider>(context).backgroundGradient;
+    } catch (_) {}
+
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: AppColors.premiumDarkGradient,
+        decoration: BoxDecoration(
+          gradient: bgGradient,
         ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo with premium glassmorphism halo
               AnimatedBuilder(
                 animation: Listenable.merge([
                   _logoScaleAnimation,

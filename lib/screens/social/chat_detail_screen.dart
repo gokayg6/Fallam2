@@ -205,7 +205,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
       return Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          decoration: BoxDecoration(gradient: AppColors.premiumDarkGradient),
+          decoration: BoxDecoration(gradient: themeProvider.backgroundGradient),
           child: Center(
             child: MysticalLoading(
               type: MysticalLoadingType.spinner,
@@ -223,7 +223,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-        decoration: BoxDecoration(gradient: AppColors.premiumDarkGradient),
+          decoration: BoxDecoration(gradient: themeProvider.backgroundGradient),
         child: SafeArea(
           child: Column(
             children: [

@@ -344,9 +344,10 @@ class _LoveCompatibilityScreenState extends State<LoveCompatibilityScreen> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     
     return Scaffold(
-      backgroundColor: Colors.transparent,
       body: Container(
-        decoration: BoxDecoration(gradient: AppColors.premiumDarkGradient),
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(gradient: Provider.of<ThemeProvider>(context).backgroundGradient),
         child: SafeArea(
           child: Column(
             children: [

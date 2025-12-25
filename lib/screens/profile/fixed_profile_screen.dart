@@ -88,7 +88,7 @@ class _FixedProfileScreenState extends State<FixedProfileScreen>
       body: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) => Container(
         decoration: BoxDecoration(
-            gradient: AppColors.premiumDarkGradient,
+            gradient: themeProvider.backgroundGradient,
         ),
         child: SafeArea(
           child: Consumer<UserProvider>(

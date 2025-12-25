@@ -3,6 +3,8 @@ import 'dart:ui';
 import '../constants/app_colors.dart';
 import '../constants/app_text_styles.dart';
 import '../constants/app_strings.dart';
+import 'package:provider/provider.dart';
+import '../../providers/theme_provider.dart';
 
 enum MysticalDialogType {
   info,
@@ -43,6 +45,9 @@ class MysticalDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
+
     return PopScope(
       canPop: barrierDismissible,
       child: Dialog(
@@ -59,13 +64,13 @@ class MysticalDialog extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    AppColors.surface.withValues(alpha: 0.95),
-                    AppColors.surface.withValues(alpha: 0.9),
+                    isDark ? AppColors.surface.withValues(alpha: 0.95) : AppColors.premiumLightSurface.withValues(alpha: 0.95),
+                    isDark ? AppColors.surface.withValues(alpha: 0.9) : AppColors.premiumLightSurface.withValues(alpha: 0.9),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.15),
+                  color: isDark ? Colors.white.withValues(alpha: 0.15) : AppColors.champagneGold.withOpacity(0.3),
                   width: 1.5,
                 ),
                 boxShadow: [
@@ -89,12 +94,12 @@ class MysticalDialog extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _buildIcon(context),
+                        _buildIcon(context, isDark),
                         const SizedBox(height: 20),
-                        _buildTitle(context),
+                        _buildTitle(context, isDark),
                         if (message != null || content != null) ...[
                           const SizedBox(height: 12),
-                          _buildContent(context),
+                          _buildContent(context, isDark),
                         ],
                         // Always show actions for error, success, warning, info, and confirm types
                         if (onConfirm != null || 
@@ -105,7 +110,7 @@ class MysticalDialog extends StatelessWidget {
                             type == MysticalDialogType.info ||
                             type == MysticalDialogType.confirm) ...[
                           const SizedBox(height: 24),
-                          _buildActions(context),
+                          _buildActions(context, isDark),
                         ],
                       ],
                     ),
@@ -119,16 +124,16 @@ class MysticalDialog extends StatelessWidget {
                         icon: Container(
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 0.1),
+                            color: isDark ? Colors.white.withValues(alpha: 0.1) : AppColors.premiumLightTextSecondary.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
-                              color: Colors.white.withValues(alpha: 0.2),
+                              color: isDark ? Colors.white.withValues(alpha: 0.2) : AppColors.premiumLightTextSecondary.withOpacity(0.2),
                               width: 1,
                             ),
                           ),
                           child: Icon(
                             Icons.close_rounded,
-                            color: Colors.white.withValues(alpha: 0.8),
+                            color: AppColors.getIconColor(isDark),
                             size: 18,
                           ),
                         ),
@@ -148,7 +153,7 @@ class MysticalDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildIcon(BuildContext context) {
+  Widget _buildIcon(BuildContext context, bool isDark) {
     IconData icon;
     Color color;
 
@@ -201,11 +206,11 @@ class MysticalDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildTitle(BuildContext context) {
+  Widget _buildTitle(BuildContext context, bool isDark) {
     return Text(
       title,
       style: AppTextStyles.headingMedium.copyWith(
-        color: Colors.white,
+        color: AppColors.getTextPrimary(isDark),
         fontWeight: FontWeight.bold,
         letterSpacing: 0.5,
       ),
@@ -213,7 +218,7 @@ class MysticalDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(BuildContext context, bool isDark) {
     if (content != null) {
       return content!;
     }
@@ -221,14 +226,14 @@ class MysticalDialog extends StatelessWidget {
     return Text(
       message ?? '',
       style: AppTextStyles.bodyMedium.copyWith(
-        color: Colors.white70,
+        color: AppColors.getTextSecondary(isDark),
         height: 1.5,
       ),
       textAlign: TextAlign.center,
     );
   }
 
-  Widget _buildActions(BuildContext context) {
+  Widget _buildActions(BuildContext context, bool isDark) {
     final hasCancel = onCancel != null || (type == MysticalDialogType.confirm);
     // Show confirm button if onConfirm is provided, or for error/success/warning/info/confirm types
     final hasConfirm = onConfirm != null || 
@@ -244,6 +249,7 @@ class MysticalDialog extends StatelessWidget {
           Expanded(
             child: _buildActionButton(
               context,
+              isDark,
               text: cancelText ?? AppStrings.cancel,
               onPressed: () {
                 Navigator.of(context).pop(false);
@@ -258,6 +264,7 @@ class MysticalDialog extends StatelessWidget {
           Expanded(
             child: _buildActionButton(
               context,
+              isDark,
               text: confirmText ?? (type == MysticalDialogType.confirm ? AppStrings.confirm : AppStrings.ok),
               onPressed: () {
                 Navigator.of(context).pop(true);
@@ -271,7 +278,8 @@ class MysticalDialog extends StatelessWidget {
   }
 
   Widget _buildActionButton(
-    BuildContext context, {
+    BuildContext context,
+    bool isDark, {
     required String text,
     required VoidCallback onPressed,
     required bool isPrimary,
@@ -318,10 +326,10 @@ class MysticalDialog extends StatelessWidget {
       return Container(
         height: 48,
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.1),
+          color: isDark ? Colors.white.withValues(alpha: 0.1) : AppColors.premiumLightTextSecondary.withOpacity(0.1),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: Colors.white.withValues(alpha: 0.2),
+            color: isDark ? Colors.white.withValues(alpha: 0.2) : AppColors.premiumLightTextSecondary.withOpacity(0.2),
             width: 1.5,
           ),
         ),
@@ -334,7 +342,7 @@ class MysticalDialog extends StatelessWidget {
               child: Text(
                 text,
                 style: AppTextStyles.buttonMedium.copyWith(
-                  color: Colors.white70,
+                  color: isDark ? Colors.white70 : AppColors.getTextSecondary(isDark),
                   fontWeight: FontWeight.w600,
                 ),
               ),

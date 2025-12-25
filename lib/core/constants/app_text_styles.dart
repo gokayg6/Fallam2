@@ -7,69 +7,60 @@ class AppTextStyles {
   static TextStyle get heading1 => GoogleFonts.poppins(
     fontSize: 28,
     fontWeight: FontWeight.bold,
-    color: AppColors.accent,
     letterSpacing: 0.5,
   );
   
   static TextStyle get heading2 => GoogleFonts.poppins(
     fontSize: 24,
     fontWeight: FontWeight.bold,
-    color: AppColors.textPrimary,
     letterSpacing: 0.3,
   );
   
   static TextStyle get heading3 => GoogleFonts.poppins(
     fontSize: 20,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
     letterSpacing: 0.2,
   );
   
   static TextStyle get heading4 => GoogleFonts.poppins(
     fontSize: 18,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
   );
   
   static TextStyle get headingMedium => GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
   );
   
   static TextStyle get headingSmall => GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
   );
   
   // Gövde metni stilleri
   static TextStyle get bodyLarge => GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.w500,
-    color: AppColors.textPrimary,
     height: 1.5,
   );
   
   static TextStyle get bodyMedium => GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w400,
-    color: AppColors.textSecondary,
     height: 1.4,
   );
   
   static TextStyle get bodySmall => GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    color: AppColors.textTertiary,
     height: 1.3,
   );
   
-  // Özel stiller
-  static TextStyle get mysticalText => GoogleFonts.poppins(
+  // Özel stiller - Tema-aware
+  static TextStyle mysticalText(bool isDark) => GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.w500,
-    color: AppColors.textSecondary,
+    color: AppColors.getTextSecondary(isDark),
     letterSpacing: 0.5,
     height: 1.6,
   );
@@ -77,7 +68,6 @@ class AppTextStyles {
   static TextStyle get fortuneResult => GoogleFonts.poppins(
     fontSize: 15,
     fontWeight: FontWeight.w400,
-    color: AppColors.textPrimary,
     height: 1.7,
     letterSpacing: 0.2,
   );
@@ -85,38 +75,32 @@ class AppTextStyles {
   static TextStyle get cardTitle => GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
   );
   
   static TextStyle get cardSubtitle => GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    color: AppColors.textSecondary,
   );
   
   static TextStyle get cardInput => GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w500,
-    color: AppColors.textPrimary,
   );
   
   static TextStyle get cardOutput => GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w500,
-    color: AppColors.textSecondary,
   );
   
   static TextStyle get input => GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    color: AppColors.textPrimary,
   );
   
   // Buton stilleri
   static TextStyle get button => GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
   );
   
 
@@ -124,39 +108,33 @@ class AppTextStyles {
   static TextStyle get headingLarge => GoogleFonts.poppins(
     fontSize: 28,
     fontWeight: FontWeight.bold,
-    color: AppColors.textPrimary,
   );
   
   static TextStyle get buttonMedium => GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
   );
   
   static TextStyle get buttonSmall => GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w500,
-    color: AppColors.textPrimary,
   );
   
   static TextStyle get buttonLarge => GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
   );
   
   // Caption stili
   static TextStyle get caption => GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    color: AppColors.textTertiary,
   );
   
   // Navigasyon stilleri
   static TextStyle get navLabel => GoogleFonts.poppins(
     fontSize: 11,
     fontWeight: FontWeight.w500,
-    color: AppColors.textSecondary,
   );
   
   static TextStyle get navLabelActive => GoogleFonts.poppins(
@@ -169,19 +147,16 @@ class AppTextStyles {
   static TextStyle get inputLabel => GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w500,
-    color: AppColors.textSecondary,
   );
   
   static TextStyle get inputText => GoogleFonts.poppins(
     fontSize: 15,
     fontWeight: FontWeight.w400,
-    color: AppColors.textPrimary,
   );
   
   static TextStyle get inputHint => GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w400,
-    color: AppColors.textTertiary,
   );
   
   // Karma ve puan stilleri
@@ -237,6 +212,5 @@ class AppTextStyles {
   static TextStyle get navigationLabel => GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w500,
-    color: AppColors.textSecondary,
   );
 }

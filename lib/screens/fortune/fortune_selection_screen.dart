@@ -280,13 +280,14 @@ class _FortuneSelectionScreenState extends State<FortuneSelectionScreen>
   }
 
   Widget _buildLoadingState() {
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           MysticalLoadingWidget.stars(
             size: 80,
-            color: LiquidGlassColors.glassGlow,
+            color: LiquidGlassColors.glassGlow(isDark),
             message: AppStrings.preparingFortune,
             showMessage: true,
           ),
@@ -296,10 +297,12 @@ class _FortuneSelectionScreenState extends State<FortuneSelectionScreen>
   }
 
   Widget _buildHeader() {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final isDark = themeProvider.isDarkMode;
     return LiquidGlassCard(
       borderRadius: 24,
       enableShimmer: true,
-      glowColor: LiquidGlassColors.glassGlow,
+      glowColor: LiquidGlassColors.glassGlow(isDark),
       child: Row(
         children: [
           Container(
@@ -311,7 +314,7 @@ class _FortuneSelectionScreenState extends State<FortuneSelectionScreen>
             child: Icon(
               Icons.auto_awesome,
               size: 32,
-              color: LiquidGlassColors.glassGlow,
+              color: LiquidGlassColors.glassGlow(isDark),
             ),
           ),
           const SizedBox(width: 16),
@@ -393,6 +396,7 @@ class _FortuneSelectionScreenState extends State<FortuneSelectionScreen>
     required IconData icon,
   }) {
     final isSelected = _selectedTarget == target;
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
     
     return LiquidGlassCard(
       onTap: () {
@@ -403,7 +407,7 @@ class _FortuneSelectionScreenState extends State<FortuneSelectionScreen>
       isSelected: isSelected,
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
       borderRadius: 20,
-      glowColor: LiquidGlassColors.activeGlow,
+      glowColor: LiquidGlassColors.activeGlow(isDark),
       child: Column(
         children: [
           Icon(
@@ -633,6 +637,7 @@ class _FortuneSelectionScreenState extends State<FortuneSelectionScreen>
   }
 
   Widget _buildStartButton() {
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
     return Consumer<UserProvider>(
       builder: (context, userProvider, child) {
         // Get required karma for selected fortune type
@@ -664,7 +669,7 @@ class _FortuneSelectionScreenState extends State<FortuneSelectionScreen>
                   children: [
                     Icon(
                       Icons.auto_awesome,
-                      color: LiquidGlassColors.glassGlow,
+                      color: LiquidGlassColors.glassGlow(isDark),
                       size: 16,
                     ),
                     const SizedBox(width: 8),
@@ -689,7 +694,7 @@ class _FortuneSelectionScreenState extends State<FortuneSelectionScreen>
               isLoading: _isLoading,
               width: double.infinity,
               height: 60,
-              color: LiquidGlassColors.activeGlow,
+              color: LiquidGlassColors.activeGlow(isDark),
               icon: Icons.arrow_forward,
             ),
           ],

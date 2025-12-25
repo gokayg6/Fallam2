@@ -741,7 +741,7 @@ class _FortuneResultScreenState extends State<FortuneResultScreen>
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: AppColors.premiumDarkGradient,
+          gradient: themeProvider.backgroundGradient,
         ),
         child: SafeArea(
           child: Column(

@@ -140,6 +140,7 @@ class _LoveCandidatesScreenState extends State<LoveCandidatesScreen>
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
@@ -177,8 +178,8 @@ class _LoveCandidatesScreenState extends State<LoveCandidatesScreen>
         centerTitle: true,
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: AppColors.premiumDarkGradient,
+        decoration: BoxDecoration(
+          gradient: themeProvider.backgroundGradient,
         ),
         child: SafeArea(
           child: _loading

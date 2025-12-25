@@ -414,63 +414,49 @@ class _LiquidGlassNavbarState extends State<LiquidGlassNavbar>
     final glowIntensity = isMoving ? (_movementVelocity * 0.8).clamp(0.0, 1.6) : 0.0;
     
     return Stack(
+      clipBehavior: Clip.none,
       children: [
+        // Main blob
         AnimatedPositioned(
           duration: _isDragging 
               ? Duration.zero 
-              : const Duration(milliseconds: 350),
-          curve: Curves.easeOutExpo,
+              : const Duration(milliseconds: 400),
+          curve: Curves.easeOutBack,
           left: _blobCenterX - (blobWidth / 2),
           top: (_navbarHeight - blobHeight) / 2,
           child: Transform.scale(
             scale: _blobScaleFactor,
             child: LiquidGlassLayer(
               settings: LiquidGlassSettings(
-                thickness: 12,
-                glassColor: const Color(0x14FFFFFF),
-                lightIntensity: 1.0 + (glowIntensity * 0.5),
+                thickness: 10,
+                glassColor: const Color(0x16FFFFFF),
+                lightIntensity: 0.9 + (glowIntensity * 0.3),
               ),
-              child: LiquidGlassBlendGroup(
-                blend: 42,
-                child: AnimatedBuilder(
-                  animation: _shimmerController,
-                  builder: (context, child) {
-                    final stableGlowIntensity = isMoving ? glowIntensity.clamp(0.3, 1.0) : 0.0;
-                    return Stack(
-                      children: [
-                        if (isMoving && stableGlowIntensity > 0.1)
-                          Positioned.fill(
-                            child: IgnorePointer(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(blobHeight * 0.45),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.white.withValues(alpha: (0.12 * stableGlowIntensity).clamp(0.0, 0.15)),
-                                      blurRadius: (12 * stableGlowIntensity).clamp(4.0, 16.0),
-                                      spreadRadius: 1,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        LiquidGlass.grouped(
-                          shape: LiquidRoundedSuperellipse(
-                            borderRadius: blobHeight * 0.45,
-                          ),
-                          child: Container(
-                            width: blobWidth,
-                            height: blobHeight,
-                            decoration: BoxDecoration(
-                              color: Colors.white.withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(blobHeight * 0.45),
-                            ),
-                          ),
-                        ),
+              child: LiquidGlass(
+                shape: LiquidRoundedSuperellipse(
+                  borderRadius: blobHeight * 0.45,
+                ),
+                child: Container(
+                  width: blobWidth,
+                  height: blobHeight,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(blobHeight * 0.45),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Colors.white.withOpacity(0.22 + (glowIntensity * 0.08)),
+                        Colors.white.withOpacity(0.12 + (glowIntensity * 0.05)),
                       ],
-                    );
-                  },
+                    ),
+                    boxShadow: isMoving ? [
+                      BoxShadow(
+                        color: Colors.white.withOpacity(0.10 * glowIntensity),
+                        blurRadius: 14 * glowIntensity,
+                        spreadRadius: 2,
+                      ),
+                    ] : null,
+                  ),
                 ),
               ),
             ),

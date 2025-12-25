@@ -9,9 +9,10 @@ import '../../core/widgets/mystical_loading.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_text_styles.dart';
 import '../../core/constants/app_strings.dart';
-import '../../core/widgets/mystical_card.dart';
 import '../../core/widgets/mystical_button.dart';
 import '../../core/utils/share_utils.dart';
+import '../../core/widgets/liquid_glass_widgets.dart';
+import '../../core/widgets/liquid_glass_navbar.dart';
 import '../../providers/theme_provider.dart';
 
 class BiorhythmScreen extends StatefulWidget {
@@ -124,10 +125,12 @@ class _BiorhythmScreenState extends State<BiorhythmScreen> {
   Widget build(BuildContext context) {
     final res = _compute();
     
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-        decoration: const BoxDecoration(gradient: AppColors.premiumDarkGradient),
+        decoration: BoxDecoration(gradient: themeProvider.backgroundGradient),
         child: SafeArea(
           child: Column(
             children: [
@@ -174,54 +177,38 @@ class _BiorhythmScreenState extends State<BiorhythmScreen> {
   }
 
   Widget _buildHeader() {
-    return ClipRRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.05),
-            border: Border(
-              bottom: BorderSide(
-                color: Colors.white.withValues(alpha: 0.1),
-                width: 1,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: LiquidGlassCard(
+        borderRadius: 20,
+        blurAmount: 15,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        child: Row(
+          children: [
+            IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 20),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                AppStrings.biorhythmTitle,
+                style: AppTextStyles.headingMedium.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1,
+                ),
               ),
             ),
-          ),
-          child: Row(
-            children: [
-              IconButton(
-                onPressed: () => Navigator.pop(context),
-                icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  AppStrings.biorhythmTitle,
-                  style: AppTextStyles.headingMedium.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      const Color(0xFF9C27B0).withValues(alpha: 0.5),
-                      const Color(0xFFE91E63).withValues(alpha: 0.3),
-                    ],
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.2),
-                  ),
-                ),
-                child: const Icon(Icons.show_chart, color: Colors.white, size: 20),
-              ),
-            ],
-          ),
+            LiquidGlassCard(
+              padding: const EdgeInsets.all(8),
+              borderRadius: 12,
+              blurAmount: 10,
+              glowColor: const Color(0xFF9C27B0).withOpacity(0.5),
+              child: const Icon(Icons.show_chart, color: Colors.white, size: 20),
+            ),
+             const SizedBox(width: 12),
+          ],
         ),
       ),
     );
@@ -267,52 +254,34 @@ class _BiorhythmScreenState extends State<BiorhythmScreen> {
   }) {
     return GestureDetector(
       onTap: onTap,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white.withValues(alpha: 0.1),
-                  Colors.white.withValues(alpha: 0.05),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: Colors.white.withValues(alpha: 0.15),
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      child: LiquidGlassCard(
+        padding: const EdgeInsets.all(16),
+        borderRadius: 16,
+        blurAmount: 15,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    Icon(icon, color: Colors.white70, size: 14),
-                    const SizedBox(width: 6),
-                    Text(
-                      label,
-                      style: AppTextStyles.bodySmall.copyWith(
-                        color: Colors.white.withValues(alpha: 0.7),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
+                Icon(icon, color: Colors.white70, size: 14),
+                const SizedBox(width: 6),
                 Text(
-                  value,
-                  style: AppTextStyles.bodyLarge.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
+                  label,
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: Colors.white.withOpacity(0.7),
                   ),
                 ),
               ],
             ),
-          ),
+            const SizedBox(height: 8),
+            Text(
+              value,
+              style: AppTextStyles.bodyLarge.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -379,38 +348,31 @@ class _BiorhythmScreenState extends State<BiorhythmScreen> {
     final emo = days.map((d) => _sin(base + d, 28)).toList();
     final ment = days.map((d) => _sin(base + d, 33)).toList();
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(24),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-        child: Container(
-          height: 180,
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.05),
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
-          ),
-          child: Column(
+    return SizedBox(
+      height: 200,
+      child: LiquidGlassCard(
+      padding: const EdgeInsets.all(20),
+      borderRadius: 24,
+      blurAmount: 20,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(AppStrings.minus6Days, style: AppTextStyles.bodySmall.copyWith(color: Colors.white54)),
-                  Text(AppStrings.today, style: AppTextStyles.bodySmall.copyWith(color: AppColors.secondary, fontWeight: FontWeight.bold)),
-                  Text(AppStrings.plus6Days, style: AppTextStyles.bodySmall.copyWith(color: Colors.white54)),
-                ],
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: CustomPaint(
-                  painter: _BiorhythmPainter(phys, emo, ment),
-                  child: Container(),
-                ),
-              ),
+              Text(AppStrings.minus6Days, style: AppTextStyles.bodySmall.copyWith(color: Colors.white54)),
+              Text(AppStrings.today, style: AppTextStyles.bodySmall.copyWith(color: AppColors.secondary, fontWeight: FontWeight.bold)),
+              Text(AppStrings.plus6Days, style: AppTextStyles.bodySmall.copyWith(color: Colors.white54)),
             ],
           ),
-        ),
+          const SizedBox(height: 16),
+          Expanded(
+            child: CustomPaint(
+              painter: _BiorhythmPainter(phys, emo, ment),
+              child: Container(),
+            ),
+          ),
+        ],
+      ),
       ),
     );
   }
@@ -429,13 +391,11 @@ class _BiorhythmScreenState extends State<BiorhythmScreen> {
 
   Widget _buildBar(String title, double value, Color color) {
     final pct = ((value + 1) / 2 * 100).clamp(0, 100);
-    return Container(
+    return LiquidGlassCard(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.05),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
-      ),
+      borderRadius: 12,
+      blurAmount: 10,
+      glowColor: color.withOpacity(0.2),
       child: Row(
         children: [
           Expanded(
@@ -443,7 +403,7 @@ class _BiorhythmScreenState extends State<BiorhythmScreen> {
             child: Text(
               title,
               style: AppTextStyles.bodyMedium.copyWith(
-                color: Colors.white.withValues(alpha: 0.9),
+                color: Colors.white.withOpacity(0.9),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -465,7 +425,7 @@ class _BiorhythmScreenState extends State<BiorhythmScreen> {
                   borderRadius: BorderRadius.circular(4),
                   child: LinearProgressIndicator(
                     value: pct / 100.0,
-                    backgroundColor: Colors.white.withValues(alpha: 0.1),
+                    backgroundColor: Colors.white.withOpacity(0.1),
                     valueColor: AlwaysStoppedAnimation(color),
                     minHeight: 6,
                   ),
@@ -481,68 +441,49 @@ class _BiorhythmScreenState extends State<BiorhythmScreen> {
   Widget _buildResultCard(double score) {
     return RepaintBoundary(
       key: _cardKey,
-      child: MysticalCard(
-        enforceAspectRatio: false,
-        toggleFlipOnTap: false,
-        padding: EdgeInsets.zero,
-        borderRadius: BorderRadius.circular(24),
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                const Color(0xFF2A2A72).withValues(alpha: 0.8),
-                const Color(0xFF009FFD).withValues(alpha: 0.6),
+      child: LiquidGlassCard(
+        padding: const EdgeInsets.all(20),
+        borderRadius: 24,
+        blurAmount: 25,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    const Icon(Icons.auto_awesome, color: AppColors.secondary, size: 20),
+                    const SizedBox(width: 8),
+                    Text(
+                      AppStrings.fallaComment,
+                      style: AppTextStyles.headingSmall.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                IconButton(
+                  icon: const Icon(Icons.share_outlined, color: Colors.white),
+                  onPressed: () => ShareUtils.captureAndShare(
+                    key: _cardKey,
+                    text: 'Günlük Biyoritim Dengem: %${score.toStringAsFixed(0)}\n\n$_aiText\n\nFalla ile enerjini keşfet!',
+                  ),
+                ),
               ],
             ),
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(
-              color: Colors.white.withValues(alpha: 0.3),
-              width: 1,
+            const SizedBox(height: 16),
+            Text(
+              _aiText!,
+              style: AppTextStyles.bodyMedium.copyWith(
+                color: Colors.white.withOpacity(0.95),
+                height: 1.5,
+                fontSize: 15,
+              ),
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(Icons.auto_awesome, color: AppColors.secondary, size: 20),
-                      const SizedBox(width: 8),
-                      Text(
-                        AppStrings.fallaComment,
-                        style: AppTextStyles.headingSmall.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.share_outlined, color: Colors.white),
-                    onPressed: () => ShareUtils.captureAndShare(
-                      key: _cardKey,
-                      text: 'Günlük Biyoritim Dengem: %${score.toStringAsFixed(0)}\n\n$_aiText\n\nFalla ile enerjini keşfet!',
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              Text(
-                _aiText!,
-                style: AppTextStyles.bodyMedium.copyWith(
-                  color: Colors.white.withValues(alpha: 0.95),
-                  height: 1.5,
-                  fontSize: 15,
-                ),
-              ),
-              const SizedBox(height: 16),
-            ],
-          ),
+            const SizedBox(height: 16),
+          ],
         ),
       ),
     );

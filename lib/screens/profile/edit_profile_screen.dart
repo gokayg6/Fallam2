@@ -159,7 +159,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(gradient: AppColors.premiumDarkGradient),
+        decoration: BoxDecoration(gradient: Provider.of<ThemeProvider>(context).backgroundGradient),
         child: SafeArea(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(20),

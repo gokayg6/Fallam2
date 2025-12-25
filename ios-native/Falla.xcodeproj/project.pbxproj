@@ -1,0 +1,815 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		/* App files */
+		F000000000000001 /* FallaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000001; };
+		F000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000002; };
+		
+		/* Core Constants */
+		F000000000000003 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000003; };
+		F000000000000004 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000004; };
+		
+		/* Core Extensions */
+		F000000000000005 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000005; };
+		
+		/* Core Models */
+		F000000000000006 /* FortuneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000006; };
+		F000000000000007 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000007; };
+		
+		/* Core Providers */
+		F000000000000008 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000008; };
+		F000000000000009 /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000009; };
+		
+		/* Core Services */
+		F00000000000000A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000A; };
+		
+		/* Services */
+		F00000000000000B /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000B; };
+		
+		/* Shared Models */
+		F00000000000000C /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000C; };
+		
+		/* Views - Astrology */
+		F00000000000000D /* AstrologyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000D; };
+		F00000000000000E /* AstrologyCalendarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000E; };
+		F00000000000000F /* DailyAstrologyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000F; };
+		F000000000000010 /* HoroscopeDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000010; };
+		
+		/* Views - Auth */
+		F000000000000011 /* GetStartedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000011; };
+		F000000000000012 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000012; };
+		F000000000000013 /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000013; };
+		
+		/* Views - Components */
+		F000000000000014 /* FloatingGlassNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000014; };
+		F000000000000015 /* GlassComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000015; };
+		
+		/* Views - Fortune */
+		F000000000000016 /* CoffeeFortuneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000016; };
+		F000000000000017 /* DreamInterpretationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000017; };
+		F000000000000018 /* FaceFortuneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000018; };
+		F000000000000019 /* KatinaFortuneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000019; };
+		F00000000000001A /* PalmFortuneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000001A; };
+		F00000000000001B /* TarotFortuneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000001B; };
+		
+		/* Views - History */
+		F00000000000001C /* FortuneHistoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000001C; };
+		F00000000000001D /* FortuneHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000001D; };
+		
+		/* Views - Main */
+		F00000000000001E /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000001E; };
+		
+		/* Views - Other */
+		F00000000000001F /* AuraUpdateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000001F; };
+		F000000000000020 /* BiorhythmScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000020; };
+		
+		/* Views - Premium */
+		F000000000000021 /* KarmaScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000021; };
+		F000000000000022 /* PremiumScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000022; };
+		
+		/* Views - Profile */
+		F000000000000023 /* EditProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000023; };
+		F000000000000024 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000024; };
+		
+		/* Views - Social */
+		F000000000000025 /* ChatDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000025; };
+		F000000000000026 /* LoveCandidateFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000026; };
+		F000000000000027 /* LoveCandidatesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000027; };
+		F000000000000028 /* LoveCompatibilityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000028; };
+		F000000000000029 /* SocialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000029; };
+		F00000000000002A /* SoulmateAnalysisScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000002A; };
+		
+		/* Views - Tests */
+		F00000000000002B /* TestQuestionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000002B; };
+		F00000000000002C /* TestResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000002C; };
+		F00000000000002D /* TestsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000002D; };
+		
+		/* Resources */
+		F00000000000002E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000002E; };
+		F00000000000002F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000002F; };
+		
+		/* Firebase SPM */
+		F000000000000030 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F200000000000001; };
+		F000000000000031 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F200000000000002; };
+		F000000000000032 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F200000000000003; };
+		F000000000000033 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F200000000000004; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		/* App */
+		F100000000000001 /* FallaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallaApp.swift; sourceTree = "<group>"; };
+		F100000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		
+		/* Core Constants */
+		F100000000000003 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		F100000000000004 /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
+		
+		/* Core Extensions */
+		F100000000000005 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		
+		/* Core Models */
+		F100000000000006 /* FortuneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneModel.swift; sourceTree = "<group>"; };
+		F100000000000007 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		
+		/* Core Providers */
+		F100000000000008 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		F100000000000009 /* ThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProvider.swift; sourceTree = "<group>"; };
+		
+		/* Core Services */
+		F10000000000000A /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		
+		/* Services */
+		F10000000000000B /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
+		
+		/* Shared Models */
+		F10000000000000C /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		
+		/* Views - Astrology */
+		F10000000000000D /* AstrologyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologyScreen.swift; sourceTree = "<group>"; };
+		F10000000000000E /* AstrologyCalendarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologyCalendarScreen.swift; sourceTree = "<group>"; };
+		F10000000000000F /* DailyAstrologyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAstrologyScreen.swift; sourceTree = "<group>"; };
+		F100000000000010 /* HoroscopeDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeDetailScreen.swift; sourceTree = "<group>"; };
+		
+		/* Views - Auth */
+		F100000000000011 /* GetStartedScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedScreen.swift; sourceTree = "<group>"; };
+		F100000000000012 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		F100000000000013 /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
+		
+		/* Views - Components */
+		F100000000000014 /* FloatingGlassNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingGlassNavBar.swift; sourceTree = "<group>"; };
+		F100000000000015 /* GlassComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassComponents.swift; sourceTree = "<group>"; };
+		
+		/* Views - Fortune */
+		F100000000000016 /* CoffeeFortuneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeFortuneScreen.swift; sourceTree = "<group>"; };
+		F100000000000017 /* DreamInterpretationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamInterpretationScreen.swift; sourceTree = "<group>"; };
+		F100000000000018 /* FaceFortuneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceFortuneScreen.swift; sourceTree = "<group>"; };
+		F100000000000019 /* KatinaFortuneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatinaFortuneScreen.swift; sourceTree = "<group>"; };
+		F10000000000001A /* PalmFortuneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmFortuneScreen.swift; sourceTree = "<group>"; };
+		F10000000000001B /* TarotFortuneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotFortuneScreen.swift; sourceTree = "<group>"; };
+		
+		/* Views - History */
+		F10000000000001C /* FortuneHistoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneHistoryScreen.swift; sourceTree = "<group>"; };
+		F10000000000001D /* FortuneHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneHistoryView.swift; sourceTree = "<group>"; };
+		
+		/* Views - Main */
+		F10000000000001E /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		
+		/* Views - Other */
+		F10000000000001F /* AuraUpdateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraUpdateScreen.swift; sourceTree = "<group>"; };
+		F100000000000020 /* BiorhythmScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiorhythmScreen.swift; sourceTree = "<group>"; };
+		
+		/* Views - Premium */
+		F100000000000021 /* KarmaScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarmaScreen.swift; sourceTree = "<group>"; };
+		F100000000000022 /* PremiumScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumScreen.swift; sourceTree = "<group>"; };
+		
+		/* Views - Profile */
+		F100000000000023 /* EditProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileScreen.swift; sourceTree = "<group>"; };
+		F100000000000024 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		
+		/* Views - Social */
+		F100000000000025 /* ChatDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailScreen.swift; sourceTree = "<group>"; };
+		F100000000000026 /* LoveCandidateFormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveCandidateFormScreen.swift; sourceTree = "<group>"; };
+		F100000000000027 /* LoveCandidatesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveCandidatesScreen.swift; sourceTree = "<group>"; };
+		F100000000000028 /* LoveCompatibilityScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveCompatibilityScreen.swift; sourceTree = "<group>"; };
+		F100000000000029 /* SocialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialScreen.swift; sourceTree = "<group>"; };
+		F10000000000002A /* SoulmateAnalysisScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulmateAnalysisScreen.swift; sourceTree = "<group>"; };
+		
+		/* Views - Tests */
+		F10000000000002B /* TestQuestionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQuestionScreen.swift; sourceTree = "<group>"; };
+		F10000000000002C /* TestResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultScreen.swift; sourceTree = "<group>"; };
+		F10000000000002D /* TestsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsScreen.swift; sourceTree = "<group>"; };
+		
+		/* Resources */
+		F10000000000002E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F10000000000002F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F100000000000030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		
+		/* Product */
+		F100000000000099 /* Falla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Falla.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F3000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F000000000000030 /* FirebaseAuth in Frameworks */,
+				F000000000000031 /* FirebaseFirestore in Frameworks */,
+				F000000000000032 /* FirebaseStorage in Frameworks */,
+				F000000000000033 /* FirebaseAnalytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				F4000000000000002 /* Falla */,
+				F4000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4000000000000002 /* Falla */ = {
+			isa = PBXGroup;
+			children = (
+				F4000000000000004 /* App */,
+				F4000000000000005 /* Core */,
+				F4000000000000006 /* Services */,
+				F4000000000000007 /* Shared */,
+				F4000000000000008 /* Views */,
+				F10000000000002E /* Assets.xcassets */,
+				F10000000000002F /* GoogleService-Info.plist */,
+				F100000000000030 /* Info.plist */,
+			);
+			path = Falla;
+			sourceTree = "<group>";
+		};
+		F4000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000099 /* Falla.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4000000000000004 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000001 /* FallaApp.swift */,
+				F100000000000002 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F4000000000000005 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F4000000000000009 /* Constants */,
+				F400000000000010 /* Extensions */,
+				F400000000000011 /* Models */,
+				F400000000000012 /* Providers */,
+				F400000000000013 /* Services */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F4000000000000006 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000B /* AdsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F4000000000000007 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F400000000000014 /* Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F4000000000000008 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F400000000000015 /* Astrology */,
+				F400000000000016 /* Auth */,
+				F400000000000017 /* Components */,
+				F400000000000018 /* Fortune */,
+				F400000000000019 /* History */,
+				F40000000000001A /* Main */,
+				F40000000000001B /* Other */,
+				F40000000000001C /* Premium */,
+				F40000000000001D /* Profile */,
+				F40000000000001E /* Social */,
+				F40000000000001F /* Tests */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F4000000000000009 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000003 /* AppColors.swift */,
+				F100000000000004 /* AppStrings.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F400000000000010 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000005 /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F400000000000011 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000006 /* FortuneModel.swift */,
+				F100000000000007 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F400000000000012 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000008 /* AuthProvider.swift */,
+				F100000000000009 /* ThemeProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		F400000000000013 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000A /* FirebaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F400000000000014 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000C /* TestModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F400000000000015 /* Astrology */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000D /* AstrologyScreen.swift */,
+				F10000000000000E /* AstrologyCalendarScreen.swift */,
+				F10000000000000F /* DailyAstrologyScreen.swift */,
+				F100000000000010 /* HoroscopeDetailScreen.swift */,
+			);
+			path = Astrology;
+			sourceTree = "<group>";
+		};
+		F400000000000016 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000011 /* GetStartedScreen.swift */,
+				F100000000000012 /* LoginScreen.swift */,
+				F100000000000013 /* RegisterScreen.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		F400000000000017 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000014 /* FloatingGlassNavBar.swift */,
+				F100000000000015 /* GlassComponents.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F400000000000018 /* Fortune */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000016 /* CoffeeFortuneScreen.swift */,
+				F100000000000017 /* DreamInterpretationScreen.swift */,
+				F100000000000018 /* FaceFortuneScreen.swift */,
+				F100000000000019 /* KatinaFortuneScreen.swift */,
+				F10000000000001A /* PalmFortuneScreen.swift */,
+				F10000000000001B /* TarotFortuneScreen.swift */,
+			);
+			path = Fortune;
+			sourceTree = "<group>";
+		};
+		F400000000000019 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000001C /* FortuneHistoryScreen.swift */,
+				F10000000000001D /* FortuneHistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		F40000000000001A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000001E /* MainScreen.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F40000000000001B /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000001F /* AuraUpdateScreen.swift */,
+				F100000000000020 /* BiorhythmScreen.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		F40000000000001C /* Premium */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000021 /* KarmaScreen.swift */,
+				F100000000000022 /* PremiumScreen.swift */,
+			);
+			path = Premium;
+			sourceTree = "<group>";
+		};
+		F40000000000001D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000023 /* EditProfileScreen.swift */,
+				F100000000000024 /* ProfileScreen.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F40000000000001E /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000025 /* ChatDetailScreen.swift */,
+				F100000000000026 /* LoveCandidateFormScreen.swift */,
+				F100000000000027 /* LoveCandidatesScreen.swift */,
+				F100000000000028 /* LoveCompatibilityScreen.swift */,
+				F100000000000029 /* SocialScreen.swift */,
+				F10000000000002A /* SoulmateAnalysisScreen.swift */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		F40000000000001F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000002B /* TestQuestionScreen.swift */,
+				F10000000000002C /* TestResultScreen.swift */,
+				F10000000000002D /* TestsScreen.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F5000000000000001 /* Falla */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6000000000000003 /* Build configuration list for PBXNativeTarget "Falla" */;
+			buildPhases = (
+				F5000000000000002 /* Sources */,
+				F3000000000000001 /* Frameworks */,
+				F5000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Falla;
+			packageProductDependencies = (
+				F200000000000001 /* FirebaseAuth */,
+				F200000000000002 /* FirebaseFirestore */,
+				F200000000000003 /* FirebaseStorage */,
+				F200000000000004 /* FirebaseAnalytics */,
+			);
+			productName = Falla;
+			productReference = F100000000000099 /* Falla.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					F5000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = F6000000000000001 /* Build configuration list for PBXProject "Falla" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = tr;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				tr,
+			);
+			mainGroup = F4000000000000001;
+			packageReferences = (
+				F7000000000000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = F4000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5000000000000001 /* Falla */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F5000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F00000000000002E /* Assets.xcassets in Resources */,
+				F00000000000002F /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F5000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F000000000000001 /* FallaApp.swift in Sources */,
+				F000000000000002 /* ContentView.swift in Sources */,
+				F000000000000003 /* AppColors.swift in Sources */,
+				F000000000000004 /* AppStrings.swift in Sources */,
+				F000000000000005 /* View+Extensions.swift in Sources */,
+				F000000000000006 /* FortuneModel.swift in Sources */,
+				F000000000000007 /* UserModel.swift in Sources */,
+				F000000000000008 /* AuthProvider.swift in Sources */,
+				F000000000000009 /* ThemeProvider.swift in Sources */,
+				F00000000000000A /* FirebaseService.swift in Sources */,
+				F00000000000000B /* AdsService.swift in Sources */,
+				F00000000000000C /* TestModel.swift in Sources */,
+				F00000000000000D /* AstrologyScreen.swift in Sources */,
+				F00000000000000E /* AstrologyCalendarScreen.swift in Sources */,
+				F00000000000000F /* DailyAstrologyScreen.swift in Sources */,
+				F000000000000010 /* HoroscopeDetailScreen.swift in Sources */,
+				F000000000000011 /* GetStartedScreen.swift in Sources */,
+				F000000000000012 /* LoginScreen.swift in Sources */,
+				F000000000000013 /* RegisterScreen.swift in Sources */,
+				F000000000000014 /* FloatingGlassNavBar.swift in Sources */,
+				F000000000000015 /* GlassComponents.swift in Sources */,
+				F000000000000016 /* CoffeeFortuneScreen.swift in Sources */,
+				F000000000000017 /* DreamInterpretationScreen.swift in Sources */,
+				F000000000000018 /* FaceFortuneScreen.swift in Sources */,
+				F000000000000019 /* KatinaFortuneScreen.swift in Sources */,
+				F00000000000001A /* PalmFortuneScreen.swift in Sources */,
+				F00000000000001B /* TarotFortuneScreen.swift in Sources */,
+				F00000000000001C /* FortuneHistoryScreen.swift in Sources */,
+				F00000000000001D /* FortuneHistoryView.swift in Sources */,
+				F00000000000001E /* MainScreen.swift in Sources */,
+				F00000000000001F /* AuraUpdateScreen.swift in Sources */,
+				F000000000000020 /* BiorhythmScreen.swift in Sources */,
+				F000000000000021 /* KarmaScreen.swift in Sources */,
+				F000000000000022 /* PremiumScreen.swift in Sources */,
+				F000000000000023 /* EditProfileScreen.swift in Sources */,
+				F000000000000024 /* ProfileScreen.swift in Sources */,
+				F000000000000025 /* ChatDetailScreen.swift in Sources */,
+				F000000000000026 /* LoveCandidateFormScreen.swift in Sources */,
+				F000000000000027 /* LoveCandidatesScreen.swift in Sources */,
+				F000000000000028 /* LoveCompatibilityScreen.swift in Sources */,
+				F000000000000029 /* SocialScreen.swift in Sources */,
+				F00000000000002A /* SoulmateAnalysisScreen.swift in Sources */,
+				F00000000000002B /* TestQuestionScreen.swift in Sources */,
+				F00000000000002C /* TestResultScreen.swift in Sources */,
+				F00000000000002D /* TestsScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F6000000000000004 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Falla/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Falla;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mustafakarakus.falla;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F6000000000000005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Falla/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Falla;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mustafakarakus.falla;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F6000000000000001 /* Build configuration list for PBXProject "Falla" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6000000000000004 /* Debug */,
+				F6000000000000005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6000000000000003 /* Build configuration list for PBXNativeTarget "Falla" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6000000000000004 /* Debug */,
+				F6000000000000005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F7000000000000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F200000000000001 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7000000000000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F200000000000002 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7000000000000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		F200000000000003 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7000000000000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		F200000000000004 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7000000000000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F5000000000000000 /* Project object */;
+}

@@ -379,7 +379,7 @@ ${AppStrings.testDate} ${_formatDate(widget.result.createdAt)}
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: AppColors.premiumDarkGradient,
+          gradient: themeProvider.backgroundGradient,
         ),
         child: SafeArea(
           child: Column(

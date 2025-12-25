@@ -180,10 +180,10 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
     }
   }
 
-  Color _getFortuneTypeColor(String type) {
+  Color _getFortuneTypeColor(String type, bool isDark) {
     switch (type.toLowerCase()) {
       case 'tarot':
-        return LiquidGlassColors.liquidGlassActive;
+        return LiquidGlassColors.liquidGlassActive(isDark);
       case 'coffee':
         return const Color(0xFFC4A477);
       case 'palm':
@@ -193,7 +193,7 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
       case 'dream':
         return const Color(0xFF7C6FA8);
       default:
-        return LiquidGlassColors.liquidGlassActive;
+        return LiquidGlassColors.liquidGlassActive(isDark);
     }
   }
 
@@ -207,7 +207,7 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
           backgroundColor: Colors.transparent,
           body: Container(
             decoration: BoxDecoration(
-              gradient: AppColors.premiumDarkGradient,
+              gradient: themeProvider.backgroundGradient,
             ),
             child: SafeArea(
               child: LiquidGlassScreenWrapper(
@@ -267,17 +267,17 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      LiquidGlassColors.liquidGlassActive.withOpacity(0.4),
-                      LiquidGlassColors.liquidGlassSecondary.withOpacity(0.3),
+                      LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.4),
+                      LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.3),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: LiquidGlassColors.liquidGlassActive.withOpacity(0.5),
+                    color: LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.5),
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
+                      color: LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
                       blurRadius: 15,
                       spreadRadius: 1,
                     ),
@@ -286,7 +286,7 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
                 child: Text(
                   '$totalCount ${AppStrings.total}',
                   style: AppTextStyles.bodySmall.copyWith(
-                    color: Colors.white,
+                    color: AppColors.getTextPrimary(isDark),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -310,17 +310,17 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                _buildLiquidGlassFilterChip('all', AppStrings.all, Icons.all_inclusive),
+                _buildLiquidGlassFilterChip('all', AppStrings.all, Icons.all_inclusive, isDark),
                 const SizedBox(width: 8),
-                _buildLiquidGlassFilterChip('tarot', AppStrings.tarot, Icons.auto_awesome),
+                _buildLiquidGlassFilterChip('tarot', AppStrings.tarot, Icons.auto_awesome, isDark),
                 const SizedBox(width: 8),
-                _buildLiquidGlassFilterChip('coffee', AppStrings.coffee, Icons.coffee),
+                _buildLiquidGlassFilterChip('coffee', AppStrings.coffee, Icons.coffee, isDark),
                 const SizedBox(width: 8),
-                _buildLiquidGlassFilterChip('palm', AppStrings.palm, Icons.back_hand),
+                _buildLiquidGlassFilterChip('palm', AppStrings.palm, Icons.back_hand, isDark),
                 const SizedBox(width: 8),
-                _buildLiquidGlassFilterChip('astrology', AppStrings.astrology, Icons.star),
+                _buildLiquidGlassFilterChip('astrology', AppStrings.astrology, Icons.star, isDark),
                 const SizedBox(width: 8),
-                _buildLiquidGlassFilterChip('dream', 'Rüya', Icons.nightlight_round),
+                _buildLiquidGlassFilterChip('dream', 'Rüya', Icons.nightlight_round, isDark),
               ],
             ),
           ),
@@ -346,14 +346,14 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
     );
   }
 
-  Widget _buildLiquidGlassFilterChip(String value, String label, IconData icon) {
+  Widget _buildLiquidGlassFilterChip(String value, String label, IconData icon, bool isDark) {
     final isSelected = _selectedFilter == value;
     
     return LiquidGlassChip(
       label: label,
       icon: icon,
       isSelected: isSelected,
-      selectedColor: _getFortuneTypeColor(value),
+      selectedColor: _getFortuneTypeColor(value, isDark),
       onTap: () {
         setState(() {
           _selectedFilter = value;
@@ -391,8 +391,8 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    LiquidGlassColors.liquidGlassActive.withOpacity(0.3),
-                    LiquidGlassColors.liquidGlassSecondary.withOpacity(0.2),
+                    LiquidGlassColors.liquidGlassActive(isDark).withOpacity(0.3),
+                    LiquidGlassColors.liquidGlassSecondary(isDark).withOpacity(0.2),
                   ],
                 ),
                 shape: BoxShape.circle,
@@ -400,14 +400,14 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
               child: Icon(
                 Icons.auto_awesome_outlined,
                 size: 60,
-                color: Colors.white.withOpacity(0.8),
+                color: AppColors.getIconColor(isDark).withOpacity(0.8),
               ),
             ),
             const SizedBox(height: 24),
             Text(
               AppStrings.noFortunes,
               style: AppTextStyles.headingMedium.copyWith(
-                color: Colors.white,
+                color: AppColors.getTextPrimary(isDark),
               ),
               textAlign: TextAlign.center,
             ),
@@ -415,7 +415,7 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
             Text(
               AppStrings.startFirstFortune,
               style: AppTextStyles.bodyMedium.copyWith(
-                color: Colors.white.withOpacity(0.7),
+                color: AppColors.getTextSecondary(isDark),
               ),
               textAlign: TextAlign.center,
             ),
@@ -549,7 +549,7 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
   }
 
   Widget _buildFortuneCard(FortuneModel fortune, bool isDark, int index) {
-    final fortuneColor = _getFortuneTypeColor(fortune.type.name);
+    final fortuneColor = _getFortuneTypeColor(fortune.type.name, isDark);
     final displayTitle = _getFortuneDisplayTitle(fortune);
     
     return LiquidGlassCard(
@@ -607,7 +607,7 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
                       child: Text(
                         displayTitle,
                         style: AppTextStyles.headingMedium.copyWith(
-                          color: Colors.white,
+                          color: AppColors.getTextPrimary(isDark),
                           fontWeight: FontWeight.bold,
                           fontSize: 17,
                         ),
@@ -638,14 +638,14 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
                   children: [
                     Icon(
                       Icons.schedule_outlined,
-                      color: Colors.white.withOpacity(0.6),
+                      color: AppColors.getTextSecondary(isDark),
                       size: 14,
                     ),
                     const SizedBox(width: 6),
                     Text(
                       _formatDate(fortune.createdAt),
                       style: AppTextStyles.bodySmall.copyWith(
-                        color: Colors.white.withOpacity(0.7),
+                        color: AppColors.getTextSecondary(isDark),
                         fontSize: 12,
                       ),
                     ),
@@ -698,7 +698,7 @@ class _FortunesHistoryScreenState extends State<FortunesHistoryScreen>
             ),
             child: Icon(
               Icons.arrow_forward_ios,
-              color: Colors.white.withOpacity(0.6),
+              color: AppColors.getIconColor(isDark),
               size: 16,
             ),
           ),

@@ -66,7 +66,7 @@ class AppColors {
   static const LinearGradient lightBackgroundGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [Color(0xFFFFF8F0), Color(0xFFFFF0E0)],
+    colors: [Color(0xFFFDFBF7), Color(0xFFE6DCC3)],
   );
   
   // Karma gradient
@@ -376,54 +376,98 @@ class AppColors {
     ],
   );
 
-  // ==================== LIGHT THEME COLORS ====================
+  // ==================== NEW PREMIUM LIGHT THEME (iOS 26) ====================
   
-  // Light theme base colors - Cream tones
-  static const Color lightBackground = Color(0xFFFFF8F0);
-  static const Color lightSurface = Color(0xFFFFF5E6);
-  static const Color lightCardBackground = Color(0xFFFFEED5);
+  // Base Colors - Warm & Premium
+  static const Color premiumLightBackground = Color(0xFFFAF7F2); // Warm Ivory - NOT White
+  static const Color premiumLightSurface = Color(0xFFEBE5DA);    // Darker than BG (Sand/Beige tone)
+  // Alternative darker surface for nested cards if needed
+  static const Color premiumLightSurfaceDarker = Color(0xFFE0D8C8);
+
+  // Typography - High Contrast (WCAG AA Compliant)
+  static const Color premiumLightTextPrimary = Color(0xFF1A1814);   // Warm Black (Almost pure black)
+  static const Color premiumLightTextSecondary = Color(0xFF484644); // Warm Dark Gray (High readability)
+  static const Color premiumLightTextTertiary = Color(0xFF6E6B65);  // Medium Gray (Still readable)
   
-  // Light theme text colors
-  static Color get lightTextPrimary => Colors.grey[900]!;
-  static Color get lightTextSecondary => Colors.grey[700]!;
-  static Color get lightTextTertiary => Colors.grey[600]!;
-  static Color get lightTextDisabled => Colors.grey[400]!;
+  // Accents for Light Theme
+  static const Color premiumLightAccent = Color(0xFF996515);        // Goldenrod/Bronze - readable on light
+  static const Color premiumLightPrimary = Color(0xFFD81B60);       // Keep Brand Pink but verify contrast
   
-  // Light theme card gradient - Cream tones
-  static LinearGradient get lightCardGradient => LinearGradient(
-    colors: [Color(0xFFFFEED5), Color(0xFFFFE8D0)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
-  
-  // Light theme mystical gradient (softer version) - Cream tones
-  static LinearGradient get lightMysticalGradient => LinearGradient(
-    colors: [Color(0xFFFFF0E0), Color(0xFFFFE8D0)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+  // Gradients for Light Theme
+  static const LinearGradient premiumLightBackgroundGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [premiumLightBackground, Color(0xFFF5F0E6)], // Subtle warm fade
   );
 
-  // Modern card decoration for light theme
-  static BoxDecoration get modernCardDecorationLight => BoxDecoration(
-    color: lightSurface,
+  // Card Decoration - The "Darker than BG" Logic
+  static BoxDecoration get ios26LightCardDecoration => BoxDecoration(
+    color: premiumLightSurface, // Darker than BG
     borderRadius: BorderRadius.circular(24),
     border: Border.all(
-      color: Colors.grey.withValues(alpha: 0.15),
-      width: 1,
+      color: Color(0xFFD6CDB8), // Subtle warm border
+      width: 1.0, 
     ),
     boxShadow: [
       BoxShadow(
-        color: Colors.black.withValues(alpha: 0.06),
-        blurRadius: 20,
-        offset: const Offset(0, 8),
+        color: Color(0x14000000), // Soft shadow for depth (approx 8% opacity black)
+        blurRadius: 16,
+        offset: const Offset(0, 4),
       ),
       BoxShadow(
-        color: primary.withValues(alpha: 0.03),
-        blurRadius: 30,
-        spreadRadius: -5,
+        color: Color(0x0A000000), // Second layer for ambient depth
+        blurRadius: 4,
+        offset: const Offset(0, 1),
       ),
     ],
   );
+
+  // Selected Card for Light Theme
+  static BoxDecoration get ios26LightSelectedCardDecoration => BoxDecoration(
+    color: premiumLightSurface,
+    borderRadius: BorderRadius.circular(24),
+    border: Border.all(
+      color: premiumLightAccent, // Gold border
+      width: 2.0,
+    ),
+    boxShadow: [
+      BoxShadow(
+        color: premiumLightAccent.withValues(alpha: 0.20),
+        blurRadius: 12,
+        offset: const Offset(0, 4),
+      ),
+    ],
+  );
+  
+  // Input Fields for Light Theme
+  static BoxDecoration get ios26LightInputDecoration => BoxDecoration(
+    color: Colors.white, // Inputs can be white to stand out from beige cards/bg
+    borderRadius: BorderRadius.circular(16),
+    border: Border.all(
+      color: Color(0xFFCDC5B4),
+      width: 1.0,
+    ),
+  );
+
+  // Legacy mappings for compatibility (redirecting to new system)
+  static const Color lightBackground = premiumLightBackground;
+  static const Color lightSurface = premiumLightSurface; 
+  static const Color lightCardBackground = premiumLightSurface;
+  
+  static Color get lightTextPrimary => premiumLightTextPrimary;
+  static Color get lightTextSecondary => premiumLightTextSecondary;
+  static Color get lightTextTertiary => premiumLightTextTertiary;
+  static Color get lightTextDisabled => Color(0xFFADAAA5);
+
+  static LinearGradient get lightCardGradient => LinearGradient(
+      colors: [premiumLightSurface, premiumLightSurface], // Flat/Subtle for readability
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+  );
+
+  static LinearGradient get lightMysticalGradient => premiumLightBackgroundGradient;
+
+  static BoxDecoration get modernCardDecorationLight => ios26LightCardDecoration;
 
   // ==================== THEME-AWARE HELPERS ====================
   
@@ -460,7 +504,7 @@ class AppColors {
   
   /// Get border color based on theme
   static Color getBorderColor(bool isDark) => 
-      isDark ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.15);
+      isDark ? Colors.white.withValues(alpha: 0.08) : Colors.grey.withValues(alpha: 0.25);
   
   /// Get icon color based on theme
   static Color getIconColor(bool isDark) => isDark ? Colors.white : Colors.grey[800]!;
@@ -478,7 +522,7 @@ class AppColors {
   
   /// Get container border color based on theme
   static Color getContainerBorder(bool isDark) => 
-      isDark ? Colors.white.withValues(alpha: 0.2) : Colors.grey[400]!;
+      isDark ? Colors.white.withValues(alpha: 0.2) : Colors.grey[500]!;
   
   /// Get input text color based on theme
   static Color getInputTextColor(bool isDark) => 
@@ -494,5 +538,53 @@ class AppColors {
   
   /// Get input border color based on theme
   static Color getInputBorderColor(bool isDark) => 
-      isDark ? Colors.white.withValues(alpha: 0.15) : Colors.grey[300]!;
+      isDark ? Colors.white.withValues(alpha: 0.15) : Colors.grey[400]!;
+
+  // ==================== GLASS STYLING HELPERS ====================
+
+  /// Get glass gradient based on theme
+  static LinearGradient getGlassGradient(bool isDark) {
+    if (isDark) {
+      return LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Colors.white.withValues(alpha: 0.15),
+          Colors.white.withValues(alpha: 0.05),
+          Colors.white.withValues(alpha: 0.02),
+        ],
+      );
+    } else {
+      // Light mode: Frosted Milk / Smoked Glass - Daha opak ve görünür
+      return LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+         Colors.white.withValues(alpha: 0.85), // Daha opak
+         Colors.white.withValues(alpha: 0.65), // Daha opak
+        ],
+      );
+    }
+  }
+
+  /// Get glass border color based on theme
+  static Color getGlassBorderColor(bool isDark) {
+    if (isDark) {
+      return Colors.white.withValues(alpha: 0.15);
+    } else {
+       return Color(0xFF2D2D2D).withValues(alpha: 0.20); // Daha görünür koyu border
+    }
+  }
+
+  /// Get glass shadow color based on theme
+  static Color getGlassShadowColor(bool isDark) {
+    if (isDark) {
+      return Colors.black.withValues(alpha: 0.2);
+    } else {
+      return Colors.black.withValues(alpha: 0.15); // Daha görünür shadow
+    }
+  }
+  
+  /// Get glass text color
+  static Color getGlassTextColor(bool isDark) => isDark ? Colors.white : lightTextPrimary;
 }

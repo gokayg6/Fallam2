@@ -921,8 +921,8 @@ class _SoulmateAnalysisScreenState extends State<SoulmateAnalysisScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: AppColors.premiumDarkGradient,
+        decoration: BoxDecoration(
+          gradient: Provider.of<ThemeProvider>(context).backgroundGradient,
         ),
         child: SafeArea(
           child: Column(

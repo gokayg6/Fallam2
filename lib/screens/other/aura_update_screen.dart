@@ -354,12 +354,23 @@ class _AuraUpdateScreenState extends State<AuraUpdateScreen> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
+    // 3.0 saniye sonra otomatik geçiş
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
+        Navigator.pop(context, true);
+      }
+    });
+
     final themeProvider = Provider.of<ThemeProvider>(context);
     
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-        decoration: BoxDecoration(gradient: AppColors.premiumDarkGradient),
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: themeProvider.backgroundGradient,
+        ),
         child: SafeArea(
           child: Column(
             children: [

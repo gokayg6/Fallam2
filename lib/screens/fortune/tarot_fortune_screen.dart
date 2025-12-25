@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+import '../../providers/theme_provider.dart';
 
 import 'fortune_result_screen.dart';
 import '../../core/constants/app_colors.dart';
@@ -368,6 +369,8 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDarkMode;
     return PremiumScaffold(
       body: Stack(
         children: [
@@ -406,6 +409,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
   }
 
   Widget _buildHeroSection() {
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: AnimatedBuilder(
@@ -423,13 +427,13 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.white.withOpacity(0.08),
-                      Colors.white.withOpacity(0.03),
+                      isDark ? Colors.white.withOpacity(0.08) : Colors.black.withOpacity(0.05),
+                      isDark ? Colors.white.withOpacity(0.03) : Colors.black.withOpacity(0.02),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: AppColors.champagneGold.withOpacity(glowIntensity),
+                    color: isDark ? AppColors.champagneGold.withOpacity(glowIntensity) : AppColors.premiumLightTextSecondary.withOpacity(0.3),
                     width: 1,
                   ),
                   boxShadow: [
@@ -487,7 +491,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
                               fontFamily: 'SF Pro Display',
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
-                              color: AppColors.champagneGold,
+                              color: isDark ? AppColors.champagneGold : AppColors.getTextPrimary(isDark),
                               letterSpacing: 0.3,
                             ),
                           ),
@@ -500,7 +504,8 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
                               fontFamily: 'SF Pro Text',
                               fontSize: 13,
                               height: 1.4,
-                              color: Colors.white.withOpacity(0.6),
+
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                           ),
                         ],
@@ -565,6 +570,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
   }
 
   Widget _buildHeader() {
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
     return ClipRRect(
         child: BackdropFilter(
         filter: ui.ImageFilter.blur(sigmaX: 12, sigmaY: 12),
@@ -575,13 +581,13 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Colors.white.withOpacity(0.12),
-                Colors.white.withOpacity(0.05),
+                isDark ? Colors.white.withOpacity(0.12) : Colors.black.withOpacity(0.05),
+                isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.02),
               ],
             ),
             border: Border(
               bottom: BorderSide(
-                color: AppColors.champagneGold.withOpacity(0.2),
+                color: isDark ? AppColors.champagneGold.withOpacity(0.2) : AppColors.premiumLightTextSecondary.withOpacity(0.2),
                 width: 1,
               ),
             ),
@@ -602,18 +608,19 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Colors.white.withOpacity(0.15),
-                        Colors.white.withOpacity(0.05),
+                        isDark ? Colors.white.withOpacity(0.15) : Colors.black.withOpacity(0.08),
+                        isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.03),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.1),
+                      color: isDark ? Colors.white.withOpacity(0.1) : AppColors.premiumLightTextSecondary.withOpacity(0.2),
                     ),
                   ),
                   child: Icon(
                     Icons.arrow_back_ios_new,
-                    color: AppColors.warmIvory,
+
+                    color: AppColors.getIconColor(isDark),
                     size: 20,
                   ),
                 ),
@@ -648,7 +655,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
                               fontFamily: 'SF Pro Display',
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
-                              color: AppColors.warmIvory,
+                              color: AppColors.getTextPrimary(isDark),
                               letterSpacing: 0.5,
                             ),
                           ),
@@ -657,7 +664,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
                             style: TextStyle(
                               fontFamily: 'SF Pro Text',
                               fontSize: 12,
-                              color: Colors.white.withOpacity(0.5),
+                              color: AppColors.getTextSecondary(isDark),
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -678,14 +685,15 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
   }
 
   Widget _buildSlotsSection() {
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
     final selectedCount = _selectedSlots.where((s) => s != null).length;
     
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.2),
+        color: isDark ? Colors.black.withOpacity(0.2) : AppColors.premiumLightSurface.withOpacity(0.5),
         border: Border.symmetric(
-          horizontal: BorderSide(color: Colors.white.withOpacity(0.05)),
+          horizontal: BorderSide(color: isDark ? Colors.white.withOpacity(0.05) : AppColors.premiumLightTextSecondary.withOpacity(0.1)),
         ),
       ),
       child: Column(
@@ -695,7 +703,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
             style: TextStyle(
               fontFamily: 'SF Pro Display',
               fontSize: 16,
-              color: AppColors.champagneGold,
+              color: isDark ? AppColors.champagneGold : AppColors.getTextPrimary(isDark),
               fontWeight: FontWeight.w600,
               letterSpacing: 0.5,
             ),
@@ -737,6 +745,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
   }
   
   Widget _buildEmptySlotVisual(double width, double height, {Key? key}) {
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
     return AnimatedBuilder(
       key: key,
       animation: _pulseController,
@@ -748,7 +757,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: Colors.white.withOpacity(0.3 * glow),
+              color: isDark ? Colors.white.withOpacity(0.3 * glow) : AppColors.premiumLightTextSecondary.withOpacity(0.4 * glow),
               width: 1,
               style: BorderStyle.solid,
             ),
@@ -756,7 +765,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Colors.white.withOpacity(0.05 * glow),
+                isDark ? Colors.white.withOpacity(0.05 * glow) : Colors.black.withOpacity(0.05 * glow),
                 Colors.transparent,
               ],
             ),
@@ -770,7 +779,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
           child: Center(
             child: Icon(
               Icons.add,
-              color: Colors.white.withOpacity(0.3 * glow),
+              color: isDark ? Colors.white.withOpacity(0.3 * glow) : AppColors.premiumLightTextSecondary.withOpacity(0.4 * glow),
               size: 24,
             ),
           ),
@@ -1045,6 +1054,7 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
   }
 
   Widget _buildGenerateBar() {
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode; // Note: Consumer<UserProvider> is below, but theme provider is needed for styles
     return Consumer<UserProvider>(
       builder: (context, userProvider, child) {
         final requiredKarma = PricingConstants.getFortuneCost('tarot');
@@ -1063,12 +1073,12 @@ class _TarotFortuneScreenState extends State<TarotFortuneScreen> with TickerProv
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.white.withOpacity(0.12),
-                    Colors.white.withOpacity(0.06),
+                    isDark ? Colors.white.withOpacity(0.12) : Colors.black.withOpacity(0.08),
+                    isDark ? Colors.white.withOpacity(0.06) : Colors.black.withOpacity(0.04),
                   ],
                 ),
                 border: Border(
-                  top: BorderSide(color: Colors.white.withOpacity(0.15), width: 0.5),
+                  top: BorderSide(color: isDark ? Colors.white.withOpacity(0.15) : AppColors.premiumLightTextSecondary.withOpacity(0.2), width: 0.5),
                 ),
               ),
               child: Opacity(
